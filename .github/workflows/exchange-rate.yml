@@ -19,11 +19,23 @@ jobs:
           ref: main
       - run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - name: Read the latest official sale rate
+        id: read_rate
         run: |
           set -o pipefail
           curl -fsSL --retry 3 --max-time 30 "https://cdn.bancentral.gov.do/documents/estadisticas/mercado-cambiario/documents/tasaus_mc.pdf?v=$(date -u +%Y%m%d%H)" -o "$RUNNER_TEMP/bcrd.pdf"
           pdftotext "$RUNNER_TEMP/bcrd.pdf" - | python3 scripts/update-rate.py
+      - name: Hide the conversion if the bulletin could not be checked
+        if: ${{ failure() && steps.read_rate.outcome != 'success' }}
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("exchange-rate.json")
+          last_date = json.loads(path.read_text()).get("date") if path.exists() else None
+          path.write_text(json.dumps({"date": last_date or "", "dopPerUsd": None}, indent=2) + "\n")
+          PY
       - name: Publish updated snapshot
+        if: ${{ !cancelled() && (success() || hashFiles('exchange-rate.json') != '') }}
         run: |
           git add exchange-rate.json
           if git diff --cached --quiet; then exit 0; fi

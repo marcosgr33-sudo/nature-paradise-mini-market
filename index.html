@@ -16,19 +16,24 @@ const money=(amount,currency='DOP',lang=locale())=>new Intl.NumberFormat(lang,{
 }).formatToParts(Number(amount||0)).map(part=>part.type==='currency'?(currency==='USD'?'US$':'RD$'):part.value).join('');
 const rateUrl='https://raw.githubusercontent.com/marcosgr33-sudo/nature-paradise-mini-market/main/exchange-rate.json';
 async function loadRate(){
-  for(const url of [rateUrl,'./exchange-rate.json']){
-    try{
-      const response=await fetch(url,{signal:AbortSignal.timeout(4500),cache:'no-cache'});
-      if(!response.ok)continue;
+  rate=null;
+  try{
+    const response=await fetch(rateUrl+'?v='+Math.floor(Date.now()/60000),{
+      signal:AbortSignal.timeout(4500),cache:'no-store'
+    });
+    if(response.ok){
       const data=await response.json();
       const date=Date.parse(data.date+'T00:00:00Z');
-      if(!/^\d{4}-\d{2}-\d{2}$/.test(data.date)||!Number.isFinite(date)||
-         Date.now()-date>7*86400000||date-Date.now()>86400000||
-         !Number.isFinite(data.dopPerUsd)||data.dopPerUsd<=0)continue;
-      rate=data;
-      break;
-    }catch{}
-  }
+      const checked=Date.parse(data.checkedAt);
+      const now=Date.now();
+      if(/^\d{4}-\d{2}-\d{2}$/.test(data.date)&&
+         now-date<=7*86400000&&date-now<=86400000&&
+         now-checked<=30*3600000&&checked-now<=300000&&
+         Number.isFinite(data.dopPerUsd)&&data.dopPerUsd>0){
+        rate=data;
+      }
+    }
+  }catch{}
   renderRate();
   renderCatalog();
 }
@@ -156,4 +161,10 @@ async function toggleAvailability(product,button){
 applyLanguage();
 loadCatalog();
 loadRate();
+document.addEventListener('visibilitychange',()=>{
+  if(document.visibilityState==='visible')loadRate();
+});
+setInterval(()=>{
+  if(document.visibilityState==='visible')loadRate();
+},5*60000);
 </script></body></html>

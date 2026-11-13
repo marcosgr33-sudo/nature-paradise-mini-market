@@ -2,7 +2,7 @@
 import json
 import re
 import sys
-from datetime import date
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 MONTHS = "enero febrero marzo abril mayo junio julio agosto septiembre octubre noviembre diciembre".split()
@@ -21,6 +21,12 @@ rate = float(sale)
 if not 0 < rate < 1000:
     raise SystemExit("Invalid BCRD sale rate")
 path = Path("exchange-rate.json")
-if path.exists() and json.loads(path.read_text())["date"] > closing:
+if path.exists() and json.loads(path.read_text()).get("date", "") > closing:
     raise SystemExit("The bulletin is older than the existing rate")
-path.write_text(json.dumps({"date": closing, "dopPerUsd": rate, "source": SOURCE}, indent=2) + "\n")
+snapshot = {
+    "date": closing,
+    "dopPerUsd": rate,
+    "source": SOURCE,
+    "checkedAt": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+}
+path.write_text(json.dumps(snapshot, indent=2) + "\n")

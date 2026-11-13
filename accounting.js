@@ -3,7 +3,7 @@ const today = () => new Intl.DateTimeFormat('en-CA', {
   timeZone:'America/Santo_Domingo', year:'numeric', month:'2-digit', day:'2-digit'
 }).format(new Date());
 
-export function setupAccounting(db, getProducts) {
+export function setupAccounting(db, getProducts, refreshInventory) {
   const $ = id => document.getElementById(id);
   const soldOn = $('saleDate');
   const from = $('salesFrom');
@@ -13,43 +13,21 @@ export function setupAccounting(db, getProducts) {
   from.value = date.slice(0, 7) + '-01';
   let pendingSale;
   let generation = 0;
-  let costs = new Map();
-  let costRequest = 0;
+  let entryRequest = 0;
 
   function updateSalePrices() {
     const product = getProducts().find(item => String(item.id) === $('saleProduct').value);
-    const cost = product && costs.get(String(product.id));
+    const cost = product?.purchaseCost;
+    const quantity = Number(product?.quantity || 0);
     $('salePrices').textContent = product
-      ? 'Precio de venta actual: ' + pesos.format(Number(product.price)) +
-        (cost == null ? ' · Falta guardar el costo.' : ' · Costo actual: ' + pesos.format(Number(cost)))
+      ? 'Existencias: ' + quantity + ' · Venta por unidad: ' + pesos.format(Number(product.price)) +
+        (cost == null ? ' · Guarda el costo en Inventario.' : ' · Costo por unidad: ' + pesos.format(Number(cost)))
       : '';
-    $('recordSale').disabled = cost == null;
+    $('saleUnits').max = quantity;
+    $('recordSale').disabled = cost == null || quantity <= 0;
   }
 
   $('saleProduct').onchange = updateSalePrices;
-  $('costProduct').onchange = () => {
-    $('unitCost').value = costs.get($('costProduct').value) ?? '';
-    $('costStatus').textContent = '';
-  };
-  $('costForm').onsubmit = async event => {
-    event.preventDefault();
-    const button = $('saveCost');
-    const id = $('costProduct').value;
-    const unitCost = Number($('unitCost').value);
-    button.disabled = true;
-    try {
-      const {error} = await db.from('market_product_costs')
-        .upsert({product_id:id, unit_cost:unitCost});
-      if (error) throw error;
-      costs.set(id, unitCost);
-      $('costStatus').textContent = 'Costo guardado.';
-      updateSalePrices();
-    } catch {
-      $('costStatus').textContent = 'No se pudo guardar el costo. Verifica la configuración de Contabilidad.';
-    } finally {
-      button.disabled = false;
-    }
-  };
 
   function status(text) {
     $('accountingStatus').textContent = text;
@@ -145,7 +123,7 @@ export function setupAccounting(db, getProducts) {
         from.value = sale.sale_day.slice(0, 7) + '-01';
         to.value = today();
       }
-      await report();
+      await Promise.all([report(),refreshInventory()]);
     } catch (error) {
       $('saleStatus').textContent = error.message || 'No se pudo registrar la venta.';
     } finally {
@@ -155,35 +133,35 @@ export function setupAccounting(db, getProducts) {
 
   return {
     async open() {
-      const request = ++costRequest;
+      const request = ++entryRequest;
+      const select = $('saleProduct');
+      const selected = select.value;
       const products = getProducts();
-      for (const id of ['saleProduct', 'costProduct']) {
-        const select = $(id);
-        const selected = select.value;
-        select.replaceChildren(new Option('Selecciona un producto', ''), ...products.map(product =>
-          new Option(product.name, String(product.id))));
-        if (products.some(product => String(product.id) === selected)) select.value = selected;
-      }
+      select.replaceChildren(new Option('Selecciona un producto', ''), ...products.map(product =>
+        new Option(product.name, String(product.id))));
+      if (products.some(product => String(product.id) === selected)) select.value = selected;
       updateSalePrices();
       const reportResult = report();
-      const {data, error} = await db.from('market_product_costs').select('product_id,unit_cost');
-      if (request !== costRequest) return;
-      if (error) {
-        $('costStatus').textContent = 'Los costos requieren la configuración de Contabilidad en Supabase.';
-      } else {
-        costs = new Map(data.map(row => [row.product_id, row.unit_cost]));
-        $('costProduct').onchange();
-      }
-      updateSalePrices();
+      const {data, error} = await db.from('market_stock_entries')
+        .select('entered_at,product_name,units,unit_cost')
+        .order('entered_at', {ascending:false}).order('id').limit(100);
+      if (request !== entryRequest) return;
+      $('stockEntriesStatus').textContent = error ? 'No se pudieron cargar las entradas.' :
+        data.length ? 'Últimas 100 entradas' : 'Todavía no hay entradas registradas.';
+      const dateFormat = new Intl.DateTimeFormat('es-DO', {
+        dateStyle:'short', timeZone:'America/Santo_Domingo'
+      });
+      fillTable('stockEntries', (data||[]).map(entry => [
+        dateFormat.format(new Date(entry.entered_at)), entry.product_name, entry.units,
+        pesos.format(Number(entry.unit_cost)), pesos.format(Number(entry.unit_cost)*entry.units)
+      ]));
       return reportResult;
     },
     clear() {
       generation++;
-      costRequest++;
-      costs.clear();
-      $('costProduct').replaceChildren();
-      $('unitCost').value = '';
-      $('costStatus').textContent = '';
+      entryRequest++;
+      fillTable('stockEntries', []);
+      $('stockEntriesStatus').textContent = '';
       pendingSale = null;
       fillTable('salesSummary', []);
       fillTable('salesHistory', []);

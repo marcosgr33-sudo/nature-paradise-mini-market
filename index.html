@@ -1,12 +1,54 @@
 <!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nature Paradise | Mini Market</title><style>
 :root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#17362b;background:#f6f8f3}*{box-sizing:border-box}body{margin:0}header{background:linear-gradient(120deg,#06472e,#126b45);color:white;padding:30px max(20px,calc((100vw - 1100px)/2));}header h1{margin:0;font-size:clamp(25px,4vw,42px)}header p{margin:8px 0 0;color:#e6f4e7}main{max-width:1100px;margin:auto;padding:22px}nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}button{cursor:pointer;background:#126b45;color:white;border:0;border-radius:9px;padding:11px 16px;font-weight:650}button.secondary{background:white;color:#126b45;border:1px solid #b8cfc1}button:disabled{opacity:.55;cursor:wait}input,select,textarea{width:100%;padding:11px;border:1px solid #cbd9d0;border-radius:8px;background:white;font:inherit}label{display:block;font-weight:600;margin:12px 0 5px}.toolbar{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}.toolbar>*{flex:1;min-width:180px}.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}.product{background:white;border:1px solid #e0e8df;border-radius:14px;overflow:hidden;box-shadow:0 3px 12px #1232}.product img,.placeholder{width:100%;height:180px;object-fit:cover;background:#e5efe5}.placeholder{display:grid;place-items:center;font-size:50px}.details{padding:15px}.details h3{margin:0 0 6px}.price{font-size:23px;color:#11683e;font-weight:800;margin:10px 0}.muted{color:#64776a;font-size:14px}.panel{background:white;border:1px solid #e0e8df;border-radius:14px;padding:20px;margin-bottom:20px}.formgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0 16px}.hide{display:none!important}.notice{padding:12px;border-radius:9px;background:#e6f2e8;margin:12px 0}.error{background:#fce9e9;color:#8a2020}.adminrow{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}footer{text-align:center;padding:30px;color:#68776b}@media(max-width:500px){header{padding:24px 20px}main{padding:14px}}
 .buy{display:inline-block;background:#126b45;color:white;border-radius:9px;padding:11px 16px;font-size:14px;font-weight:650;text-decoration:none}.shop-contact{margin-bottom:18px}.stock-label{margin:8px 0}.language-picker{margin-left:auto;width:auto}.equivalent{margin-top:-6px}.rate-note{margin:0 0 14px}
-</style></head><body><header><h1>🌿 Nature Paradise Mini Market</h1><p id="subtitle">Tu tienda dentro de Nature Paradise Jarabacoa</p></header><main><nav><button id="catalogTab">Ver tienda</button><button class="secondary" id="adminTab">Administración privada</button><button class="secondary hide" id="logout">Cerrar sesión</button><select id="language" class="language-picker" aria-label="Idioma"><option value="es" lang="es">Español</option><option value="en" lang="en">English</option><option value="fr" lang="fr">Français</option><option value="de" lang="de">Deutsch</option></select></nav><section id="catalog"><div class="shop-contact"><a id="shopContact" class="buy" href="https://wa.me/18497503039" target="_blank" rel="noopener noreferrer">Comprar por WhatsApp</a></div><div class="toolbar"><input id="search" placeholder="Buscar productos"><select id="category"><option value="">Todas las categorías</option></select></div><p id="rateNote" class="muted rate-note hide"><a id="rateSource"></a></p><div id="catalogStatus" role="status" class="notice">Cargando catálogo…</div><div id="products" class="products"></div></section><section id="admin" lang="es" class="hide"><div id="loginStatus" role="status"></div><div id="loginPanel" class="panel"><h2>Acceso de administrador</h2><p class="muted">Inicia sesión con el usuario autorizado en Supabase.</p><form id="loginForm"><label>Correo electrónico</label><input type="email" id="email" required autocomplete="username"><label>Contraseña</label><input type="password" id="password" required autocomplete="current-password"><p><button type="submit">Entrar</button></p></form></div><div id="managePanel" class="hide"><div class="panel"><h2 id="formTitle">Añadir producto</h2><form id="productForm"><div class="formgrid"><div><label>Nombre</label><input id="name" required></div><div><label>Categoría</label><input id="prodCategory" required placeholder="Snacks, Bebidas, Higiene..."></div><div><label>Precio de venta (RD$)</label><input id="price" type="number" min="0" step="0.01" required></div><div><label for="quantity">Cantidad (0 = agotado)</label><input id="quantity" type="number" min="0" step="1" value="1" required></div><div><label>Fotografía (JPG, PNG o WebP; máximo 5 MB)</label><input id="photo" type="file" accept="image/jpeg,image/png,image/webp"></div><div><label>URL de imagen (opcional)</label><input id="imageUrl" type="url" placeholder="https://..."></div></div><label>Descripción</label><textarea id="description" rows="2"></textarea><div class="adminrow"><button type="submit" id="saveProduct">Guardar producto</button><button type="button" class="secondary" id="resetForm">Cancelar edición</button></div></form><div id="saveStatus"></div></div><div class="panel"><h2>Inventario</h2><div id="adminStatus"></div><div id="adminProducts" class="products"></div></div></div></section></main><footer>Nature Paradise Jarabacoa · <span id="footerCurrency">Precios en pesos dominicanos</span></footer><script type="module">
+.table-scroll{overflow-x:auto}.table-scroll table{width:100%;border-collapse:collapse;text-align:left}.table-scroll th,.table-scroll td{padding:10px;border-bottom:1px solid #e0e8df;white-space:nowrap}.table-scroll th{white-space:normal}
+</style></head><body><header><h1>🌿 Nature Paradise Mini Market</h1><p id="subtitle">Tu tienda dentro de Nature Paradise Jarabacoa</p></header><main><nav><button id="catalogTab">Ver tienda</button><button class="secondary" id="adminTab">Administración privada</button><button class="secondary hide" id="logout">Cerrar sesión</button><select id="language" class="language-picker" aria-label="Idioma"><option value="es" lang="es">Español</option><option value="en" lang="en">English</option><option value="fr" lang="fr">Français</option><option value="de" lang="de">Deutsch</option></select></nav><section id="catalog"><div class="shop-contact"><a id="shopContact" class="buy" href="https://wa.me/18497503039" target="_blank" rel="noopener noreferrer">Comprar por WhatsApp</a></div><div class="toolbar"><input id="search" placeholder="Buscar productos"><select id="category"><option value="">Todas las categorías</option></select></div><p id="rateNote" class="muted rate-note hide"><a id="rateSource"></a></p><div id="catalogStatus" role="status" class="notice">Cargando catálogo…</div><div id="products" class="products"></div></section><section id="admin" lang="es" class="hide"><div id="loginStatus" role="status"></div><div id="loginPanel" class="panel"><h2>Acceso de administrador</h2><p class="muted">Inicia sesión con el usuario autorizado en Supabase.</p><form id="loginForm"><label>Correo electrónico</label><input type="email" id="email" required autocomplete="username"><label>Contraseña</label><input type="password" id="password" required autocomplete="current-password"><p><button type="submit">Entrar</button></p></form></div><div id="managePanel" class="hide"><nav aria-label="Administración"><button id="inventoryTab" type="button">Inventario</button><button id="accountingTab" type="button" class="secondary">Contabilidad</button></nav><section id="inventoryPanel"><div class="panel"><h2 id="formTitle">Añadir producto</h2><form id="productForm"><div class="formgrid"><div><label>Nombre</label><input id="name" required></div><div><label>Categoría</label><input id="prodCategory" required placeholder="Snacks, Bebidas, Higiene..."></div><div><label>Precio de venta (RD$)</label><input id="price" type="number" min="0" step="0.01" required></div><div><label for="quantity">Cantidad (0 = agotado)</label><input id="quantity" type="number" min="0" step="1" value="1" required></div><div><label>Fotografía (JPG, PNG o WebP; máximo 5 MB)</label><input id="photo" type="file" accept="image/jpeg,image/png,image/webp"></div><div><label>URL de imagen (opcional)</label><input id="imageUrl" type="url" placeholder="https://..."></div></div><label>Descripción</label><textarea id="description" rows="2"></textarea><div class="adminrow"><button type="submit" id="saveProduct">Guardar producto</button><button type="button" class="secondary" id="resetForm">Cancelar edición</button></div></form><div id="saveStatus"></div></div><div class="panel"><h2>Inventario</h2><div id="adminStatus"></div><div id="adminProducts" class="products"></div></div></section><section id="accountingPanel" class="hide" aria-labelledby="accountingTitle">
+  <div class="panel">
+    <h2 id="accountingTitle">Contabilidad</h2>
+    <form id="costForm">
+      <div class="formgrid">
+        <div><label for="costProduct">Producto</label><select id="costProduct" required></select></div>
+        <div><label for="unitCost">Costo de compra por unidad (RD$)</label><input id="unitCost" type="number" min="0" max="9999999999.99" step="0.01" required></div>
+      </div>
+      <div class="adminrow"><button id="saveCost" type="submit">Guardar costo</button></div>
+    </form>
+    <p id="costStatus" role="status"></p>
+  </div>
+  <div class="panel">
+    <h2>Registrar venta</h2>
+    <form id="saleForm">
+      <div class="formgrid">
+        <div><label for="saleProduct">Producto</label><select id="saleProduct" required></select></div>
+        <div><label for="saleDate">Fecha de venta</label><input id="saleDate" type="date" required></div>
+        <div><label for="saleUnits">Unidades vendidas</label><input id="saleUnits" type="number" min="1" max="2147483647" step="1" required></div>
+      </div>
+      <p id="salePrices" class="muted"></p>
+      <button id="recordSale" type="submit">Registrar venta</button>
+    </form>
+    <p id="saleStatus" role="status"></p>
+  </div>
+  <div class="panel">
+    <h2>Resumen de ventas</h2>
+    <form id="salesFilter">
+      <div class="formgrid">
+        <div><label for="salesFrom">Desde</label><input id="salesFrom" type="date" required></div>
+        <div><label for="salesTo">Hasta</label><input id="salesTo" type="date" required></div>
+      </div>
+      <div class="adminrow"><button type="submit">Ver período</button></div>
+    </form>
+    <p id="accountingStatus" role="status"></p>
+    <div class="table-scroll"><table><thead><tr><th>Producto</th><th>Unidades</th><th>Ingresos</th><th>Costo de lo vendido</th><th>Ganancia bruta</th></tr></thead><tbody id="salesSummary"></tbody></table></div>
+    <h3>Historial</h3>
+    <div class="table-scroll"><table><thead><tr><th>Fecha</th><th>Producto</th><th>Unidades</th><th>Ingresos</th><th>Costo</th><th>Ganancia bruta</th></tr></thead><tbody id="salesHistory"></tbody></table></div>
+  </div>
+</section>
+</div></section></main><footer>Nature Paradise Jarabacoa · <span id="footerCurrency">Precios en pesos dominicanos</span></footer><script type="module">
 import {createClient} from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 import {initialLanguage,saveLanguage,translate} from './shop-language.js';
+import {setupAccounting} from './accounting.js';
 const URL='https://mfsktzahxzobizpviadv.supabase.co';
 const KEY='sb_publishable_12550i2uB9tMwTbluiVfFA_AteekUYN';
-const db=createClient(URL,KEY);const $=id=>document.getElementById(id);let publicItems=null,editing=null;
+const db=createClient(URL,KEY);const $=id=>document.getElementById(id);let publicItems=null,editing=null,adminItems=[];
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let language=initialLanguage(),rate=null,catalogState='loading';
 const t=key=>translate(language,key);
@@ -126,9 +168,48 @@ $('language').onchange=()=>{
 };
 $('catalogTab').onclick=()=>{show('catalog');show('admin',false);loadCatalog()};$('adminTab').onclick=()=>{show('catalog',false);show('admin');refreshAuth()};
 $('loginForm').onsubmit=async e=>{e.preventDefault();message('loginStatus','Iniciando sesión…');const {error}=await db.auth.signInWithPassword({email:$('email').value.trim(),password:$('password').value});if(error)message('loginStatus',error.message,true);else{message('loginStatus','');$('password').value='';await refreshAuth()}};
+const accounting=setupAccounting(db,()=>adminItems);
+function showAccounting(active){
+  show('accountingPanel',active);
+  show('inventoryPanel',!active);
+  $('inventoryTab').classList.toggle('secondary',active);
+  $('accountingTab').classList.toggle('secondary',!active);
+}
+$('inventoryTab').onclick=()=>showAccounting(false);
+$('accountingTab').onclick=()=>{
+  showAccounting(true);
+  accounting.open();
+};
 $('logout').onclick=async()=>{await db.auth.signOut();await refreshAuth()};
-async function refreshAuth(){const {data:{user}}=await db.auth.getUser();if(!user){message('loginStatus','');show('loginPanel');show('managePanel',false);show('logout',false);return}const {data,error}=await db.from('market_admins').select('user_id').eq('user_id',user.id).maybeSingle();if(error||!data){show('loginPanel',false);show('managePanel',false);show('logout');message('loginStatus','Tu usuario no está autorizado para administrar la tienda.',true);return}message('loginStatus','');show('loginPanel',false);show('managePanel');show('logout');await loadAdmin()}
-async function loadAdmin(){message('adminStatus','Cargando inventario…');const {data,error}=await db.from('market_products').select('*').order('name');if(error){message('adminStatus',error.message,true);return}const adminItems=data||[];$('adminProducts').replaceChildren(...adminItems.map(p=>card(p,true)));message('adminStatus',adminItems.length?'':'Todavía no hay productos. Añade el primero.')}
+async function refreshAuth(){
+  show('managePanel',false);
+  const {data:{user}}=await db.auth.getUser();
+  const {data,error}=user
+    ? await db.from('market_admins').select('user_id').eq('user_id',user.id).maybeSingle()
+    : {data:null};
+  show('logout',Boolean(user));
+  show('loginPanel',!user);
+  if(error||!data){
+    adminItems=[];
+    $('adminProducts').replaceChildren();
+    accounting.clear();
+    showAccounting(false);
+    message('loginStatus',user?'Tu usuario no está autorizado para administrar la tienda.':'',Boolean(user));
+    return;
+  }
+  message('loginStatus','');
+  show('managePanel');
+  await loadAdmin();
+  if(!$('accountingPanel').classList.contains('hide'))await accounting.open();
+}
+async function loadAdmin(){
+  message('adminStatus','Cargando inventario…');
+  const {data,error}=await db.from('market_products').select('*').order('name');
+  if(error){message('adminStatus',error.message,true);return}
+  adminItems=data||[];
+  $('adminProducts').replaceChildren(...adminItems.map(p=>card(p,true)));
+  message('adminStatus',adminItems.length?'':'Todavía no hay productos. Añade el primero.');
+}
 function reset(){editing=null;$('productForm').reset();$('formTitle').textContent='Añadir producto';message('saveStatus','')};$('resetForm').onclick=reset;
 function edit(p){editing=p.id;$('formTitle').textContent='Editar producto';for(const [id,key] of [['name','name'],['prodCategory','category'],['price','price'],['quantity','quantity'],['description','description'],['imageUrl','image_url']])$(id).value=p[key]??'';$('photo').value='';message('saveStatus','');window.scrollTo({top:0,behavior:'smooth'})}
 async function uploadPhoto(file){if(!file)return null;if(file.size>5*1024*1024)throw Error('La imagen supera 5 MB');if(!['image/jpeg','image/png','image/webp'].includes(file.type))throw Error('Formato de imagen no permitido');const ext=file.type==='image/png'?'png':file.type==='image/webp'?'webp':'jpg';const path=`products/${crypto.randomUUID()}.${ext}`;const {error}=await db.storage.from('product-images').upload(path,file,{contentType:file.type,upsert:false});if(error)throw Error('No se pudo subir la foto. Revisa las políticas de Storage: '+error.message);return db.storage.from('product-images').getPublicUrl(path).data.publicUrl}

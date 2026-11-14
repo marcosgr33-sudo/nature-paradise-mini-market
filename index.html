@@ -45,6 +45,7 @@
 </div></section></main><footer>Nature Paradise Jarabacoa · <span id="footerCurrency">Precios en pesos dominicanos</span></footer><script type="module">
 import {createClient} from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 import {initialLanguage,saveLanguage,translate} from './shop-language.js';
+import {categoryLabel,productName,productDescription} from './catalog-translations.js';
 import {setupAccounting} from './accounting.js?v=inventory';
 const URL='https://mfsktzahxzobizpviadv.supabase.co';
 const KEY='sb_publishable_12550i2uB9tMwTbluiVfFA_AteekUYN';
@@ -106,20 +107,23 @@ function card(p,admin=false){
   const el=document.createElement('article');
   el.className='product';
   const available=isAvailable(p)&&!p.stock_paused;
+  const name=admin?p.name:productName(p.name,language);
+  const category=categoryLabel(categoryKey(p),admin?'es':language)||translate(admin?'es':language,'other');
+  const description=productDescription(p.description||'',admin?'es':language);
   const image=p.image_url&&/^https:\/\//i.test(p.image_url)
-    ? `<img src="${esc(p.image_url)}" alt="${esc(p.name)}" loading="lazy">`
+    ? `<img src="${esc(p.image_url)}" alt="${esc(name)}" loading="lazy">`
     : '<div class="placeholder">🛍️</div>';
   const stockLabel=translate(admin?'es':language,available?'available':'soldOut');
   const equivalent=!admin&&rate
     ? `<p class="muted equivalent">≈ ${money(Number(p.price)/rate.dopPerUsd,'USD')}</p>`
     : '';
-  const orderUrl='https://wa.me/18497503039?text='+encodeURIComponent(t('order')+p.name);
+  const orderUrl='https://wa.me/18497503039?text='+encodeURIComponent(t('order')+name);
   const actions=admin
     ? `<div class="adminrow"><button class="edit">Editar</button>${p.active?`<button class="secondary stock">${available?'Marcar agotado':'Marcar disponible'}</button>`:''}<button class="secondary publish">${p.active?'Retirar del catálogo':'Publicar'}</button><button class="secondary delete-product" type="button">Eliminar producto</button></div>`
     : available
       ? `<a class="buy" href="${esc(orderUrl)}" target="_blank" rel="noopener noreferrer">${t('buy')}</a>`
       : '';
-  el.innerHTML=`${image}<div class="details"><h3>${esc(p.name)}</h3><div class="muted">${esc(p.category||translate(admin?'es':language,'other'))}</div><p>${esc(p.description||'')}</p><div class="price">${money(p.price,'DOP',admin?'es-DO':locale())}</div>${equivalent}<div class="muted stock-label">${admin&&!p.active?'Borrador · ':''}${stockLabel}${admin?` · ${Number(p.quantity||0)} en existencia`:''}</div>${actions}</div>`;
+  el.innerHTML=`${image}<div class="details"><h3>${esc(name)}</h3><div class="muted">${esc(category)}</div><p>${esc(description)}</p><div class="price">${money(p.price,'DOP',admin?'es-DO':locale())}</div>${equivalent}<div class="muted stock-label">${admin&&!p.active?'Borrador · ':''}${stockLabel}${admin?` · ${Number(p.quantity||0)} en existencia`:''}</div>${actions}</div>`;
   if(admin){
     el.querySelector('.edit').onclick=()=>edit(p);
     const stockButton=el.querySelector('.stock');
@@ -166,14 +170,14 @@ function renderCategories(){
   $('categoryHeading').textContent=categoryHeadings[language];
   const keys=[...new Set((publicItems||[]).map(categoryKey))];
   const labels=new Intl.Collator(locale());
-  const categories=keys.filter(key=>key!==null).sort(labels.compare);
+  const categories=keys.filter(key=>key!==null).sort((a,b)=>labels.compare(categoryLabel(a,language),categoryLabel(b,language)));
   if(keys.includes(null))categories.push(null);
   show('categoryPicker',categories.length>0);
   const container=$('categoryButtons');
   container.replaceChildren(...['',...categories].map(key=>{
     const button=document.createElement('button');
     button.type='button';
-    button.textContent=key===null?t('other'):key||t('categories');
+    button.textContent=key===null?t('other'):categoryLabel(key,language)||t('categories');
     button.onclick=()=>{
       selectedCategory=key;
       for(const control of container.children){
@@ -195,7 +199,7 @@ function renderCatalog(){
   }
   const query=$('search').value.trim().toLowerCase();
   const items=publicItems.filter(p=>(selectedCategory===''||categoryKey(p)===selectedCategory)&&
-    (!query||[p.name,p.category,p.description].join(' ').toLowerCase().includes(query)));
+    (!query||[p.name,p.category,p.description,productName(p.name,language),categoryLabel(categoryKey(p),language),productDescription(p.description||'',language)].join(' ').toLowerCase().includes(query)));
   $('products').replaceChildren(...items.map(p=>card(p)));
   message('catalogStatus',items.length?'':t('empty'));
 }

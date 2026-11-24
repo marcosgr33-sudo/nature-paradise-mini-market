@@ -1,4 +1,4 @@
-import {languages,copy,sections,restaurants,places,tours,transport,stay,locations} from './content.js?v=vitrina';
+import {languages,copy,sections,restaurants,places,tours,transport,stay,arrival,locations} from './content.js?v=checkin';
 
 const params = new URLSearchParams(location.search);
 const language = params.get('lang');
@@ -93,9 +93,20 @@ function showGuide() {
     heading.append(link('← ' + t(copy.home), route()),node('h1', t(title)),node('p', t(description)));
     const list = node('div', '', 'frame item-list');
     switch (id) {
-      case 'stay':
+      case 'stay': {
+        const checkIn = row(t(arrival.title), arrival.steps.map(t), null,
+          link(t(arrival.mapLabel), arrival.location, 'button'));
+        const gate = node('img', '', 'arrival-gate');
+        gate.src = './guide/nature-paradise-gate.webp';
+        gate.alt = t(arrival.photoAlt);
+        gate.width = 1050;
+        gate.height = 654;
+        checkIn.append(gate);
+        list.append(checkIn);
+        list.append(row(t(arrival.parkingTitle), [t(arrival.parkingText)]));
         list.append(...stay.map(([name,paragraphs]) => row(t(name),paragraphs.map(t))));
         break;
+      }
       case 'restaurants':
         for (const [tier,items] of Object.entries(restaurants)) {
           list.append(node('h2', t(copy[tier])),...items.map(placeCard));

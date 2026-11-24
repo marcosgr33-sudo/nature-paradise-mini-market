@@ -15,7 +15,7 @@ export const copy = {
   premium: ['Experiencias gastronómicas premium','Premium dining','Expériences gastronomiques haut de gamme','Gehobene Gastronomie'],
 };
 export const sections = [
-  ["stay",["Conoce tu alojamiento","Get to know your accommodation","Découvrez votre hébergement","Lerne deine Unterkunft kennen"],["Aprende cómo hacer el check-in y el check-out y cómo entrar y salir de la propiedad durante tu estadía. Conoce tu habitación, el baño y las áreas comunes, como la cocina, la piscina y las áreas de recreación. También encontrarás información sobre el parqueo y el servicio de lavandería.","Find out how to check in and out and how to access the property during your stay. Get to know your room, the bathroom and shared spaces such as the kitchen, pool and recreation areas. You’ll also find information about parking and laundry service.","Découvrez comment effectuer votre check-in et votre check-out et comment accéder à la propriété pendant votre séjour. Retrouvez les informations sur votre chambre, la salle de bain et les espaces communs, comme la cuisine, la piscine et les espaces de loisirs, ainsi que sur le stationnement et le service de blanchisserie.","Erfahre, wie der Check-in und Check-out ablaufen und wie du während deines Aufenthalts auf das Gelände gelangst und es wieder verlässt. Hier findest du Informationen zu deinem Zimmer, dem Bad und den Gemeinschaftsbereichen wie Küche, Pool und Freizeitbereichen sowie zu Parkmöglichkeiten und Wäscheservice."],"shared-kitchen-warm"],
+  ["stay",["Conoce tu alojamiento","Get to know your accommodation","Découvrez votre hébergement","Lerne deine Unterkunft kennen"],["Aprende cómo hacer el check-in y el check-out y cómo entrar y salir de la propiedad durante tu estadía. Conoce tu habitación, el baño y las áreas comunes, como la cocina, la piscina y las áreas de recreación. También encontrarás información sobre el parqueo y el servicio de lavandería.","Find out how to check in and out and how to access the property during your stay. Get to know your room, the bathroom and shared spaces such as the kitchen, pool and recreation areas. You’ll also find information about laundry service.","Découvrez comment effectuer votre check-in et votre check-out et comment accéder à la propriété pendant votre séjour. Retrouvez les informations sur votre chambre, la salle de bain et les espaces communs, comme la cuisine, la piscine et les espaces de loisirs, ainsi que sur le stationnement et le service de blanchisserie.","Erfahre, wie der Check-in und Check-out ablaufen und wie du während deines Aufenthalts auf das Gelände gelangst und es wieder verlässt. Hier findest du Informationen zu deinem Zimmer, dem Bad und den Gemeinschaftsbereichen wie Küche, Pool und Freizeitbereichen sowie zu Parkmöglichkeiten und Wäscheservice."],"shared-kitchen-warm"],
   ["market",["Mini Market","Mini Market","Mini Market","Mini Market"],["Compra productos esenciales sin salir de Nature Paradise. Encuentra bebidas, snacks, alimentos, artículos de higiene y cuidado personal, y productos de botiquín.","Shop for essentials without leaving Nature Paradise. Find drinks, snacks, groceries, hygiene and personal care items, and first-aid supplies.","Achetez l’essentiel sans quitter Nature Paradise : boissons, snacks, produits alimentaires, articles d’hygiène et de soins personnels et produits de premiers secours.","Kaufe das Nötigste direkt im Nature Paradise: Getränke, Snacks, Lebensmittel, Hygiene- und Pflegeartikel sowie Erste-Hilfe-Produkte."],"mini-market-display"],
   ['restaurants', ['Restaurantes','Restaurants','Restaurants','Restaurants'], ['Desde una comida casual hasta una cena con vistas.','From a casual meal to dinner with a view.','Du repas décontracté au dîner avec vue.','Vom schnellen Essen bis zum Abendessen mit Aussicht.'],'dining'],
   ['places', ['Lugares turísticos','Places to visit','Lieux à visiter','Sehenswürdigkeiten'], ['Cascadas, montañas y rincones del pueblo.','Waterfalls, mountains and spots around town.','Cascades, montagnes et coins à découvrir en ville.','Wasserfälle, Berge und schöne Ecken im Ort.'],'waterfall'],
@@ -76,6 +76,60 @@ export const transport = [
   [['Mototaxi local','Local motorcycle taxi','Moto-taxi local','Motorradtaxi vor Ort'],['Una opción para trayectos cortos dentro de Jarabacoa.','An option for short rides within Jarabacoa.','Une option pour les courts trajets à Jarabacoa.','Eine Option für kurze Strecken innerhalb Jarabacoas.']],
 ];
 
+export const arrival = {
+  "title": [
+    "Cómo hacer el check-in",
+    "How to check in",
+    "Comment faire le check-in",
+    "So funktioniert der Check-in"
+  ],
+  "steps": [
+    [
+      "El check-in está disponible desde la 1:00 p. m. hasta la medianoche.",
+      "Check-in is available from 1:00 p.m. to midnight.",
+      "Le check-in est possible de 13 h à minuit.",
+      "Der Check-in ist von 13 Uhr bis Mitternacht möglich."
+    ],
+    [
+      "Escríbenos por el chat de tu reserva unos 30 minutos antes de llegar para que estemos pendientes.",
+      "Message us in your booking chat about 30 minutes before you arrive so we can be ready.",
+      "Écris-nous dans le chat de ta réservation environ 30 minutes avant ton arrivée pour que nous soyons prêts.",
+      "Schreib uns etwa 30 Minuten vor deiner Ankunft im Buchungschat, damit wir Bescheid wissen."
+    ],
+    [
+      "Cuando estés frente al portón de Nature Paradise, escríbenos nuevamente y te lo abriremos a distancia. En ese primer acceso te ayudamos nosotros. Durante el resto de tu estadía tendrás un control remoto para entrar y salir.",
+      "When you reach the Nature Paradise gate, message us again and we’ll open it remotely. We’ll help you with this first entry. After that, you’ll have a remote to come and go during your stay.",
+      "Une fois devant le portail de Nature Paradise, écris-nous de nouveau et nous l’ouvrirons à distance. Nous t’aidons pour ce premier accès. Ensuite, tu disposeras d’une télécommande pour entrer et sortir pendant ton séjour.",
+      "Schreib uns erneut, sobald du vor dem Tor von Nature Paradise stehst. Wir öffnen es für dich aus der Ferne. Bei dieser ersten Einfahrt helfen wir dir. Danach hast du eine Fernbedienung für die Ein- und Ausfahrt während deines Aufenthalts."
+    ]
+  ],
+  "mapLabel": [
+    "Ver ubicación en Google Maps",
+    "View location on Google Maps",
+    "Voir l’emplacement sur Google Maps",
+    "Standort auf Google Maps ansehen"
+  ],
+  "location": "https://maps.app.goo.gl/6n7tBUbQ9iVrXNu68?g_st=ic",
+  "photoAlt": [
+    "Portón de entrada de Nature Paradise",
+    "Nature Paradise entrance gate",
+    "Portail d’entrée de Nature Paradise",
+    "Einfahrtstor von Nature Paradise"
+  ],
+  "parkingTitle": [
+    "Parqueo",
+    "Parking",
+    "Stationnement",
+    "Parken"
+  ],
+  "parkingText": [
+    "Al entrar, puedes parquear a la derecha o a la izquierda. Deja siempre el centro libre para que otros vehículos puedan entrar.",
+    "Once inside, you can park on the right or left. Always keep the middle clear so other vehicles can enter.",
+    "Une fois à l’intérieur, tu peux te garer à droite ou à gauche. Laisse toujours le passage central libre pour les autres véhicules.",
+    "Nach der Einfahrt kannst du rechts oder links parken. Halte die Mitte stets frei, damit andere Fahrzeuge einfahren können."
+  ]
+};
+
 export const stay = [
   [['Habitación y baño','Room and bathroom','Chambre et salle de bain','Zimmer und Bad'],[
     ['Si necesitas algo en tu habitación, avísanos por el chat de tu reserva.','If you need anything in your room, let us know through your booking chat.','Pour tout besoin dans votre chambre, contactez-nous dans la messagerie de votre réservation.','Bei Fragen zu Ihrem Zimmer schreiben Sie uns im Buchungschat.'],
@@ -86,8 +140,8 @@ export const stay = [
   [['Áreas comunes y bicicletas','Common areas and bicycles','Espaces communs et vélos','Gemeinschaftsbereiche und Fahrräder'],[
     ['Consulta al anfitrión por la piscina, las bicicletas y otras actividades en la propiedad.','Ask your host about the pool, bicycles and other activities on the property.','Renseignez-vous auprès de votre hôte sur la piscine, les vélos et les autres activités sur place.','Fragen Sie Ihren Gastgeber nach dem Pool, Fahrrädern und weiteren Aktivitäten auf dem Grundstück.'],
   ]],
-  [['Parqueo, tienda y lavandería','Parking, shop and laundry','Parking, boutique et lessive','Parken, Laden und Wäsche'],[
-    ['Consulta con el anfitrión por el parqueo y la lavandería. El catálogo de la tienda está en Mini Market.','Ask your host about parking and laundry. Find our shop catalogue in Mini Market.','Demandez à votre hôte pour le parking et la lessive. Le catalogue de la boutique est dans Mini Market.','Fragen Sie Ihren Gastgeber nach Parken und Wäsche. Den Ladenkatalog finden Sie unter Mini Market.'],
+  [['Tienda y lavandería','Shop and laundry','Boutique et lessive','Laden und Wäsche'],[
+    ['Consulta con el anfitrión por la lavandería. El catálogo de la tienda está en Mini Market.','Ask your host about parking and laundry. Find our shop catalogue in Mini Market.','Demandez à votre hôte pour la lessive. Le catalogue de la boutique est dans Mini Market.','Fragen Sie Ihren Gastgeber nach der Wäsche. Den Ladenkatalog finden Sie unter Mini Market.'],
   ]],
   [['Llegada y salida','Arrival and checkout','Arrivée et départ','Ankunft und Abreise'],[
     ['Encontrarás los horarios y las instrucciones de tu estadía en el chat de tu reserva.','Your stay times and instructions are in your booking chat.','Les horaires et consignes de votre séjour sont dans la messagerie de votre réservation.','Zeiten und Hinweise zu Ihrem Aufenthalt finden Sie im Buchungschat.'],

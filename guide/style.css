@@ -83,3 +83,5 @@ h3{font-size:1.18rem}
 }
 
 .card img.market-display{height:clamp(225px,35vw,275px);object-fit:contain;background:#ebece4}
+
+.arrival-gate{display:block;width:100%;height:auto;max-width:760px;margin-top:1rem;border-radius:12px}

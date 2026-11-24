@@ -176,9 +176,90 @@ export const stay = [
     "text": ["Si necesitas alimentos durante tu estadía, puedes comprarlos en nuestro Mini Market, junto al comedor.", "If you need groceries during your stay, you can buy them at our Mini Market next to the dining area.", "Si vous avez besoin de provisions pendant votre séjour, notre Mini Market se trouve juste à côté de la salle à manger.", "Wenn du während deines Aufenthalts Lebensmittel brauchst, findest du unseren Mini Market direkt neben dem Essbereich."],
     "label": ["Mira el catálogo de nuestra tienda", "Browse our shop’s catalog", "Consulter le catalogue de notre boutique", "Unseren Shop-Katalog ansehen"]
   }
-],  [['Áreas comunes y bicicletas','Common areas and bicycles','Espaces communs et vélos','Gemeinschaftsbereiche und Fahrräder'],[
-    ['Consulta al anfitrión por la piscina, las bicicletas y otras actividades en la propiedad.','Ask your host about the pool, bicycles and other activities on the property.','Renseignez-vous auprès de votre hôte sur la piscine, les vélos et les autres activités sur place.','Fragen Sie Ihren Gastgeber nach dem Pool, Fahrrädern und weiteren Aktivitäten auf dem Grundstück.'],
-  ]],
+],
+  [
+  [
+    "Áreas comunes",
+    "Common areas",
+    "Espaces communs",
+    "Gemeinschaftsbereiche"
+  ],
+  [],
+  null,
+  null,
+  [
+    [
+      [
+        "Piscina",
+        "Swimming pool",
+        "Piscine",
+        "Pool"
+      ],
+      [
+        "De abril a octubre, puedes disfrutar de la piscina de 8:30 a. m. a 11:00 p. m. (Si necesitas más tiempo, consúltanos). De noviembre a marzo permanece cerrada por el clima.",
+        "From April through October, the pool is open from 8:30 a.m. to 11:00 p.m. (If you need more time, please ask us.) It is closed from November through March due to the weather.",
+        "D’avril à octobre, la piscine est ouverte de 8 h 30 à 23 h. (Si vous souhaitez en profiter plus longtemps, demandez-nous.) Elle est fermée de novembre à mars en raison du climat.",
+        "Von April bis Oktober ist der Pool von 8:30 bis 23:00 Uhr geöffnet. (Wenn du länger bleiben möchtest, frag uns bitte.) Von November bis März ist er wetterbedingt geschlossen."
+      ]
+    ],
+    [
+      [
+        "Trampolín",
+        "Trampoline",
+        "Trampoline",
+        "Trampolin"
+      ],
+      [
+        "Puedes usarlo para saltar. Por favor, quítate los zapatos antes de subir.",
+        "Enjoy jumping on the trampoline. Please take off your shoes before getting on.",
+        "Vous pouvez y sauter. Merci d’enlever vos chaussures avant de monter.",
+        "Hier kannst du springen. Zieh bitte vorher deine Schuhe aus."
+      ]
+    ],
+    [
+      [
+        "Hamaca",
+        "Hammock",
+        "Hamac",
+        "Hängematte"
+      ],
+      [
+        "Pueden usarla hasta dos personas a la vez. Acomódate con cuidado y evita los movimientos bruscos para proteger la tela y sus amarres.",
+        "Up to two people may use the hammock at a time. Settle in gently and avoid sudden movements to protect the fabric and its ties.",
+        "Le hamac peut accueillir deux personnes à la fois. Installez-vous doucement et évitez les mouvements brusques pour préserver la toile et les attaches.",
+        "Die Hängematte ist für höchstens zwei Personen gleichzeitig gedacht. Steig vorsichtig ein und vermeide ruckartige Bewegungen, um Stoff und Befestigungen zu schonen."
+      ]
+    ],
+    [
+      [
+        "Mesa de dominó",
+        "Domino table",
+        "Table de dominos",
+        "Dominotisch"
+      ],
+      [
+        "La mesa de dominó está en el kiosco.",
+        "You’ll find the domino table in the gazebo.",
+        "La table de dominos se trouve sous le kiosque.",
+        "Der Dominotisch steht im Pavillon."
+      ]
+    ],
+    [
+      [
+        "Cancha de baloncesto",
+        "Basketball court",
+        "Terrain de basket",
+        "Basketballplatz"
+      ],
+      [
+        "Puedes jugar de 11:00 a. m. a 7:00 p. m., solo si no hay vehículos parqueados alrededor de la cancha.",
+        "You can play from 11:00 a.m. to 7:00 p.m., but only if there are no vehicles parked around the court.",
+        "Vous pouvez jouer de 11 h à 19 h, uniquement si aucun véhicule n’est garé autour du terrain.",
+        "Du kannst von 11:00 bis 19:00 Uhr spielen, sofern rund um den Platz keine Fahrzeuge geparkt sind."
+      ]
+    ]
+  ]
+],
   [['Tienda y lavandería','Shop and laundry','Boutique et lessive','Laden und Wäsche'],[
     ['Consulta con el anfitrión por la lavandería. El catálogo de la tienda está en Mini Market.','Ask your host about parking and laundry. Find our shop catalogue in Mini Market.','Demandez à votre hôte pour la lessive. Le catalogue de la boutique est dans Mini Market.','Fragen Sie Ihren Gastgeber nach der Wäsche. Den Ladenkatalog finden Sie unter Mini Market.'],
   ]],

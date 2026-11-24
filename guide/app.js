@@ -1,6 +1,6 @@
 import {reviewLink} from './review.js';
 import * as roomGuide from './room.js?v=booking-note';
-import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations,healthServices,nearbyShops} from './content.js?v=restaurant-menus';
+import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations,healthServices,nearbyShops} from './content.js?v=explore-jarabacoa';
 
 const params = new URLSearchParams(location.search);
 const language = params.get('lang');
@@ -44,8 +44,12 @@ function showGuide() {
 
   function placeCard([name,minutes,...description]) {
     const locationUrl = locations[name];
+    const searchOnly = ['Balneario La Cortina', 'El Jacuzzi Natural', 'Letrero Municipal de Jarabacoa'].includes(name);
+    const mapLabel = searchOnly
+      ? t(['Buscar en Google Maps', 'Search Google Maps', 'Rechercher sur Google Maps', 'Auf Google Maps suchen'])
+      : t(copy.map);
     return row(name, [t(description)], minutes,
-      locationUrl ? link(t(copy.map), locationUrl, 'button') : null);
+      locationUrl ? link(mapLabel, locationUrl, 'button') : null);
   }
 
   function serviceCard([title,description]) {
@@ -83,6 +87,7 @@ function showGuide() {
         image.src = './guide/' + photo + '.webp';
         image.alt = '';
         image.loading = 'lazy';
+        if (id === 'places') image.alt = 'Salto de Baiguate, Jarabacoa';
         if (id === 'restaurants') image.style.objectPosition = 'center 28%';
         if (id === 'market') image.className = 'market-display';
         card.append(image);
@@ -99,7 +104,7 @@ function showGuide() {
     const [id,title,description] = section;
     const heading = node('div', '', 'frame subhead');
     heading.append(link('← ' + t(copy.home), route()),node('h1', t(title)));
-    if (id !== 'stay' && id !== 'shops' && id !== 'restaurants') heading.append(node('p', t(description)));
+    if (id !== 'stay' && id !== 'shops' && id !== 'restaurants' && id !== 'places') heading.append(node('p', t(description)));
     const list = node('div', '', 'frame item-list');
     switch (id) {
       case 'stay': {
@@ -205,6 +210,7 @@ function showGuide() {
         break;
       case 'places':
         list.append(...places.map(placeCard));
+        list.append(node('p', t(['Antes de visitar ríos y cascadas, consulta el clima y confirma que el acceso esté abierto, especialmente en Jimenoa II.', 'Before visiting rivers and waterfalls, check the weather and confirm that access is open, especially at Jimenoa II.', 'Avant de visiter les rivières et les cascades, vérifiez la météo et l’ouverture des accès, surtout à Jimenoa II.', 'Prüfe vor dem Besuch von Flüssen und Wasserfällen das Wetter und ob der Zugang geöffnet ist, besonders bei Jimenoa II.']), 'host-note'));
         break;
       case 'tours':
         list.append(node('p', t(copy.hostChat), 'host-note'), ...tours.map(serviceCard));

@@ -14,8 +14,8 @@ export function setupAccounting(db, getProducts, refreshInventory) {
     <div><label for="saleCategory">Categoría</label>
       <select id="saleCategory"></select>
     </div>
-    <div><label for="saleSearch">Buscar producto</label>
-      <input id="saleSearch" type="search" placeholder="Ej. cepillo o chicharrón" autocomplete="off">
+    <div><label for="saleSearch">Buscar por nombre o categoría</label>
+      <input id="saleSearch" type="search" placeholder="Ej. cepillo, chicharrón o higiene" autocomplete="off">
     </div>
   `);
   const categorySelect = $('saleCategory');
@@ -49,8 +49,8 @@ export function setupAccounting(db, getProducts, refreshInventory) {
 
     for (const product of getProducts()) {
       const label = saleCategory(product);
-      const name = saleSearchKey(product.name);
-      if ((category && label !== category) || !terms.every(term => name.includes(term))) continue;
+      const searchable = saleSearchKey(`${product.name} ${label}`);
+      if ((category && label !== category) || !terms.every(term => searchable.includes(term))) continue;
       if (!groups.has(label)) groups.set(label, []);
       groups.get(label).push(product);
     }

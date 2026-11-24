@@ -2,7 +2,7 @@ import {tourCard, tourIntro} from './tours.js?v=horse-routes';
 import {reviewLink} from './review.js';
 import * as roomGuide from './room.js?v=booking-note';
 import {languages,copy,sections,restaurants,places,tours,stay,checkout,arrival,locations,healthServices,nearbyShops} from './content.js?v=transport-montana';
-import {renderTransport} from './transport.js?v=montana';
+import {renderTransport} from './transport.js?v=airport-shortcut';
 
 const params = new URLSearchParams(location.search);
 const language = params.get('lang');
@@ -304,4 +304,5 @@ function showGuide() {
   document.querySelector('#guide footer').prepend(invitation);
   get('entry').hidden = true;
   get('guide').hidden = false;
+  if (location.hash === '#traslados-aeropuerto') requestAnimationFrame(() => get('traslados-aeropuerto')?.scrollIntoView());
 }

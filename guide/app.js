@@ -1,7 +1,7 @@
-import {tourCard, tourIntro} from './tours.js?v=horse-routes';
+import {tourCard, tourIntro} from './tours.js?v=tarifas';
 import {reviewLink} from './review.js';
 import * as roomGuide from './room.js?v=booking-note';
-import {languages,copy,sections,restaurants,places,tours,stay,checkout,arrival,locations,healthServices,nearbyShops} from './content.js?v=toyota-aeropuerto';
+import {languages,copy,sections,restaurants,places,tours,stay,checkout,arrival,locations,healthServices,nearbyShops} from './content.js?v=tarifas';
 import {renderTransport} from './transport.js?v=toyota-aeropuerto';
 
 const params = new URLSearchParams(location.search);

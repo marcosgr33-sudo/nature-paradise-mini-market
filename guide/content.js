@@ -138,10 +138,41 @@ export const arrival = {
 };
 
 export const stay = [
-  [['Cocina y comedor','Kitchen and dining area','Cuisine et salle à manger','Küche und Essbereich'],[
-    ['La cocina compartida está equipada. Hay agua potable y café de cortesía. Lava lo que uses y deja el espacio limpio.','The shared kitchen is equipped. Drinking water and coffee are complimentary. Wash what you use and leave the area clean.','La cuisine commune est équipée. Eau potable et café sont offerts. Lavez ce que vous utilisez et laissez les lieux propres.','Die Gemeinschaftsküche ist ausgestattet. Trinkwasser und Kaffee sind inklusive. Spülen Sie benutzte Utensilien und hinterlassen Sie alles sauber.'],
-  ]],
-  [['Áreas comunes y bicicletas','Common areas and bicycles','Espaces communs et vélos','Gemeinschaftsbereiche und Fahrräder'],[
+  [
+  [
+    "Cocina y comedor",
+    "Kitchen and dining area",
+    "Cuisine et salle à manger",
+    "Küche und Essbereich"
+  ],
+  [
+    [
+      "La cocina compartida está equipada para preparar tus comidas. Encontrarás estufa con encendido integrado, microondas, greca, ollas, platos y cubiertos. Hay agua potable en el dispensador, café y azúcar de cortesía para todos los huéspedes.",
+      "The shared kitchen has a stove with a built-in igniter, microwave, moka pot, cookware, plates and cutlery. Drinking water from the dispenser, coffee and sugar are complimentary for all guests.",
+      "La cuisine commune dispose d’une cuisinière à allumage intégré, d’un micro-ondes, d’une cafetière italienne, de casseroles, d’assiettes et de couverts. L’eau potable du distributeur, le café et le sucre sont offerts à tous les hôtes.",
+      "Die Gemeinschaftsküche hat einen Herd mit integrierter Zündung, eine Mikrowelle, einen Espressokocher, Töpfe, Teller und Besteck. Trinkwasser aus dem Spender, Kaffee und Zucker stehen allen Gästen kostenlos zur Verfügung."
+    ],
+    [
+      "La nevera y el congelador son compartidos. Guarda aquí tus alimentos y bebidas. Por favor, toma únicamente lo que hayas traído y deja en su lugar lo que pertenezca a otros huéspedes.",
+      "The refrigerator and freezer are shared. You can store your food and drinks here. Please take only what you brought and leave other guests’ items where they are.",
+      "Le réfrigérateur et le congélateur sont partagés. Vous pouvez y conserver vos aliments et vos boissons. Prenez uniquement ce que vous avez apporté et laissez les provisions des autres hôtes à leur place.",
+      "Kühl- und Gefrierschrank werden gemeinsam genutzt. Hier kannst du deine Lebensmittel und Getränke lagern. Nimm bitte nur das, was du selbst mitgebracht hast, und lass die Vorräte anderer Gäste an ihrem Platz."
+    ],
+    [
+      "Disfruta tus comidas en la mesa del comedor. No está permitido comer en los dormitorios, ya que los restos de comida pueden atraer cucarachas, otros insectos y roedores.",
+      "Please enjoy your meals at the dining table. Eating in the bedrooms is not permitted because food scraps can attract cockroaches, other insects and rodents.",
+      "Merci de prendre vos repas à la table de la salle à manger. Il est interdit de manger dans les chambres, car les restes peuvent attirer des cafards, d’autres insectes et des rongeurs.",
+      "Bitte iss am Tisch im Essbereich. Essen in den Schlafzimmern ist nicht erlaubt, da Speisereste Schaben, andere Insekten und Nagetiere anlocken können."
+    ],
+    [
+      "Mantén la cocina limpia mientras la usas. Lava las ollas, los platos, los cubiertos y los utensilios que utilices, y déjalos en el escurridor. Al terminar, limpia los equipos y la superficie donde preparaste tu comida.",
+      "Clean as you cook. Wash the cookware, dishes, cutlery and utensils you use, and leave them on the drying rack. When you finish, wipe down the appliances and work surface you used.",
+      "Nettoyez au fur et à mesure. Lavez les casseroles, la vaisselle, les couverts et les ustensiles utilisés, puis posez-les sur l’égouttoir. En terminant, nettoyez les appareils et le plan de travail utilisés.",
+      "Halte die Küche schon beim Kochen sauber. Spüle benutzte Töpfe, Geschirr, Besteck und Küchenutensilien und stelle sie ins Abtropfgestell. Wische zum Schluss die benutzten Geräte und die Arbeitsfläche ab."
+    ]
+  ],
+  "comedor.webp"
+],  [['Áreas comunes y bicicletas','Common areas and bicycles','Espaces communs et vélos','Gemeinschaftsbereiche und Fahrräder'],[
     ['Consulta al anfitrión por la piscina, las bicicletas y otras actividades en la propiedad.','Ask your host about the pool, bicycles and other activities on the property.','Renseignez-vous auprès de votre hôte sur la piscine, les vélos et les autres activités sur place.','Fragen Sie Ihren Gastgeber nach dem Pool, Fahrrädern und weiteren Aktivitäten auf dem Grundstück.'],
   ]],
   [['Tienda y lavandería','Shop and laundry','Boutique et lessive','Laden und Wäsche'],[

@@ -22,7 +22,7 @@ export const sections = [
   ['tours', ['Excursiones y actividades','Tours and activities','Excursions et activités','Ausflüge und Aktivitäten'], ['Rafting, parapente, senderismo y más.','Rafting, paragliding, hiking and more.','Rafting, parapente, randonnée et plus encore.','Rafting, Gleitschirmfliegen, Wandern und mehr.'],'rafting'],
   ['transport', ['Facilidades de transporte','Transport options','Options de transport','Verkehrsmöglichkeiten'], ['Alquiler de vehículos y traslados locales.','Vehicle rentals and local rides.','Location de véhicules et déplacements locaux.','Fahrzeugvermietung und Fahrten vor Ort.'],'transport'],
   ['shops', ['Supermercados y tiendas','Supermarkets and shops','Supermarchés et commerces','Supermärkte und Geschäfte'], ['Consulta al anfitrión por tiendas y supermercados cercanos.','Ask your host about nearby shops and supermarkets.','Demandez à votre hôte quels commerces sont à proximité.','Fragen Sie Ihren Gastgeber nach Geschäften in der Nähe.']],
-  ['health', ['Salud y emergencias','Health and emergencies','Santé et urgences','Gesundheit und Notfälle'], ["Servicios de salud, seguridad y asistencia en carretera en Jarabacoa.","Healthcare, police and roadside assistance in Jarabacoa.","Santé, sécurité et assistance routière à Jarabacoa.","Gesundheit, Sicherheit und Pannenhilfe in Jarabacoa."]],
+  ['health', ['Salud y emergencias','Health and emergencies','Santé et urgences','Gesundheit und Notfälle'], ["Servicios de salud y seguridad en Jarabacoa.","Health and emergency services in Jarabacoa.","Services de santé et de secours à Jarabacoa.","Gesundheits- und Notfalldienste in Jarabacoa."]],
 ];
 
 export const restaurants = {

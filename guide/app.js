@@ -1,6 +1,6 @@
 import {reviewLink} from './review.js';
 import * as roomGuide from './room.js?v=booking-note';
-import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations,healthServices,nearbyShops} from './content.js?v=shops';
+import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations,healthServices,nearbyShops} from './content.js?v=restaurants';
 
 const params = new URLSearchParams(location.search);
 const language = params.get('lang');
@@ -83,6 +83,7 @@ function showGuide() {
         image.src = './guide/' + photo + '.webp';
         image.alt = '';
         image.loading = 'lazy';
+        if (id === 'restaurants') image.style.objectPosition = 'center 28%';
         if (id === 'market') image.className = 'market-display';
         card.append(image);
       }
@@ -98,7 +99,7 @@ function showGuide() {
     const [id,title,description] = section;
     const heading = node('div', '', 'frame subhead');
     heading.append(link('← ' + t(copy.home), route()),node('h1', t(title)));
-    if (id !== 'stay' && id !== 'shops') heading.append(node('p', t(description)));
+    if (id !== 'stay' && id !== 'shops' && id !== 'restaurants') heading.append(node('p', t(description)));
     const list = node('div', '', 'frame item-list');
     switch (id) {
       case 'stay': {

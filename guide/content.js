@@ -77,6 +77,12 @@ export const transport = [
 ];
 
 export const arrival = {
+  roomAccess: [
+    'Para entrar a tu habitación, sigue las instrucciones que te enviamos por el chat de Airbnb.',
+    'To enter your room, follow the instructions we sent you in the Airbnb chat.',
+    'Pour entrer dans votre chambre, suivez les instructions que nous vous avons envoyées dans la messagerie Airbnb.',
+    'Um in dein Zimmer zu gelangen, folge den Anweisungen, die wir dir im Airbnb-Chat geschickt haben.'
+  ],
   "title": [
     "Cómo hacer el check-in",
     "How to check in",

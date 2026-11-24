@@ -1,4 +1,4 @@
-import {languages,copy,sections,restaurants,places,tours,transport,stay,arrival,locations} from './content.js?v=ubicacion';
+import {languages,copy,sections,restaurants,places,tours,transport,stay,arrival,locations} from './content.js?v=room-access';
 
 const params = new URLSearchParams(location.search);
 const language = params.get('lang');
@@ -101,7 +101,9 @@ function showGuide() {
         gate.alt = t(arrival.photoAlt);
         gate.width = 1050;
         gate.height = 654;
-        checkIn.append(gate);
+        const roomAccess = node('p');
+        roomAccess.append(node('strong', t(arrival.roomAccess)));
+        checkIn.append(gate, roomAccess);
         list.append(checkIn);
         list.append(row(t(arrival.parkingTitle), [t(arrival.parkingText)]));
         list.append(...stay.map(([name,paragraphs]) => row(t(name),paragraphs.map(t))));

@@ -1,5 +1,5 @@
 import * as roomGuide from './room.js?v=booking-note';
-import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations,healthServices} from './content.js?v=health';
+import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations,healthServices} from './content.js?v=buena-vista';
 
 const params = new URLSearchParams(location.search);
 const language = params.get('lang');
@@ -208,11 +208,11 @@ function showGuide() {
       case 'health': {
         const call = t(['Llamar al 911', 'Call 911', 'Appeler le 911', '911 anrufen']);
         list.append(row(t(['Emergencias', 'Emergency services', 'Urgences', 'Notruf']), [], null, link(call, 'tel:911', 'button')));
-        for (const [name, details, minutes, placeId] of healthServices) {
+        for (const [name, details, minutes, placeId, mapUrl] of healthServices) {
           const address = details[0].split(' · ')[1] || '';
           const query = new URLSearchParams({api: '1', query: [name, address, 'Jarabacoa, República Dominicana'].filter(Boolean).join(', ')});
           if (placeId) query.set('query_place_id', placeId);
-          list.append(row(name, [t(details)], minutes, link(t(copy.map), 'https://www.google.com/maps/search/?' + query, 'button')));
+          list.append(row(name, [t(details)], minutes, link(t(copy.map), mapUrl || 'https://www.google.com/maps/search/?' + query, 'button')));
         }
         for (const [name, service, phone] of [
           ['Edison Cruz', ['Mecánico automotriz', 'Automotive mechanic', 'Mécanicien automobile', 'Kfz-Mechaniker'], '809-849-8185'],

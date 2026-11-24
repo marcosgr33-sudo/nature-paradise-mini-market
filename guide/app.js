@@ -92,7 +92,10 @@ function showGuide() {
         card.append(image);
       }
       const body = node('div', '', 'card-body');
-      body.append(node('h3', t(title)),node('p', t(coverDescription)),
+      const descriptionText = id === 'tours'
+        ? new Intl.ListFormat(language).format(tours.map(([titles]) => t(titles))) + '. ' + t(coverDescription)
+        : t(coverDescription);
+      body.append(node('h3', t(title)),node('p', descriptionText),
         node('span', t(id === 'market' ? copy.open : copy.details) + ' →', 'more'));
       card.append(body);
       cards.append(card);

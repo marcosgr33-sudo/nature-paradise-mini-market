@@ -147,3 +147,9 @@ h3{font-size:1.18rem}
 .transport-wa{display:inline-flex;align-items:center;gap:.5rem}
 .transport-wa img{width:1.15rem;height:1.15rem}
 .rental-estimate{flex-basis:100%;font-weight:650}
+
+.transport-figure{margin:.75rem 0;max-width:38rem}
+.transport-figure img{display:block;width:100%;height:auto;border-radius:.65rem}
+.transport-figure figcaption{font-size:.85rem;margin-top:.3rem}
+.rental-question{flex-basis:100%;margin:0}
+.card img.transport-cover{object-position:center 46%}

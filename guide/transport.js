@@ -1,15 +1,15 @@
 const publicRoutes = [
   {
     name: 'Caribe Tours · Jarabacoa → La Vega / Santo Domingo',
-    stop: 'Calle Luperón 6',
+    photo: 'caribe-bus', stop: 'Calle Luperón 6',
     map: 'Caribe Tours Jarabacoa, Calle Luperón 6',
     placeId: 'ChIJr-Rxs8oxsI4RKIMfonPfTlI',
     phone: '+18095744796',
     site: 'https://caribetours.com.do/'
   },
-  {name: 'Jarabacoa → La Vega', stop: 'La Vega / Expreso (SICHOUJA)', map: '19.12426,-70.64203'},
+  {name: 'Jarabacoa → La Vega', photo: 'guagua', illustrative: true, stop: 'La Vega / Expreso (SICHOUJA)', map: '19.12426,-70.64203'},
   {name: 'Jarabacoa → Constanza', stop: 'Parada de Constanza', map: 'Parada de Constanza (Bus stop to Constanza), Jarabacoa', searchOnly: true},
-  {name: 'Jarabacoa → Manabao', stop: 'Parada Manabao / La Ciénaga', map: '19.12077,-70.64402'}
+  {name: 'Jarabacoa → Manabao', photo: 'manabao-ruta', illustrative: true, stop: 'Parada Manabao / La Ciénaga', map: '19.12077,-70.64402'}
 ];
 
 const rides = [
@@ -18,8 +18,8 @@ const rides = [
 ];
 
 const rentals = [
-  {name: ['Alquiler de carro', 'Car rental', 'Location de voiture', 'Mietwagen'], detail: ['Presenta una licencia de conducir válida.', 'Bring a valid driver’s license.', 'Présentez un permis de conduire valide.', 'Bitte einen gültigen Führerschein vorlegen.'], min: 1800, max: 2000},
-  {name: ['Alquiler de motocicleta', 'Motorcycle rental', 'Location de moto', 'Motorradvermietung'], detail: ['Incluye un casco protector.', 'A helmet is included.', 'Un casque est fourni.', 'Ein Helm ist inbegriffen.'], min: 1500, max: 1800}
+  {name: ['Alquiler de carro', 'Car rental', 'Location de voiture', 'Mietwagen'], photo: 'renta-carro', detail: ['Presenta una licencia de conducir válida.', 'Bring a valid driver’s license.', 'Présentez un permis de conduire valide.', 'Bitte einen gültigen Führerschein vorlegen.'], min: 1800, max: 2000},
+  {name: ['Alquiler de motocicleta', 'Motorcycle rental', 'Location de moto', 'Motorradvermietung'], photo: 'renta-moto', detail: ['Incluye un casco protector.', 'A helmet is included.', 'Un casque est fourni.', 'Ein Helm ist inbegriffen.'], min: 1500, max: 1800}
 ];
 
 function whatsapp(message) {
@@ -36,6 +36,19 @@ function addWhatsAppIcon(button, node) {
 }
 
 export function renderTransport(list, {node, link, row, t, language}) {
+  function addPhoto(card, file, caption) {
+    const figure = node('figure', '', 'transport-figure');
+    const image = node('img');
+    image.src = './guide/' + file + '.webp';
+    image.alt = '';
+    image.loading = 'lazy';
+    figure.append(image);
+    if (caption) figure.append(node('figcaption', caption));
+    card.firstElementChild.after(figure);
+  }
+  const shortcut = node('nav', '', 'stay-shortcuts');
+  shortcut.append(link(t(['Ir a renta de carros y motos', 'Go to car and motorcycle rentals', 'Voir les locations de voitures et motos', 'Zur Auto- und Motorradvermietung']), '#renta'));
+  list.append(shortcut);
   list.append(node('h2', t(['Transporte público', 'Public transportation', 'Transports en commun', 'Öffentliche Verkehrsmittel'])));
   list.append(node('p', t(['Las paradas quedan a unos 10 min en carro desde Nature Paradise. Consulta el horario y el precio del pasaje antes de salir.', 'Stops are about 10 minutes by car from Nature Paradise. Check departure times and fares before leaving.', 'Les arrêts sont à environ 10 min en voiture de Nature Paradise. Vérifiez les horaires et les tarifs avant de partir.', 'Die Haltestellen liegen etwa 10 Autominuten von Nature Paradise entfernt. Prüfe Abfahrtszeiten und Preise vor der Fahrt.']), 'host-note'));
   for (const route of publicRoutes) {
@@ -50,7 +63,9 @@ export function renderTransport(list, {node, link, row, t, language}) {
       actions.append(link(t(['Consultar horario y tarifa', 'Check schedules and fares', 'Consulter les horaires et tarifs', 'Fahrplan und Fahrpreis erfragen']), 'tel:' + route.phone, 'button'));
       actions.append(link('Caribe Tours', route.site, 'button'));
     }
-    list.append(row(route.name, [route.stop], null, actions));
+    const card = row(route.name, [route.stop], null, actions);
+    if (route.photo) addPhoto(card, route.photo, route.illustrative && t(['Imagen de referencia', 'Illustrative photo', 'Photo indicative', 'Beispielfoto']));
+    list.append(card);
   }
 
   list.append(node('h2', t(['Traslados locales', 'Local rides', 'Trajets locaux', 'Fahrten vor Ort'])));
@@ -64,20 +79,19 @@ export function renderTransport(list, {node, link, row, t, language}) {
     const button = link(t(ride.button), whatsapp(message), 'button transport-wa');
     addWhatsAppIcon(button, node);
     const card = row(t(ride.name), [t(['Te ayudamos a coordinar tu traslado.', 'We can help arrange your ride.', 'Nous vous aidons à organiser votre trajet.', 'Wir helfen dir, die Fahrt zu organisieren.'])], null, button);
-    if (ride.photo) {
-      const photo = node('img', '', 'transport-taxi');
-      photo.src = './guide/taxi.webp';
-      photo.alt = '';
-      photo.loading = 'lazy';
-      card.firstElementChild.after(photo);
-    }
+    addPhoto(card, ride.photo ? 'taxi-real' : 'motoconcho');
     list.append(card);
   }
 
-  list.append(node('h2', t(['Alquiler de vehículos', 'Vehicle rentals', 'Location de véhicules', 'Fahrzeugvermietung'])));
+  const heading = node('h2', t(['Alquiler de vehículos', 'Vehicle rentals', 'Location de véhicules', 'Fahrzeugvermietung']));
+  heading.id = 'renta';
+  heading.className = 'stay-stop';
+  list.append(heading);
   list.append(node('p', t(['Tarifas diarias estimadas. Pueden variar según la temporada.', 'Estimated daily rates may vary by season.', 'Les tarifs journaliers estimés peuvent varier selon la saison.', 'Die geschätzten Tagespreise können je nach Saison variieren.']), 'host-note'));
   for (const rental of rentals) {
-    list.append(row(t(rental.name), [t(rental.detail), formatRange(rental.min, rental.max, language)], null, rentalForm(rental, {node, t, language})));
+    const card = row(t(rental.name), [t(rental.detail), formatRange(rental.min, rental.max, language)], null, rentalForm(rental, {node, t, language}));
+    addPhoto(card, rental.photo);
+    list.append(card);
   }
 }
 
@@ -92,8 +106,8 @@ function formatRange(min, max, language) {
 
 function rentalForm(rental, {node, t, language}) {
   const form = node('form', '', 'tour-inquiry');
-  const startLabel = node('label', t(['Desde', 'From', 'Du', 'Von']));
-  const endLabel = node('label', t(['Hasta', 'Until', 'Au', 'Bis']));
+  const startLabel = node('label', t(['Fecha de recogida', 'Pickup date', 'Date de retrait', 'Abholdatum']));
+  const endLabel = node('label', t(['Fecha de devolución', 'Return date', 'Date de retour', 'Rückgabedatum']));
   const start = node('input');
   const end = node('input');
   const today = () => new Intl.DateTimeFormat('sv-SE', {timeZone: 'America/Santo_Domingo'}).format(new Date());
@@ -121,6 +135,7 @@ function rentalForm(rental, {node, t, language}) {
   const button = node('button', t(['Solicitar disponibilidad', 'Check availability', 'Demander la disponibilité', 'Verfügbarkeit anfragen']), 'button tour-price transport-wa');
   button.type = 'submit';
   addWhatsAppIcon(button, node);
+  form.append(node('h4', t(['¿Para qué fechas deseas consultar la disponibilidad?', 'Which dates would you like to check?', 'Pour quelles dates souhaitez-vous vérifier la disponibilité ?', 'Für welchen Zeitraum möchtest du die Verfügbarkeit prüfen?']), 'rental-question'));
   form.append(startLabel, endLabel, button, estimate);
   form.addEventListener('submit', event => {
     event.preventDefault();

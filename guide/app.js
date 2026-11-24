@@ -1,8 +1,8 @@
 import {tourCard, tourIntro} from './tours.js?v=horse-routes';
 import {reviewLink} from './review.js';
 import * as roomGuide from './room.js?v=booking-note';
-import {languages,copy,sections,restaurants,places,tours,stay,checkout,arrival,locations,healthServices,nearbyShops} from './content.js?v=transport';
-import {renderTransport} from './transport.js?v=1';
+import {languages,copy,sections,restaurants,places,tours,stay,checkout,arrival,locations,healthServices,nearbyShops} from './content.js?v=transport-photos';
+import {renderTransport} from './transport.js?v=photos';
 
 const params = new URLSearchParams(location.search);
 const language = params.get('lang');

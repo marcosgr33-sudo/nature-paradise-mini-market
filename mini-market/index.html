@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guía Nature Paradise / Mini Market</title>
+<style>
+body{margin:0;background:#f6f8f3;color:#17362b;font:1rem system-ui,sans-serif;min-height:100dvh;display:flex;flex-direction:column}
+nav{padding:.75rem 1rem;background:white;border-bottom:1px solid #dbe7df}
+nav a{color:#126b45;font-weight:650;text-underline-offset:.2em}
+iframe{display:block;flex:1;width:100%;height:0;border:0}
+</style></head>
+<body><nav><a id="home" href="../guia.html">← Guía Nature Paradise</a></nav><iframe id="market" title="Mini Market"></iframe>
+<script>
+const titles={es:'Guía Nature Paradise',en:'Nature Paradise Guide',fr:'Guide Nature Paradise',de:'Nature Paradise Reiseführer'};
+const requested=new URLSearchParams(location.search).get('lang');
+const language=Object.hasOwn(titles,requested)?requested:'es';
+const home=document.getElementById('home');
+const market=document.getElementById('market');
+function updateTitle(current){
+  document.documentElement.lang=current;
+  document.title=titles[current]+' / Mini Market';
+  home.textContent='← '+titles[current];
+  home.href='../guia.html?lang='+current;
+}
+updateTitle(language);
+market.addEventListener('load',()=>{
+  const catalog=market.contentDocument;
+  const menu=catalog?.getElementById('language');
+  if(!menu)return;
+  const entry=catalog.getElementById('languageEntry');
+  if(entry && !entry.hidden){
+    entry.querySelector('button[data-language="'+language+'"]')?.click();
+  }
+  menu.addEventListener('change',()=>updateTitle(menu.value));
+});
+market.src='../?view=mini-market&lang='+language;
+</script></body></html>

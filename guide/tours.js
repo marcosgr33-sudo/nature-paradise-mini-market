@@ -1,8 +1,8 @@
 export const tourIntro = [
-  'Te recomendamos consultar con dos días de anticipación. Como cada semana referimos huéspedes a los operadores locales, nos ofrecen un pequeño descuento. Elige tu fecha y el número de personas para conocer el precio y confirmar la disponibilidad con tu anfitrión.',
-  'We recommend getting in touch two days ahead. Local operators offer us a small discount because we refer guests every week. Choose your date and group size to check the price and availability with your host.',
-  'Nous vous conseillons de nous contacter deux jours à l’avance. Les prestataires locaux nous accordent une petite remise, car nous leur adressons des voyageurs chaque semaine. Choisissez votre date et le nombre de participants pour demander le tarif et les disponibilités à votre hôte.',
-  'Wir empfehlen, zwei Tage vorher anzufragen. Da wir jede Woche Gäste vermitteln, gewähren uns die örtlichen Anbieter einen kleinen Rabatt. Wähle Datum und Personenzahl, um Preis und Verfügbarkeit bei deinem Gastgeber zu erfragen.'
+  'Te recomendamos consultar con dos días de anticipación. Como cada semana referimos huéspedes a los operadores locales, nos ofrecen un pequeño descuento.',
+  'We recommend getting in touch two days ahead. Local operators offer us a small discount because we refer guests every week.',
+  'Nous vous conseillons de nous contacter deux jours à l’avance. Les prestataires locaux nous accordent une petite remise, car nous leur adressons des voyageurs chaque semaine.',
+  'Wir empfehlen, zwei Tage vorher anzufragen. Da wir jede Woche Gäste vermitteln, gewähren uns die örtlichen Anbieter einen kleinen Rabatt.'
 ];
 
 const timing = {

@@ -1,0 +1,63 @@
+:root{font-family:system-ui,-apple-system,sans-serif;color:#193528;background:#f7f5ee;line-height:1.55;--green:#214b38;--dark:#153529;--line:#dddcd0;--gold:#eacd8d}
+*{box-sizing:border-box}
+body{margin:0}
+[hidden]{display:none!important}
+a{color:inherit;text-underline-offset:.2em}
+a:focus-visible,summary:focus-visible{outline:3px solid #b97827;outline-offset:4px}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{line-height:1.12;overflow-wrap:anywhere}
+h1,h2{font-family:Georgia,serif;font-weight:500}
+h1{font-size:clamp(2.5rem,7vw,5rem);letter-spacing:-.035em}
+h2{font-size:clamp(1.7rem,4vw,2.6rem)}
+h3{font-size:1.18rem}
+.frame{width:min(100% - 2rem,1060px);margin-inline:auto}
+.entry{min-height:100svh;display:grid;place-items:center;padding:1rem;background:linear-gradient(180deg,#102e24b8,#102e24e8),url('./mountains.webp') center/cover}
+.entry-panel{width:min(100%,28rem);border-radius:24px;background:#faf8f0;text-align:center;padding:clamp(1.3rem,6vw,2.7rem);box-shadow:0 18px 60px #0e261ad0}
+.entry-logo{border-radius:50%;object-fit:cover;margin-bottom:1.1rem}
+.entry-panel h1{font-size:clamp(2rem,7vw,2.7rem)}
+.entry-panel p{color:#466153;margin-top:.75rem;font-size:.84rem}
+.languages{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;margin-top:1.5rem}
+.languages a,.button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.65rem .9rem;border-radius:10px;font-weight:650;text-decoration:none;background:var(--green);color:white}
+.languages a:not(:first-child){background:white;color:var(--dark);border:1px solid var(--line)}
+.top{position:sticky;top:0;z-index:2;background:#f7f5eef7;border-bottom:1px solid var(--line)}
+.top-row,.navigation,.brand,.footer{display:flex;align-items:center}
+.top-row,.footer{justify-content:space-between;gap:.6rem}
+.top-row{min-height:70px}
+.brand{gap:.55rem;font-weight:700;text-decoration:none;line-height:1.1}
+.brand img{border-radius:50%}
+.brand small{display:block;margin-top:.22rem;color:#526759;font-weight:500}
+.navigation{gap:.65rem;font-size:.9rem}
+.navigation a,.navigation summary{min-height:44px;display:flex;align-items:center}
+.navigation summary{cursor:pointer;gap:.35rem;font-weight:650}
+.navigation summary::after{content:'⌄'}
+.dropdown{position:absolute;right:max(1rem,calc((100% - 1060px)/2));width:min(19rem,calc(100% - 2rem));max-height:70svh;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 35px #15352930;padding:.45rem}
+.dropdown a{padding:.4rem .75rem;text-decoration:none;border-radius:6px}
+.dropdown a:hover,.dropdown a[aria-current]{background:#e8eee5}
+.hero{background:linear-gradient(90deg,#132f25eb,#132f2580),url('./mountains.webp') center 60%/cover;color:#fff;padding:clamp(3rem,10vw,7rem) 0}
+.hero h1{max-width:12ch}
+.hero p{max-width:38ch;margin:1rem 0 1.4rem;color:#f1eee0;font-size:1.12rem}
+.hero .button{background:var(--gold);color:#162e23}
+.list{padding-block:clamp(2rem,6vw,4rem);scroll-margin-top:75px}
+.list>h2{margin-bottom:1.4rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:1rem}
+.card{display:block;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none}
+.card img{width:100%;display:block;height:145px;object-fit:cover}
+.card-body{padding:1.35rem}
+.card p,.item p{margin:.55rem 0 0;color:#425b4d}
+.card .more{display:block;margin-top:.85rem;font-weight:650;color:#21543c}
+.card:hover{border-color:#668774}
+.subhead{padding-block:2rem 1.4rem}
+.subhead>a{display:inline-flex;align-items:center;min-height:44px;font-weight:650}
+.subhead h1{margin:.5rem 0}
+.subhead p{max-width:60ch;color:#425b4d}
+.item-list{padding-bottom:2rem}
+.item-list h2{margin:1rem 0}
+.item{padding:1.25rem;background:#fff;border:1px solid var(--line);border-radius:14px}
+.item+.item{margin-top:.75rem}
+.item .time{font-size:.88rem;font-weight:650;color:#28553e;margin-top:.7rem}
+.item .button{margin-top:.8rem}
+.footer{border-top:1px solid var(--line);padding-block:1.15rem;color:#425b4d;font-size:.9rem;flex-wrap:wrap}
+.footer a{min-height:44px;display:inline-flex;align-items:center;font-weight:650}
+@media(max-width:380px){.brand img{width:35px;height:35px}.navigation{gap:.45rem;font-size:.82rem}.brand{font-size:.85rem}}
+
+.host-note{margin:0 0 1rem;color:#425b4d}

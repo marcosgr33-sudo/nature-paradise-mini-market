@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#18382c">
+  <title>Guía de Nature Paradise | Jarabacoa</title>
+  <link rel="icon" href="./nature-paradise-logo.webp" type="image/webp">
+  <link rel="stylesheet" href="./guide/style.css">
+</head>
+<body>
+  <main id="entry" class="entry">
+    <div class="entry-panel">
+      <img class="entry-logo" src="./nature-paradise-logo.webp" alt="Nature Paradise Jarabacoa" width="112" height="112">
+      <h1>Elige tu idioma</h1>
+      <p><span lang="en">Choose your language</span> · <span lang="fr">Choisissez votre langue</span> · <span lang="de">Sprache wählen</span></p>
+      <nav class="languages" aria-label="Idioma / Language">
+        <a href="?lang=es" lang="es">Español</a>
+        <a href="?lang=en" lang="en">English</a>
+        <a href="?lang=fr" lang="fr">Français</a>
+        <a href="?lang=de" lang="de">Deutsch</a>
+      </nav>
+    </div>
+  </main>
+  <div id="guide" hidden>
+    <header class="top"><div class="frame top-row">
+      <a id="home-link" class="brand"><img src="./nature-paradise-logo.webp" width="44" height="44" alt=""><span>Nature Paradise<small>Jarabacoa</small></span></a>
+      <div class="navigation">
+        <details id="navigation"><summary id="section-label"></summary><nav id="section-links" class="dropdown"></nav></details>
+        <a id="language-link" href="./guia.html"></a>
+      </div>
+    </div></header>
+    <main id="content"></main>
+    <footer class="frame footer"><span>Nature Paradise Jarabacoa</span></footer>
+  </div>
+  <script type="module" src="./guide/app.js"></script>
+</body>
+</html>

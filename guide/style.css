@@ -12,8 +12,8 @@ h2{font-size:clamp(1.7rem,4vw,2.6rem)}
 h3{font-size:1.18rem}
 .frame{width:min(100% - 2rem,1060px);margin-inline:auto}
 .entry{position:relative;isolation:isolate;overflow:hidden;min-height:100svh;display:grid;place-items:center;padding:1rem;background:#18382c}
-.entry::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#102e2412,#102e2440),url('./jarabacoa-river-wide.webp') center/cover}
-@media(orientation:portrait){.entry::before{background-image:linear-gradient(180deg,#102e2412,#102e2440),url('./jarabacoa-welcome.webp?v=rio');background-position:center bottom}}
+.entry::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#102e2412,#102e2440),url('./jarabacoa-river-wide.webp?v=rafting') center/cover}
+@media(orientation:portrait){.entry::before{background-image:linear-gradient(180deg,#102e2412,#102e2440),url('./jarabacoa-welcome.webp?v=rafting');background-position:center bottom}}
 .entry-panel{width:min(100%,28rem);border-radius:24px;background:#faf8f0;text-align:center;padding:clamp(1.3rem,6vw,2.7rem);box-shadow:0 18px 60px #0e261ad0}
 .entry-logo{width:clamp(136px,37vw,184px);height:auto;border-radius:50%;object-fit:cover;margin-bottom:.5rem}
 .entry-panel .entry-name{font-weight:650;margin:0 0 .6rem;color:#284d3a}
@@ -64,3 +64,16 @@ h3{font-size:1.18rem}
 @media(max-width:380px){.brand img{width:35px;height:35px}.navigation{gap:.45rem;font-size:.82rem}.brand{font-size:.85rem}}
 
 .host-note{margin:0 0 1rem;color:#425b4d}
+
+/* Leave the sky and the downstream foreground clear around the language card. */
+.entry{padding:1rem 1rem clamp(4rem,23svh,14rem)}
+@media (orientation:portrait){
+  .entry{padding:clamp(3rem,17svh,10rem) 1rem clamp(5rem,22svh,13rem)}
+  .entry-panel{padding:clamp(1rem,4.5vw,1.7rem)}
+  .entry-logo{width:clamp(112px,33vw,164px)}
+  .languages{margin-top:1.1rem}
+}
+@media (orientation:landscape) and (max-height:640px){
+  .entry-logo{width:112px}
+  .entry-panel{padding:1.1rem}
+}

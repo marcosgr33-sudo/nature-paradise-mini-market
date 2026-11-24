@@ -6,7 +6,6 @@ export const copy = {
   home: ['Inicio','Home','Accueil','Start'],
   sections: ['Menú','Menu','Menu','Menü'],
   language: ['Idioma','Language','Langue','Sprache'],
-  explore: ['Explorar la guía','Explore the guide','Explorer le guide','Reiseführer entdecken'],
   hostChat: ['Coordina con el anfitrión por el chat de tu reserva.','Arrange with your host through your booking chat.','Organisez votre demande avec votre hôte dans la messagerie de votre réservation.','Klären Sie Ihre Anfrage im Buchungschat mit Ihrem Gastgeber.'],
   open: ['Abrir Mini Market','Open Mini Market','Ouvrir le Mini Market','Mini Market öffnen'],
   details: ['Ver detalles','View details','Voir les détails','Details ansehen'],
@@ -16,7 +15,7 @@ export const copy = {
   premium: ['Experiencias gastronómicas premium','Premium dining','Expériences gastronomiques haut de gamme','Gehobene Gastronomie'],
 };
 export const sections = [
-  ['stay', ['Alojamiento','Accommodation','Hébergement','Unterkunft'], ['Habitación, cocina, áreas comunes y salida.','Room, kitchen, common areas and checkout.','Chambre, cuisine, espaces communs et départ.','Zimmer, Küche, Gemeinschaftsbereiche und Abreise.']],
+  ["stay",["Conoce tu alojamiento","Get to know your accommodation","Découvrez votre hébergement","Lerne deine Unterkunft kennen"],["Detalles de tu habitación y del baño, y de las áreas comunes como la cocina, el comedor, el patio, la piscina, el área de dominó y la cancha de baloncesto. También encontrarás información sobre el parqueo, la lavandería y los horarios de llegada y salida.","Find details about your room and bathroom, plus shared spaces such as the kitchen, dining area, patio, pool, dominoes area and basketball court. See parking, laundry, and check-in and check-out times.","Découvrez votre chambre, la salle de bain et les espaces communs : cuisine, salle à manger, patio, piscine, espace de dominos et terrain de basket. Retrouvez aussi les informations sur le stationnement, la buanderie et les horaires d’arrivée et de départ.","Infos zu deinem Zimmer und Bad sowie zu den Gemeinschaftsbereichen: Küche, Essbereich, Innenhof, Pool, Domino-Bereich und Basketballplatz. Außerdem findest du Hinweise zu Parkplatz, Wäsche und den An- und Abreisezeiten."],"shared-kitchen"],
   ['market', ['Mini Market','Mini Market','Mini Market','Mini Market'], ['Compra productos esenciales sin salir de Nature Paradise.','Shop for essentials without leaving Nature Paradise.','Achetez vos essentiels sans quitter Nature Paradise.','Kaufen Sie das Nötigste direkt im Nature Paradise.']],
   ['restaurants', ['Restaurantes','Restaurants','Restaurants','Restaurants'], ['Desde una comida casual hasta una cena con vistas.','From a casual meal to dinner with a view.','Du repas décontracté au dîner avec vue.','Vom schnellen Essen bis zum Abendessen mit Aussicht.'],'dining'],
   ['places', ['Lugares turísticos','Places to visit','Lieux à visiter','Sehenswürdigkeiten'], ['Cascadas, montañas y rincones del pueblo.','Waterfalls, mountains and spots around town.','Cascades, montagnes et coins à découvrir en ville.','Wasserfälle, Berge und schöne Ecken im Ort.'],'waterfall'],

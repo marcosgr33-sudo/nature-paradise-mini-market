@@ -1,4 +1,4 @@
-import {languages,copy,sections,restaurants,places,tours,transport,stay,locations} from './content.js?v=cascada';
+import {languages,copy,sections,restaurants,places,tours,transport,stay,locations} from './content.js?v=alojamiento';
 
 const params = new URLSearchParams(location.search);
 const language = params.get('lang');
@@ -63,8 +63,7 @@ function showGuide() {
   if (!section) {
     const hero = node('div', '', 'hero');
     const heading = node('div', '', 'frame');
-    heading.append(node('h1', t(copy.welcome)),node('p', t(copy.intro)),
-      link(t(copy.explore), '#sections', 'button'));
+    heading.append(node('h1', t(copy.welcome)),node('p', t(copy.intro)));
     hero.append(heading);
     const list = node('section', '', 'frame list');
     list.id = 'sections';

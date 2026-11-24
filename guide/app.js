@@ -241,8 +241,30 @@ function showGuide() {
         break;
       }
       case 'shops': {
+        const logos = {'Hipermercados Olé': 'ole', 'Supermercados Nacional': 'nacional', 'La Sirena': 'sirena'};
+        const icons = {
+          'Plaza MEI · Tienda y ferretería': '👕🔧',
+          'Gimnasio Élite': '🏋️', 'Gimnasio Rústico': '🏋️',
+          'Salón de belleza': '💇🏽‍♀️', 'Barbería': '💈',
+          'Colmados locales': '🛒', 'Pica pollo local': '🍗',
+          'Colmado con entrega a domicilio': '🛵🥡'
+        };
         for (const [name, minutes, query, walk] of nearbyShops) {
           const card = row(typeof name === 'string' ? name : t(name), []);
+          const key = typeof name === 'string' ? name : name[0];
+          const logo = logos[key];
+          if (logo || icons[key]) {
+            const badge = node('span', icons[key], 'shop-badge');
+            badge.setAttribute('aria-hidden', 'true');
+            if (logo) {
+              const img = node('img');
+              img.src = './guide/shop-logos/' + logo + '.webp';
+              img.alt = '';
+              badge.append(img);
+            }
+            card.classList.add('shop-item');
+            card.prepend(badge);
+          }
           const unit = walk ? t(['min aprox. a pie', 'min approx. on foot', 'min env. à pied', 'Min. ca. zu Fuß']) : t(copy.drive);
           card.append(node('p', minutes + ' ' + unit, 'time'));
           if (query) {

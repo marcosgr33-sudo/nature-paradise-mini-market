@@ -1,7 +1,8 @@
 import {tourCard, tourIntro} from './tours.js?v=horse-routes';
 import {reviewLink} from './review.js';
 import * as roomGuide from './room.js?v=booking-note';
-import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations,healthServices,nearbyShops} from './content.js?v=horse-routes';
+import {languages,copy,sections,restaurants,places,tours,stay,checkout,arrival,locations,healthServices,nearbyShops} from './content.js?v=transport';
+import {renderTransport} from './transport.js?v=1';
 
 const params = new URLSearchParams(location.search);
 const language = params.get('lang');
@@ -53,10 +54,6 @@ function showGuide() {
       locationUrl ? link(mapLabel, locationUrl, 'button') : null);
   }
 
-  function serviceCard([title,description]) {
-    return row(t(title), [t(description)]);
-  }
-
   const content = get('content');
   document.documentElement.lang = language;
   document.title = (section ? t(section[1]) + ' | ' : '') + t(copy.title) + ' | Jarabacoa';
@@ -90,6 +87,7 @@ function showGuide() {
         image.loading = 'lazy';
         if (id === 'places') image.alt = 'Salto de Baiguate, Jarabacoa';
         if (id === 'restaurants') image.style.objectPosition = 'center 28%';
+        if (id === 'transport') image.className = 'transport-cover';
         if (id === 'market') image.className = 'market-display';
         card.append(image);
       }
@@ -105,7 +103,7 @@ function showGuide() {
     const [id,title,description] = section;
     const heading = node('div', '', 'frame subhead');
     heading.append(link('← ' + t(copy.home), route()),node('h1', t(title)));
-    if (id !== 'stay' && id !== 'shops' && id !== 'restaurants' && id !== 'places' && id !== 'tours') heading.append(node('p', t(description)));
+    if (id !== 'stay' && id !== 'shops' && id !== 'restaurants' && id !== 'places' && id !== 'tours' && id !== 'transport') heading.append(node('p', t(description)));
     const list = node('div', '', 'frame item-list');
     switch (id) {
       case 'stay': {
@@ -217,7 +215,7 @@ function showGuide() {
         list.append(node('p', t(tourIntro), 'host-note'), ...tours.map(tour => tourCard(tour, {node, t, language})));
         break;
       case 'transport':
-        list.append(node('p', t(copy.hostChat), 'host-note'), ...transport.map(serviceCard));
+        renderTransport(list, {node, link, row, t, language});
         break;
       case 'health': {
         const call = t(['Llamar al 911', 'Call 911', 'Appeler le 911', '911 anrufen']);

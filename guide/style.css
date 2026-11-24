@@ -140,3 +140,10 @@ h3{font-size:1.18rem}
   .vehicle-rates label{display:grid;grid-template-columns:auto minmax(0,1fr)}
   .vehicle-rates strong{grid-column:2;margin:0}
 }
+
+.card img.transport-cover{height:auto;aspect-ratio:374/201}
+.transport-taxi{display:block;width:100%;max-width:374px;border-radius:.6rem;margin:.5rem 0}
+.transport-actions{display:flex;flex-wrap:wrap;gap:.5rem}
+.transport-wa{display:inline-flex;align-items:center;gap:.5rem}
+.transport-wa img{width:1.15rem;height:1.15rem}
+.rental-estimate{flex-basis:100%;font-weight:650}

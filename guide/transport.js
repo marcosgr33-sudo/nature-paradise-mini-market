@@ -1,0 +1,143 @@
+const publicRoutes = [
+  {
+    name: 'Caribe Tours · Jarabacoa → La Vega / Santo Domingo',
+    stop: 'Calle Luperón 6',
+    map: 'Caribe Tours Jarabacoa, Calle Luperón 6',
+    placeId: 'ChIJr-Rxs8oxsI4RKIMfonPfTlI',
+    phone: '+18095744796',
+    site: 'https://caribetours.com.do/'
+  },
+  {name: 'Jarabacoa → La Vega', stop: 'La Vega / Expreso (SICHOUJA)', map: '19.12426,-70.64203'},
+  {name: 'Jarabacoa → Constanza', stop: 'Parada de Constanza', map: 'Parada de Constanza (Bus stop to Constanza), Jarabacoa', searchOnly: true},
+  {name: 'Jarabacoa → Manabao', stop: 'Parada Manabao / La Ciénaga', map: '19.12077,-70.64402'}
+];
+
+const rides = [
+  {name: ['Taxi de confianza', 'Trusted taxi', 'Taxi de confiance', 'Vertrauenswürdiges Taxi'], button: ['Solicitar un taxi', 'Request a taxi', 'Demander un taxi', 'Taxi anfragen'], photo: true},
+  {name: ['Motoconcho de confianza', 'Trusted motorcycle taxi', 'Moto-taxi de confiance', 'Vertrauenswürdiges Motorradtaxi'], button: ['Solicitar un motoconcho', 'Request a motorcycle taxi', 'Demander un moto-taxi', 'Motorradtaxi anfragen']}
+];
+
+const rentals = [
+  {name: ['Alquiler de carro', 'Car rental', 'Location de voiture', 'Mietwagen'], detail: ['Presenta una licencia de conducir válida.', 'Bring a valid driver’s license.', 'Présentez un permis de conduire valide.', 'Bitte einen gültigen Führerschein vorlegen.'], min: 1800, max: 2000},
+  {name: ['Alquiler de motocicleta', 'Motorcycle rental', 'Location de moto', 'Motorradvermietung'], detail: ['Incluye un casco protector.', 'A helmet is included.', 'Un casque est fourni.', 'Ein Helm ist inbegriffen.'], min: 1500, max: 1800}
+];
+
+function whatsapp(message) {
+  const url = new URL('https://wa.me/18497503039');
+  url.searchParams.set('text', message);
+  return url.href;
+}
+
+function addWhatsAppIcon(button, node) {
+  const icon = node('img');
+  icon.src = './guide/whatsapp.svg';
+  icon.alt = '';
+  button.prepend(icon);
+}
+
+export function renderTransport(list, {node, link, row, t, language}) {
+  list.append(node('h2', t(['Transporte público', 'Public transportation', 'Transports en commun', 'Öffentliche Verkehrsmittel'])));
+  list.append(node('p', t(['Las paradas quedan a unos 10 min en carro desde Nature Paradise. Consulta el horario y el precio del pasaje antes de salir.', 'Stops are about 10 minutes by car from Nature Paradise. Check departure times and fares before leaving.', 'Les arrêts sont à environ 10 min en voiture de Nature Paradise. Vérifiez les horaires et les tarifs avant de partir.', 'Die Haltestellen liegen etwa 10 Autominuten von Nature Paradise entfernt. Prüfe Abfahrtszeiten und Preise vor der Fahrt.']), 'host-note'));
+  for (const route of publicRoutes) {
+    const query = new URLSearchParams({api: '1', query: route.map});
+    if (route.placeId) query.set('query_place_id', route.placeId);
+    const label = route.searchOnly
+      ? t(['Buscar parada en Google Maps', 'Search for the stop on Google Maps', 'Chercher l’arrêt sur Google Maps', 'Haltestelle auf Google Maps suchen'])
+      : t(['Ver parada en Google Maps', 'View stop on Google Maps', 'Voir l’arrêt sur Google Maps', 'Haltestelle auf Google Maps ansehen']);
+    const actions = node('div', '', 'transport-actions');
+    actions.append(link(label, 'https://www.google.com/maps/search/?' + query, 'button'));
+    if (route.phone) {
+      actions.append(link(t(['Consultar horario y tarifa', 'Check schedules and fares', 'Consulter les horaires et tarifs', 'Fahrplan und Fahrpreis erfragen']), 'tel:' + route.phone, 'button'));
+      actions.append(link('Caribe Tours', route.site, 'button'));
+    }
+    list.append(row(route.name, [route.stop], null, actions));
+  }
+
+  list.append(node('h2', t(['Traslados locales', 'Local rides', 'Trajets locaux', 'Fahrten vor Ort'])));
+  for (const ride of rides) {
+    const message = t([
+      'Hola, me gustaría solicitar ' + (ride.photo ? 'un taxi' : 'un motoconcho') + ' en Jarabacoa. ¿Me ayudan a coordinarlo?',
+      'Hello, I’d like to request a ' + (ride.photo ? 'taxi' : 'motorcycle taxi') + ' in Jarabacoa. Could you help arrange it?',
+      'Bonjour, je voudrais demander un ' + (ride.photo ? 'taxi' : 'moto-taxi') + ' à Jarabacoa. Pouvez-vous m’aider à organiser le trajet ?',
+      'Hallo, ich möchte in Jarabacoa ein ' + (ride.photo ? 'Taxi' : 'Motorradtaxi') + ' anfragen. Könnt ihr mir bei der Organisation helfen?'
+    ]);
+    const button = link(t(ride.button), whatsapp(message), 'button transport-wa');
+    addWhatsAppIcon(button, node);
+    const card = row(t(ride.name), [t(['Te ayudamos a coordinar tu traslado.', 'We can help arrange your ride.', 'Nous vous aidons à organiser votre trajet.', 'Wir helfen dir, die Fahrt zu organisieren.'])], null, button);
+    if (ride.photo) {
+      const photo = node('img', '', 'transport-taxi');
+      photo.src = './guide/taxi.webp';
+      photo.alt = '';
+      photo.loading = 'lazy';
+      card.firstElementChild.after(photo);
+    }
+    list.append(card);
+  }
+
+  list.append(node('h2', t(['Alquiler de vehículos', 'Vehicle rentals', 'Location de véhicules', 'Fahrzeugvermietung'])));
+  list.append(node('p', t(['Tarifas diarias estimadas. Pueden variar según la temporada.', 'Estimated daily rates may vary by season.', 'Les tarifs journaliers estimés peuvent varier selon la saison.', 'Die geschätzten Tagespreise können je nach Saison variieren.']), 'host-note'));
+  for (const rental of rentals) {
+    list.append(row(t(rental.name), [t(rental.detail), formatRange(rental.min, rental.max, language)], null, rentalForm(rental, {node, t, language})));
+  }
+}
+
+function formatRange(min, max, language) {
+  const locale = language === 'es' ? 'es-DO' : language;
+  const money = new Intl.NumberFormat(locale);
+  const dollars = new Intl.NumberFormat(locale, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  const rate = 60.225;
+  return 'RD$' + money.format(min) + '–' + money.format(max)
+    + ' · US$' + dollars.format(min / rate) + '–' + dollars.format(max / rate);
+}
+
+function rentalForm(rental, {node, t, language}) {
+  const form = node('form', '', 'tour-inquiry');
+  const startLabel = node('label', t(['Desde', 'From', 'Du', 'Von']));
+  const endLabel = node('label', t(['Hasta', 'Until', 'Au', 'Bis']));
+  const start = node('input');
+  const end = node('input');
+  const today = () => new Intl.DateTimeFormat('sv-SE', {timeZone: 'America/Santo_Domingo'}).format(new Date());
+  start.type = end.type = 'date';
+  start.required = end.required = true;
+  start.min = end.min = today();
+  const estimate = node('output', '', 'rental-estimate');
+  estimate.setAttribute('aria-live', 'polite');
+  const dayCount = () => Math.max(1, (Date.parse(end.value) - Date.parse(start.value)) / 86400000);
+  function updateEstimate() {
+    end.min = start.value || today();
+    if (!start.value || !end.value || !start.validity.valid || !end.validity.valid) {
+      estimate.textContent = '';
+      return;
+    }
+    const days = dayCount();
+    const unit = days === 1 ? t(['día', 'day', 'jour', 'Tag']) : t(['días', 'days', 'jours', 'Tage']);
+    estimate.textContent = t(['Total estimado', 'Estimated total', 'Total estimé', 'Geschätzter Gesamtpreis'])
+      + ' (' + days + ' ' + unit + ') · ' + formatRange(rental.min * days, rental.max * days, language);
+  }
+  start.addEventListener('change', updateEstimate);
+  end.addEventListener('change', updateEstimate);
+  startLabel.append(start);
+  endLabel.append(end);
+  const button = node('button', t(['Solicitar disponibilidad', 'Check availability', 'Demander la disponibilité', 'Verfügbarkeit anfragen']), 'button tour-price transport-wa');
+  button.type = 'submit';
+  addWhatsAppIcon(button, node);
+  form.append(startLabel, endLabel, button, estimate);
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    start.min = today();
+    updateEstimate();
+    if (!form.reportValidity()) return;
+    const date = new Intl.DateTimeFormat(language, {dateStyle: 'long', timeZone: 'UTC'});
+    const from = date.format(new Date(start.value));
+    const to = date.format(new Date(end.value));
+    const name = t(rental.name);
+    const message = t([
+      `Hola, quisiera solicitar «${name}» del ${from} al ${to}. ¿Me confirman la disponibilidad y el precio?`,
+      `Hello, I’d like to request “${name}” from ${from} to ${to}. Can you confirm availability and the price?`,
+      `Bonjour, je souhaite demander « ${name} » du ${from} au ${to}. Pouvez-vous confirmer la disponibilité et le tarif ?`,
+      `Hallo, ich möchte „${name}“ vom ${from} bis ${to} anfragen. Könnt ihr Verfügbarkeit und Preis bestätigen?`
+    ]);
+    window.open(whatsapp(message + '\n' + estimate.textContent), '_blank', 'noopener,noreferrer');
+  });
+  return form;
+}

@@ -14,11 +14,17 @@ export const privateBath = {
       "Nature Paradise hat fünf Zimmer. Drei teilen sich ein Bad. Die anderen zwei haben jeweils ein eigenes Bad und einen eigenen Eingang, ideal für Paare, die sich mehr Privatsphäre wünschen. Was dein Zimmer bietet, steht in deiner Airbnb-Buchung."
     ],
     [
-      "El cambio a una habitación con baño privado tiene un costo adicional. Escríbenos por el chat de Airbnb con las fechas de tu estadía. Te mostraremos las habitaciones disponibles, qué incluye cada una y cuánto costaría el cambio.",
-      "There is an extra charge to switch to a room with a private bathroom. Send us your dates in the Airbnb chat. We’ll show you the available rooms, what each includes and how much the change would cost.",
-      "Le changement pour une chambre avec salle de bain privative entraîne un supplément. Envoyez-nous les dates de votre séjour via la messagerie Airbnb. Nous vous présenterons les chambres disponibles, leurs équipements et le montant du supplément.",
-      "Der Wechsel in ein Zimmer mit eigenem Bad kostet extra. Schreib uns deine Reisedaten im Airbnb-Chat. Wir zeigen dir die verfügbaren Zimmer, ihre Ausstattung und den Aufpreis."
+      "El cambio a una habitación con baño privado tiene un costo adicional. Contáctanos para saber si la habitación que te gusta está disponible para tus fechas y cuánto costaría el cambio.",
+      "There is an extra charge to switch to a room with a private bathroom. Contact us to find out whether the room you like is available for your dates and how much the change would cost.",
+      "Le changement pour une chambre avec salle de bain privative entraîne un supplément. Contactez-nous pour connaître la disponibilité de la chambre qui vous plaît aux dates de votre séjour et le montant du supplément.",
+      "Der Wechsel in ein Zimmer mit eigenem Bad kostet extra. Frag uns, ob dein Wunschzimmer für deine Reisedaten frei ist und wie hoch der Aufpreis wäre."
     ]
+  ],
+  "note": [
+    "No tienes que cancelar tu reserva. Solo cambiamos tu habitación.",
+    "You do not need to cancel your reservation. We simply change your room.",
+    "Vous gardez votre réservation. Nous changeons simplement votre chambre.",
+    "Du musst deine Buchung nicht stornieren. Wir ändern nur dein Zimmer."
   ]
 };
 
@@ -53,9 +59,9 @@ export const groups = [
       ['🧴', ['Dispensadores', 'Shower dispensers', 'Distributeurs de douche', 'Spender in der Dusche'],
         ['En la ducha encontrarás jabón corporal, shampoo y acondicionador.', 'The shower dispensers contain body wash, shampoo and conditioner.', 'Les distributeurs contiennent du gel douche, du shampoing et de l’après-shampoing.', 'In der Dusche findest du Duschgel, Shampoo und Spülung.']],
       ['💧', ['Agua caliente', 'Hot water', 'Eau chaude', 'Warmwasser'],
-        ["En algunos baños, el agua caliente se abre girando la llave de la ducha hacia la derecha. Sigue las flechas. Si el agua no se calienta, cierra y vuelve a abrir la llave unas cuantas veces.", "In some bathrooms, turn the shower tap to the right for hot water. Follow the arrows. If the water does not warm up, turn the tap off and back on a few times.", "Dans certaines salles de bain, tournez le robinet de douche vers la droite pour obtenir de l’eau chaude. Suivez les flèches. Si l’eau ne chauffe pas, fermez puis rouvrez le robinet plusieurs fois.", "In manchen Bädern drehst du den Duschgriff für warmes Wasser nach rechts. Folge den Pfeilen. Falls das Wasser nicht warm wird, drehe es ein paarmal zu und wieder auf."]],
+        ["En algunos baños, el agua caliente se abre girando la llave de la ducha hacia la derecha. Si el agua no se calienta, cierra y vuelve a abrir la llave unas cuantas veces.", "In some bathrooms, turn the shower tap to the right for hot water. If the water does not warm up, turn the tap off and back on a few times.", "Dans certaines salles de bain, tournez le robinet de douche vers la droite pour obtenir de l’eau chaude. Si l’eau ne chauffe pas, fermez puis rouvrez le robinet plusieurs fois.", "In manchen Bädern drehst du den Duschgriff für warmes Wasser nach rechts. Falls das Wasser nicht warm wird, drehe es ein paarmal zu und wieder auf."]],
       ['🧹', ['Si compartes el baño', 'If you share a bathroom', 'Si vous partagez la salle de bain', 'Wenn du ein Gemeinschaftsbad nutzt'],
-        ["Limpiamos el baño compartido cada dos días. Después de usarlo, por favor, descarga el inodoro y seca el piso si está mojado. Así todos encontraremos el baño limpio y listo para usar.", "We clean the shared bathroom every two days. After using it, please flush the toilet and dry the floor if it is wet. This helps keep the bathroom clean and ready for everyone.", "Nous nettoyons la salle de bain partagée tous les deux jours. Après utilisation, merci de tirer la chasse et de sécher le sol s’il est mouillé. Ainsi, chacun retrouve une salle de bain propre et prête à l’emploi.", "Wir reinigen das Gemeinschaftsbad alle zwei Tage. Spüle bitte nach dem Toilettengang und trockne den Boden, wenn er nass ist. So finden alle ein sauberes Bad vor."]]
+        ["Limpiamos el baño compartido cada dos días. Después de usarlo, por favor, asegúrate de que el inodoro haya descargado por completo y seca el piso si está mojado. Así todos encontraremos el baño limpio y listo para usar.", "We clean the shared bathroom every two days. After using it, please make sure the toilet has flushed completely and dry the floor if it is wet. This helps keep the bathroom clean and ready for everyone.", "Nous nettoyons la salle de bain partagée tous les deux jours. Après utilisation, merci de vérifier que la chasse a bien évacué le contenu de la cuvette et de sécher le sol s’il est mouillé. Ainsi, chacun retrouve une salle de bain propre et prête à l’emploi.", "Wir reinigen das Gemeinschaftsbad alle zwei Tage. Prüfe nach dem Spülen bitte, ob alles weggespült wurde, und trockne den Boden, wenn er nass ist. So finden alle ein sauberes Bad vor."]]
     ]
   }
 ];

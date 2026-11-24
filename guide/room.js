@@ -1,18 +1,30 @@
 export const title = ['Dormitorio y baño', 'Bedroom and bathroom', 'Chambre et salle de bain', 'Zimmer und Bad'];
-export const intro = [
-  'Según tu reserva, el baño puede ser privado o compartido. En tu anuncio de Airbnb puedes comprobar el tipo de baño y los servicios que incluye tu habitación.',
-  'Your bathroom may be private or shared. Check your Airbnb listing for the bathroom type and the amenities included with your room.',
-  'Selon votre réservation, la salle de bain peut être privative ou partagée. Votre annonce Airbnb précise le type de salle de bain et les équipements de votre chambre.',
-  'Je nach Buchung hast du ein eigenes Bad oder nutzt ein Gemeinschaftsbad. In deinem Airbnb-Inserat findest du die Badart und die Ausstattung deines Zimmers.'
-];
-
 export const privateBath = {
-  title: ['¿Prefieres un baño privado?', 'Would you prefer a private bathroom?', 'Vous préférez une salle de bain privative ?', 'Lieber ein eigenes Bad?'],
-  detail: [
-    'En Nature Paradise tenemos seis habitaciones. Si te gustaría cambiar a una con baño privado, escríbenos por el chat de Airbnb. Con gusto te mostraremos las opciones disponibles para las fechas de tu estadía.',
-    'Nature Paradise has six rooms. If you would like to switch to one with a private bathroom, message us on Airbnb. We’ll be happy to show you what’s available for your dates.',
-    'Nature Paradise compte six chambres. Si vous souhaitez changer pour une chambre avec salle de bain privative, écrivez-nous sur Airbnb. Nous vous présenterons avec plaisir les options disponibles aux dates de votre séjour.',
-    'Nature Paradise hat sechs Zimmer. Wenn du in ein Zimmer mit eigenem Bad wechseln möchtest, schreib uns im Airbnb-Chat. Wir zeigen dir gerne, welche Zimmer für deinen Aufenthalt verfügbar sind.'
+  "title": [
+    "¿Prefieres una habitación con baño privado?",
+    "Would you prefer a room with a private bathroom?",
+    "Vous préférez une chambre avec salle de bain privative ?",
+    "Lieber ein Zimmer mit eigenem Bad?"
+  ],
+  "paragraphs": [
+    [
+      "En Nature Paradise contamos con seis habitaciones. Tres comparten baño y las otras tres tienen baño y entrada privados, ideales para parejas que buscan más privacidad. En tu reserva de Airbnb puedes ver qué incluye la tuya.",
+      "Nature Paradise has six rooms. Three share a bathroom. The other three each have a private bathroom and entrance, ideal for couples who would like more privacy. Your Airbnb reservation lists what your room includes.",
+      "Nature Paradise compte six chambres. Trois partagent une salle de bain. Les trois autres disposent chacune d’une salle de bain et d’une entrée privatives, idéales pour les couples qui souhaitent plus d’intimité. Votre réservation Airbnb précise les équipements de votre chambre.",
+      "Nature Paradise hat sechs Zimmer. Drei teilen sich ein Bad. Die anderen drei haben jeweils ein eigenes Bad und einen eigenen Eingang, ideal für Paare, die sich mehr Privatsphäre wünschen. Was dein Zimmer bietet, steht in deiner Airbnb-Buchung."
+    ],
+    [
+      "El cambio a una habitación con baño privado tiene un costo adicional. Escríbenos por el chat de Airbnb con las fechas de tu estadía. Te mostraremos las habitaciones disponibles, qué incluye cada una y cuánto costaría el cambio.",
+      "There is an extra charge to switch to a room with a private bathroom. Send us your dates in the Airbnb chat. We’ll show you the available rooms, what each includes and how much the change would cost.",
+      "Le changement pour une chambre avec salle de bain privative entraîne un supplément. Envoyez-nous les dates de votre séjour via la messagerie Airbnb. Nous vous présenterons les chambres disponibles, leurs équipements et le montant du supplément.",
+      "Der Wechsel in ein Zimmer mit eigenem Bad kostet extra. Schreib uns deine Reisedaten im Airbnb-Chat. Wir zeigen dir die verfügbaren Zimmer, ihre Ausstattung und den Aufpreis."
+    ],
+    [
+      "Más adelante añadiremos al final de esta guía fotos de ambos tipos de habitación y los detalles de lo que incluye cada habitación con baño privado.",
+      "We’ll add photos of both room types at the end of this guide, along with details of what each room with a private bathroom includes.",
+      "Nous ajouterons à la fin de ce guide des photos des deux types de chambres ainsi que le détail des équipements de chaque chambre avec salle de bain privative.",
+      "Am Ende dieses Leitfadens ergänzen wir demnächst Fotos beider Zimmertypen und Angaben zur Ausstattung jedes Zimmers mit eigenem Bad."
+    ]
   ]
 };
 

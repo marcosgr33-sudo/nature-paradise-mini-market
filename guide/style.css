@@ -85,3 +85,14 @@ h3{font-size:1.18rem}
 .card img.market-display{height:clamp(225px,35vw,275px);object-fit:contain;background:#ebece4}
 
 .arrival-gate{display:block;width:100%;height:auto;max-width:760px;margin-top:1rem;border-radius:12px}
+
+.room-options {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: #f0f5ee;
+  border: 1px solid #c5d4c3;
+  border-left: 4px solid #35604a;
+  border-radius: 12px;
+}
+.room-options h4 { margin: 0; font-size: 1.15rem; }
+.room-options p:last-child { margin-bottom: 0; }

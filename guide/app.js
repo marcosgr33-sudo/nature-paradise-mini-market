@@ -92,7 +92,7 @@ function showGuide() {
     const [id,title,description] = section;
     const heading = node('div', '', 'frame subhead');
     heading.append(link('← ' + t(copy.home), route()),node('h1', t(title)));
-    if (id !== 'stay') heading.append(node('p', t(description)));
+    if (id !== 'stay' && id !== 'shops') heading.append(node('p', t(description)));
     const list = node('div', '', 'frame item-list');
     switch (id) {
       case 'stay': {

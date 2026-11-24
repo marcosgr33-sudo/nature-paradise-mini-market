@@ -18,7 +18,7 @@ const placePhotos = {
     "https://www.tripadvisor.nl/Attraction_Review-g675009-d4978569-Reviews-La_Confluencia-Jarabacoa_La_Vega_Province_Dominican_Republic.html"
   ],
   "Balneario La Cortina": [
-    "place-photos/cortina-cascada.webp"
+    "place-photos/cortina-cascada.webp?v=2"
   ],
   "Calle de las Sombrillas": [
     "place-photos/sombrillas.webp",
@@ -97,6 +97,7 @@ function showGuide() {
       image.src = './guide/' + file;
       image.alt = name;
       image.loading = 'lazy';
+      if (name === 'Balneario La Cortina') image.style.aspectRatio = 'auto';
       figure.append(image);
       if (source) {
         const caption = node('figcaption');

@@ -21,7 +21,7 @@ export const sections = [
   ['places', ['Lugares turísticos','Places to visit','Lieux à visiter','Sehenswürdigkeiten'], ['Cascadas, montañas y rincones del pueblo.','Waterfalls, mountains and spots around town.','Cascades, montagnes et coins à découvrir en ville.','Wasserfälle, Berge und schöne Ecken im Ort.'],'waterfall'],
   ['tours', ['Excursiones y actividades','Tours and activities','Excursions et activités','Ausflüge und Aktivitäten'], ['Rafting, parapente, senderismo y más.','Rafting, paragliding, hiking and more.','Rafting, parapente, randonnée et plus encore.','Rafting, Gleitschirmfliegen, Wandern und mehr.'],'rafting'],
   ['transport', ['Facilidades de transporte','Transport options','Options de transport','Verkehrsmöglichkeiten'], ['Alquiler de vehículos y traslados locales.','Vehicle rentals and local rides.','Location de véhicules et déplacements locaux.','Fahrzeugvermietung und Fahrten vor Ort.'],'transport'],
-  ['shops', ['Supermercados y tiendas','Supermarkets and shops','Supermarchés et commerces','Supermärkte und Geschäfte'], ['Consulta al anfitrión por tiendas y supermercados cercanos.','Ask your host about nearby shops and supermarkets.','Demandez à votre hôte quels commerces sont à proximité.','Fragen Sie Ihren Gastgeber nach Geschäften in der Nähe.']],
+["shops", ["Supermercados y servicios cercanos", "Supermarkets and nearby services", "Supermarchés et services à proximité", "Supermärkte und Angebote in der Nähe"], ["Encuentra grandes supermercados, tiendas chinas, gimnasios, salón de belleza, barberías, colmados y comida rápida cerca de Nature Paradise. Consulta los tiempos aproximados desde la casa de huéspedes.", "Find large supermarkets, Chinese variety stores, gyms, beauty salons, barbers, corner shops and fast food near Nature Paradise, with estimated travel times from the guesthouse.", "Découvrez les grands supermarchés, bazars chinois, salles de sport, salons de beauté, barbiers, épiceries et lieux de restauration rapide, avec les temps de trajet estimés depuis la maison d’hôtes.", "Entdecke große Supermärkte, chinesische Warenhäuser, Fitnessstudios, Schönheitssalons, Barbiere, kleine Läden und Imbisse mit ungefähren Wegzeiten ab der Unterkunft."], "compras"],
   ['health', ['Salud y emergencias','Health and emergencies','Santé et urgences','Gesundheit und Notfälle'], ["Servicios de salud y seguridad en Jarabacoa.","Health and emergency services in Jarabacoa.","Services de santé et de secours à Jarabacoa.","Gesundheits- und Notfalldienste in Jarabacoa."], "farmacia-portada", ["Localiza en Google Maps el hospital, la clínica, la farmacia, la policía y los bomberos. Aquí también encontrarás los contactos de un mecánico y un servicio de grúa.", "Find the hospital, clinic, pharmacy, police and fire department on Google Maps. You’ll also find contact details for a mechanic and a towing service.", "Retrouvez l’hôpital, la clinique, la pharmacie, la police et les pompiers sur Google Maps, ainsi que les coordonnées d’un mécanicien et d’un service de remorquage dans ce guide.", "Finde Krankenhaus, Klinik, Apotheke, Polizei und Feuerwehr auf Google Maps. Hier findest du auch die Kontaktdaten einer Kfz-Werkstatt und eines Abschleppdienstes."]],
 ];
 
@@ -402,5 +402,106 @@ export const healthServices = [
     ],
     10,
     ""
+  ]
+];
+
+export const nearbyShops = [
+  [
+    "Hipermercados Olé",
+    5,
+    "Hipermercados Olé"
+  ],
+  [
+    "Supermercados Nacional",
+    8,
+    "Supermercados Nacional"
+  ],
+  [
+    "La Sirena",
+    13,
+    "Sirena Market"
+  ],
+  [
+    [
+      "Plaza MEI · Tienda y ferretería",
+      "Plaza MEI · Variety and hardware store",
+      "Plaza MEI · Bazar et quincaillerie",
+      "Plaza MEI · Warenhaus und Eisenwaren"
+    ],
+    8,
+    "Plaza MEI Hato Viejo"
+  ],
+  [
+    [
+      "Gimnasio Élite",
+      "Élite Gym",
+      "Salle de sport Élite",
+      "Fitnessstudio Élite"
+    ],
+    12
+  ],
+  [
+    [
+      "Gimnasio Rústico",
+      "Rústico Gym",
+      "Salle de sport Rústico",
+      "Fitnessstudio Rústico"
+    ],
+    1,
+    null,
+    true
+  ],
+  [
+    [
+      "Salón de belleza",
+      "Beauty salon",
+      "Salon de beauté",
+      "Schönheitssalon"
+    ],
+    1,
+    null,
+    true
+  ],
+  [
+    [
+      "Barbería",
+      "Barbershop",
+      "Barbier",
+      "Barbier"
+    ],
+    2
+  ],
+  [
+    [
+      "Colmados locales",
+      "Local corner shops",
+      "Épiceries de quartier",
+      "Kleine Lebensmittelläden"
+    ],
+    2,
+    null,
+    true
+  ],
+  [
+    [
+      "Pica pollo local",
+      "Local fried chicken",
+      "Poulet frit à emporter",
+      "Hähnchenimbiss"
+    ],
+    2,
+    null,
+    true
+  ],
+  [
+    [
+      "Colmado con entrega a domicilio",
+      "Corner shop with delivery",
+      "Épicerie avec livraison",
+      "Lebensmittelladen mit Lieferservice"
+    ],
+    3,
+    null,
+    true
   ]
 ];

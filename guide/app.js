@@ -1,5 +1,5 @@
 import * as roomGuide from './room.js?v=booking-note';
-import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations,healthServices} from './content.js?v=health-cover';
+import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations,healthServices,nearbyShops} from './content.js?v=shops';
 
 const params = new URLSearchParams(location.search);
 const language = params.get('lang');
@@ -234,9 +234,27 @@ function showGuide() {
         }
         break;
       }
-      case 'shops':
-        list.append(link(t(copy.open), route('market'), 'button'));
+      case 'shops': {
+        for (const [name, minutes, query, walk] of nearbyShops) {
+          const card = row(typeof name === 'string' ? name : t(name), []);
+          const unit = walk ? t(['min aprox. a pie', 'min approx. on foot', 'min env. à pied', 'Min. ca. zu Fuß']) : t(copy.drive);
+          card.append(node('p', minutes + ' ' + unit, 'time'));
+          if (query) {
+            const params = new URLSearchParams({api: '1', query: query + ', Jarabacoa, República Dominicana'});
+            card.append(link(t(copy.map), 'https://www.google.com/maps/search/?' + params, 'button'));
+          }
+          list.append(card);
+        }
+        const note = row('Nature Paradise Mini Market', [t([
+          'En la cocina de nuestra casa de huéspedes encontrarás el Mini Market. Puedes comprar bebidas, snacks y otros productos esenciales durante tu estadía.',
+          'Our Mini Market is in the guesthouse kitchen. Stop by for drinks, snacks and other essentials during your stay.',
+          'Notre Mini Market se trouve dans la cuisine de la maison d’hôtes. Vous y trouverez des boissons, des en-cas et des produits de première nécessité.',
+          'Unser Mini Market befindet sich in der Küche des Gästehauses. Hier bekommst du Getränke, Snacks und Dinge des täglichen Bedarfs.'
+        ])], null, link(t(['Pulsa aquí para ver nuestros productos', 'View our products', 'Voir nos produits', 'Unsere Produkte ansehen']), route('market'), 'button'));
+        note.classList.add('room-options');
+        list.append(note);
         break;
+      }
     }
     content.append(heading,list);
   }

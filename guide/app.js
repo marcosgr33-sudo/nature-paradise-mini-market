@@ -214,6 +214,12 @@ function showGuide() {
           if (placeId) query.set('query_place_id', placeId);
           list.append(row(name, [t(details)], minutes, link(t(copy.map), 'https://www.google.com/maps/search/?' + query, 'button')));
         }
+        for (const [name, service, phone] of [
+          ['Edison Cruz', ['Mecánico automotriz', 'Automotive mechanic', 'Mécanicien automobile', 'Kfz-Mechaniker'], '809-849-8185'],
+          ['Grúa Elciades', ['Servicio de grúas', 'Towing service', 'Service de remorquage', 'Abschleppdienst'], '829-573-3832']
+        ]) {
+          list.append(row(name, [t(service)], null, link(phone, 'tel:+1' + phone.replaceAll('-', ''), 'button')));
+        }
         break;
       }
       case 'shops':

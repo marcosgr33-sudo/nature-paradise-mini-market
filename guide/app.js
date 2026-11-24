@@ -1,5 +1,5 @@
 import * as roomGuide from './room.js?v=booking-note';
-import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations,healthServices} from './content.js?v=buena-vista';
+import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations,healthServices} from './content.js?v=health-cover';
 
 const params = new URLSearchParams(location.search);
 const language = params.get('lang');
@@ -70,7 +70,7 @@ function showGuide() {
     list.id = 'sections';
     list.append(node('h2', t(copy.title)));
     const cards = node('div', '', 'cards');
-    for (const [id,title,description,photo] of sections) {
+    for (const [id,title,description,photo,coverDescription = description] of sections) {
       const card = link('', route(id), 'card');
       if (photo) {
         const image = node('img');
@@ -81,7 +81,7 @@ function showGuide() {
         card.append(image);
       }
       const body = node('div', '', 'card-body');
-      body.append(node('h3', t(title)),node('p', t(description)),
+      body.append(node('h3', t(title)),node('p', t(coverDescription)),
         node('span', t(id === 'market' ? copy.open : copy.details) + ' →', 'more'));
       card.append(body);
       cards.append(card);

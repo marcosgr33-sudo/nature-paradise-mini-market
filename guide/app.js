@@ -91,10 +91,20 @@ function showGuide() {
   } else {
     const [id,title,description] = section;
     const heading = node('div', '', 'frame subhead');
-    heading.append(link('← ' + t(copy.home), route()),node('h1', t(title)),node('p', t(description)));
+    heading.append(link('← ' + t(copy.home), route()),node('h1', t(title)));
+    if (id !== 'stay') heading.append(node('p', t(description)));
     const list = node('div', '', 'frame item-list');
     switch (id) {
       case 'stay': {
+        const shortcuts = node('nav', '', 'stay-shortcuts');
+        shortcuts.setAttribute('aria-label', t(title));
+        heading.append(shortcuts);
+        function addStop(card, anchor, label) {
+          card.id = anchor;
+          card.classList.add('stay-stop');
+          list.append(card);
+          shortcuts.append(link(label || card.firstElementChild.textContent, '#' + anchor));
+        }
         const checkIn = row(t(arrival.title), arrival.steps.map(t), null,
           link(t(arrival.mapLabel), arrival.location, 'button'));
         const gate = node('img', '', 'arrival-gate');
@@ -105,7 +115,7 @@ function showGuide() {
         const roomAccess = node('p');
         roomAccess.append(node('strong', t(arrival.roomAccess)));
         checkIn.append(gate, roomAccess);
-        list.append(checkIn);
+        addStop(checkIn, 'check-in', 'Check-in');
         const parking = row(t(arrival.parkingTitle), [t(arrival.parkingText)]);
         const photo = node('img', '', 'arrival-gate');
         photo.src = './guide/parqueos.webp';
@@ -113,7 +123,7 @@ function showGuide() {
         photo.width = 1100;
         photo.height = 825;
         parking.append(photo);
-        list.append(parking);
+        addStop(parking, 'parqueo');
         const departure = row(t(checkout.title), checkout.steps.map(t));
         const sign = node('img', '', 'arrival-gate');
         sign.src = './guide/check-out.webp';
@@ -122,7 +132,7 @@ function showGuide() {
         sign.width = 1216;
         sign.height = 1293;
         departure.append(sign);
-        list.append(departure);
+        addStop(departure, 'check-out', 'Check-out');
         const room = row(t(roomGuide.title), []);
         for (const group of roomGuide.groups) {
           const section = node('section');
@@ -156,7 +166,7 @@ function showGuide() {
           options.append(figure);
         }
         room.append(options);
-        list.append(room);
+        addStop(room, 'dormitorio-y-bano');
         for (const [name, paragraphs, imageFile, shop, activities = []] of stay) {
           const card = row(t(name), paragraphs.map(t));
           if (imageFile) {
@@ -174,11 +184,11 @@ function showGuide() {
           for (const [heading, detail] of activities) {
             card.append(node('h4', t(heading)), node('p', t(detail)));
           }
-          list.append(card);
+          addStop(card, name[0].normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replaceAll(' ', '-'));
         }
         const [, marketTitle, marketDescription] = sections.find(([id]) => id === 'market');
-        list.append(row(t(marketTitle), [t(marketDescription)], null,
-          link(t(copy.open), route('market'), 'button')));
+        addStop(row(t(marketTitle), [t(marketDescription)], null,
+          link(t(copy.open), route('market'), 'button')), 'mini-market');
         break;
       }
       case 'restaurants':

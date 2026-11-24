@@ -298,26 +298,9 @@ export const stay = [
         "À partir de trois nuits, une lessive est incluse sans supplément. Pour une ou deux nuits, le tarif dépend de la quantité de linge et du cycle de lavage. Demandez-nous le tarif en réservant le service.",
         "Ab drei Nächten ist eine Wäsche ohne Aufpreis inbegriffen. Bei einer oder zwei Nächten richtet sich der Preis nach der Wäschemenge und dem Waschprogramm. Frag uns bei der Vereinbarung nach dem Preis."
       ]
-    ],
-    [
-      [
-        "Detergente y productos",
-        "Detergent and supplies",
-        "Lessive et produits",
-        "Waschmittel und Pflegeprodukte"
-      ],
-      [
-        "Puedes traer tu propio detergente de alta eficiencia (HE). Es el único tipo que admite la lavadora. Si necesitas los productos, nuestro equipo los proporciona por US$3 por lavada. Incluyen detergente HE, suavizante y, según el tipo de ropa, cloro o vinagre.",
-        "You can bring your own high-efficiency (HE) detergent. This is the only kind the washer accepts. If you need supplies, our team provides them for US$3 per load, including HE detergent, fabric softener and either bleach or vinegar depending on the fabric.",
-        "Vous pouvez apporter votre lessive haute efficacité (HE), la seule adaptée à la machine. Si vous avez besoin des produits, notre équipe les fournit pour 3 dollars US par lessive : lessive HE, assouplissant et, selon les textiles, eau de Javel ou vinaigre.",
-        "Du kannst dein eigenes High-Efficiency-Waschmittel (HE) mitbringen. Nur dieses ist für die Maschine geeignet. Bei Bedarf stellt unser Team die Produkte für 3 US-Dollar pro Waschgang bereit: HE-Waschmittel, Weichspüler und je nach Textil Bleichmittel oder Essig."
-      ]
     ]
   ]
 ],
-  [['Llegada y salida','Arrival and checkout','Arrivée et départ','Ankunft und Abreise'],[
-    ['Encontrarás los horarios y las instrucciones de tu estadía en el chat de tu reserva.','Your stay times and instructions are in your booking chat.','Les horaires et consignes de votre séjour sont dans la messagerie de votre réservation.','Zeiten und Hinweise zu Ihrem Aufenthalt finden Sie im Buchungschat.'],
-  ]],
 ];
 
 // Add direct place URLs here when the host confirms each location.

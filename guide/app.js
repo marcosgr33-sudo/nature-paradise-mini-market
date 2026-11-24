@@ -1,5 +1,5 @@
 import * as roomGuide from './room.js?v=booking-note';
-import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations} from './content.js?v=laundry';
+import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations} from './content.js?v=stay-market';
 
 const params = new URLSearchParams(location.search);
 const language = params.get('lang');
@@ -176,6 +176,9 @@ function showGuide() {
           }
           list.append(card);
         }
+        const [, marketTitle, marketDescription] = sections.find(([id]) => id === 'market');
+        list.append(row(t(marketTitle), [t(marketDescription)], null,
+          link(t(copy.open), route('market'), 'button')));
         break;
       }
       case 'restaurants':

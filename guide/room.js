@@ -8,25 +8,22 @@ export const privateBath = {
   ],
   "paragraphs": [
     [
-      "En Nature Paradise contamos con seis habitaciones. Tres comparten baño y las otras tres tienen baño y entrada privados, ideales para parejas que buscan más privacidad. En tu reserva de Airbnb puedes ver qué incluye la tuya.",
-      "Nature Paradise has six rooms. Three share a bathroom. The other three each have a private bathroom and entrance, ideal for couples who would like more privacy. Your Airbnb reservation lists what your room includes.",
-      "Nature Paradise compte six chambres. Trois partagent une salle de bain. Les trois autres disposent chacune d’une salle de bain et d’une entrée privatives, idéales pour les couples qui souhaitent plus d’intimité. Votre réservation Airbnb précise les équipements de votre chambre.",
-      "Nature Paradise hat sechs Zimmer. Drei teilen sich ein Bad. Die anderen drei haben jeweils ein eigenes Bad und einen eigenen Eingang, ideal für Paare, die sich mehr Privatsphäre wünschen. Was dein Zimmer bietet, steht in deiner Airbnb-Buchung."
+      "En Nature Paradise contamos con cinco habitaciones. Tres comparten baño y las otras dos tienen baño y entrada privados, ideales para parejas que buscan más privacidad. En tu reserva de Airbnb puedes ver qué incluye la tuya.",
+      "Nature Paradise has five rooms. Three share a bathroom. The other two each have a private bathroom and entrance, ideal for couples who would like more privacy. Your Airbnb reservation lists what your room includes.",
+      "Nature Paradise compte cinq chambres. Trois partagent une salle de bain. Les deux autres disposent chacune d’une salle de bain et d’une entrée privatives, idéales pour les couples qui souhaitent plus d’intimité. Votre réservation Airbnb précise les équipements de votre chambre.",
+      "Nature Paradise hat fünf Zimmer. Drei teilen sich ein Bad. Die anderen zwei haben jeweils ein eigenes Bad und einen eigenen Eingang, ideal für Paare, die sich mehr Privatsphäre wünschen. Was dein Zimmer bietet, steht in deiner Airbnb-Buchung."
     ],
     [
       "El cambio a una habitación con baño privado tiene un costo adicional. Escríbenos por el chat de Airbnb con las fechas de tu estadía. Te mostraremos las habitaciones disponibles, qué incluye cada una y cuánto costaría el cambio.",
       "There is an extra charge to switch to a room with a private bathroom. Send us your dates in the Airbnb chat. We’ll show you the available rooms, what each includes and how much the change would cost.",
       "Le changement pour une chambre avec salle de bain privative entraîne un supplément. Envoyez-nous les dates de votre séjour via la messagerie Airbnb. Nous vous présenterons les chambres disponibles, leurs équipements et le montant du supplément.",
       "Der Wechsel in ein Zimmer mit eigenem Bad kostet extra. Schreib uns deine Reisedaten im Airbnb-Chat. Wir zeigen dir die verfügbaren Zimmer, ihre Ausstattung und den Aufpreis."
-    ],
-    [
-      "Más adelante añadiremos al final de esta guía fotos de ambos tipos de habitación y los detalles de lo que incluye cada habitación con baño privado.",
-      "We’ll add photos of both room types at the end of this guide, along with details of what each room with a private bathroom includes.",
-      "Nous ajouterons à la fin de ce guide des photos des deux types de chambres ainsi que le détail des équipements de chaque chambre avec salle de bain privative.",
-      "Am Ende dieses Leitfadens ergänzen wir demnächst Fotos beider Zimmertypen und Angaben zur Ausstattung jedes Zimmers mit eigenem Bad."
     ]
   ]
 };
+
+export const sharedCaption = ["A, B y C comparten baño. La habitación C incluye aire acondicionado.", "A, B and C share a bathroom. Room C includes air conditioning.", "A, B et C partagent une salle de bain. La chambre C est climatisée.", "A, B und C teilen sich ein Bad. Zimmer C hat eine Klimaanlage."];
+export const privateCaption = ["Entrada privada, baño privado, aire acondicionado y Smart TV.", "Private entrance, private bathroom, air conditioning and smart TV.", "Entrée et salle de bain privatives, climatisation et télévision connectée.", "Eigener Eingang, eigenes Bad, Klimaanlage und Smart-TV."];
 
 export const groups = [
   {

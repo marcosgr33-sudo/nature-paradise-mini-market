@@ -96,3 +96,7 @@ h3{font-size:1.18rem}
 }
 .room-options h4 { margin: 0; font-size: 1.15rem; }
 .room-options p:last-child { margin-bottom: 0; }
+
+.room-photo { margin: 1.5rem auto 0; max-width: 40rem; }
+.room-photo figcaption { margin-bottom: .5rem; line-height: 1.5; }
+.room-photo img { display: block; width: 100%; height: auto; border-radius: .6rem; }

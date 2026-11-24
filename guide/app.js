@@ -1,4 +1,4 @@
-import * as roomGuide from './room.js?v=room-options';
+import * as roomGuide from './room.js?v=gallery';
 import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations} from './content.js?v=room-guide';
 
 const params = new URLSearchParams(location.search);
@@ -139,6 +139,19 @@ function showGuide() {
         const options = node('aside', '', 'room-options');
         options.append(node('h4', t(roomGuide.privateBath.title)));
         for (const paragraph of roomGuide.privateBath.paragraphs) options.append(node('p', t(paragraph)));
+        for (const [file, name] of [['shared', 'A · B · C'], ['sunset', 'Sunset'], ['fresas', 'Fresas']]) {
+          const figure = node('figure', '', 'room-photo');
+          const image = node('img');
+          image.src = './guide/' + file + '.webp';
+          image.alt = name;
+          image.loading = 'lazy';
+          image.width = 1024;
+          image.height = 1536;
+          const caption = node('figcaption');
+          caption.append(node('strong', name), node('br'), t(file === 'shared' ? roomGuide.sharedCaption : roomGuide.privateCaption));
+          figure.append(caption, image);
+          options.append(figure);
+        }
         room.append(options);
         list.append(room);
         list.append(...stay.map(([name,paragraphs]) => row(t(name),paragraphs.map(t))));

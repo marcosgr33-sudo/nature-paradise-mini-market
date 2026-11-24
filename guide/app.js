@@ -1,4 +1,4 @@
-import * as roomGuide from './room.js?v=room-guide';
+import * as roomGuide from './room.js?v=dormitorio';
 import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations} from './content.js?v=room-guide';
 
 const params = new URLSearchParams(location.search);
@@ -124,7 +124,6 @@ function showGuide() {
         departure.append(sign);
         list.append(departure);
         const room = row(t(roomGuide.title), [t(roomGuide.intro)]);
-        room.append(node('h4', t(roomGuide.privateBath.title)), node('p', t(roomGuide.privateBath.detail)));
         for (const group of roomGuide.groups) {
           const section = node('section');
           section.append(node('h4', t(group.heading)));
@@ -137,6 +136,7 @@ function showGuide() {
           }
           room.append(section);
         }
+        room.append(node('h4', t(roomGuide.privateBath.title)), node('p', t(roomGuide.privateBath.detail)));
         list.append(room);
         list.append(...stay.map(([name,paragraphs]) => row(t(name),paragraphs.map(t))));
         break;

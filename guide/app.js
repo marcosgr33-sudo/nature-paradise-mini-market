@@ -18,8 +18,8 @@ const placePhotos = {
     "https://www.tripadvisor.nl/Attraction_Review-g675009-d4978569-Reviews-La_Confluencia-Jarabacoa_La_Vega_Province_Dominican_Republic.html"
   ],
   "Balneario La Cortina": [
-    "place-photos/cortina.webp",
-    "https://www.dominicanaexcursiones.com/en/vacaciones-en-jarabacoa"
+    "place-photos/cortina-agua.webp",
+    "https://www.youtube.com/watch?v=t6tRtryYyHo"
   ],
   "Calle de las Sombrillas": [
     "place-photos/sombrillas.webp",

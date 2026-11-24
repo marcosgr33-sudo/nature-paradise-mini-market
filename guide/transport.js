@@ -51,7 +51,7 @@ export function renderTransport(list, {node, link, row, t, language}) {
   shortcut.append(link(t(['Traslados al aeropuerto', 'Airport transfers', 'Transferts aéroport', 'Flughafentransfers']), '#traslados-aeropuerto'));
   list.append(shortcut);
   list.append(node('h2', t(['Transporte público', 'Public transportation', 'Transports en commun', 'Öffentliche Verkehrsmittel'])));
-  list.append(node('p', t(['Las paradas quedan a unos 10 min en carro desde Nature Paradise. Consulta el horario y el precio del pasaje antes de salir.', 'Stops are about 10 minutes by car from Nature Paradise. Check departure times and fares before leaving.', 'Les arrêts sont à environ 10 min en voiture de Nature Paradise. Vérifiez les horaires et les tarifs avant de partir.', 'Die Haltestellen liegen etwa 10 Autominuten von Nature Paradise entfernt. Prüfe Abfahrtszeiten und Preise vor der Fahrt.']), 'host-note'));
+  list.append(node('p', t(['Las estaciones de autobuses quedan a unos 10 min en carro desde Nature Paradise. Consulta el horario y el precio del pasaje antes de salir.', 'The bus stations are about 10 minutes by car from Nature Paradise. Check departure times and fares before leaving.', 'Les gares routières sont à environ 10 min en voiture de Nature Paradise. Vérifiez les horaires et les tarifs avant de partir.', 'Die Busbahnhöfe liegen etwa 10 Autominuten von Nature Paradise entfernt. Prüfe Abfahrtszeiten und Preise vor der Fahrt.']), 'host-note'));
   for (const route of publicRoutes) {
     const query = new URLSearchParams({api: '1', query: route.map});
     if (route.placeId) query.set('query_place_id', route.placeId);

@@ -41,6 +41,7 @@ export const restaurants = {
     ['Restaurante Pelé',10,'Especialidades internacionales con una presentación cuidada.','International specialties with thoughtful presentation.','Spécialités internationales à la présentation soignée.','Internationale Spezialitäten mit sorgfältiger Präsentation.'],
     ['Restaurante La Tinaja',10,'Repostería y panadería en un ambiente tranquilo.','Pastries and baked goods in a relaxed setting.','Pâtisseries et produits de boulangerie dans un cadre détendu.','Gebäck und Backwaren in entspannter Atmosphäre.'],
     ['Restaurante El Fresco',12,'Restaurante de ambiente elegante con música en vivo en algunas ocasiones.','Elegant restaurant with occasional live music.','Restaurant élégant avec parfois de la musique en direct.','Elegantes Restaurant mit gelegentlicher Livemusik.'],
+    ['Mi Carnita BBQ',12,'Una opción para disfrutar de una barbacoa en Jarabacoa.','A spot for barbecue in Jarabacoa.','Une adresse pour savourer un barbecue à Jarabacoa.','Ein Restaurant für Barbecue in Jarabacoa.'],
     ['Plaza del Café',13,'Platos variados y especialidades de café.','A variety of dishes and specialty coffee.','Plats variés et cafés de spécialité.','Abwechslungsreiche Gerichte und Kaffeespezialitäten.'],
     ['Hamaca de Dios',15,'Cocina de montaña con vistas panorámicas de Jarabacoa.','Mountain dining with panoramic views of Jarabacoa.','Cuisine de montagne avec vue panoramique sur Jarabacoa.','Essen in den Bergen mit Panoramablick auf Jarabacoa.'],
   ],
@@ -305,6 +306,7 @@ export const stay = [
 
 // Add direct place URLs here when the host confirms each location.
 export const locations = {
+  "Mi Carnita BBQ": "https://maps.app.goo.gl/7iqEE3LJaSivsQZo7?g_st=ic",
   "Nelda Bistro": "https://maps.app.goo.gl/CcWiqEypr5kiqwuUA?g_st=ic",
   "Búho Escondido": "https://maps.app.goo.gl/3CHuW4voWk5AkNSu9?g_st=ic",
   "La Melaza": "https://www.google.com/maps/search/?api=1&query=La+Verdadera+Melaza%2C+Calle+Mella%2C+Jarabacoa%2C+Rep%C3%BAblica+Dominicana&query_place_id=ChIJ2SuZqDcwsI4RUb_v4TXubcU",

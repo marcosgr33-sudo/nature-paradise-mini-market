@@ -171,7 +171,11 @@ export const stay = [
       "Halte die Küche schon beim Kochen sauber. Spüle benutzte Töpfe, Geschirr, Besteck und Küchenutensilien und stelle sie ins Abtropfgestell. Wische zum Schluss die benutzten Geräte und die Arbeitsfläche ab."
     ]
   ],
-  "comedor.webp"
+  "comedor.webp",
+  {
+    "text": ["Si necesitas alimentos durante tu estadía, puedes comprarlos en nuestro Mini Market, junto al comedor.", "If you need groceries during your stay, you can buy them at our Mini Market next to the dining area.", "Si vous avez besoin de provisions pendant votre séjour, notre Mini Market se trouve juste à côté de la salle à manger.", "Wenn du während deines Aufenthalts Lebensmittel brauchst, findest du unseren Mini Market direkt neben dem Essbereich."],
+    "label": ["Mira el catálogo de nuestra tienda", "Browse our shop’s catalog", "Consulter le catalogue de notre boutique", "Unseren Shop-Katalog ansehen"]
+  }
 ],  [['Áreas comunes y bicicletas','Common areas and bicycles','Espaces communs et vélos','Gemeinschaftsbereiche und Fahrräder'],[
     ['Consulta al anfitrión por la piscina, las bicicletas y otras actividades en la propiedad.','Ask your host about the pool, bicycles and other activities on the property.','Renseignez-vous auprès de votre hôte sur la piscine, les vélos et les autres activités sur place.','Fragen Sie Ihren Gastgeber nach dem Pool, Fahrrädern und weiteren Aktivitäten auf dem Grundstück.'],
   ]],

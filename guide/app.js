@@ -1,5 +1,5 @@
 import * as roomGuide from './room.js?v=booking-note';
-import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations} from './content.js?v=kitchen';
+import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations} from './content.js?v=kitchen-shop';
 
 const params = new URLSearchParams(location.search);
 const language = params.get('lang');
@@ -157,7 +157,7 @@ function showGuide() {
         }
         room.append(options);
         list.append(room);
-        for (const [name, paragraphs, imageFile] of stay) {
+        for (const [name, paragraphs, imageFile, shop] of stay) {
           const card = row(t(name), paragraphs.map(t));
           if (imageFile) {
             const photo = node('img', '', 'arrival-gate');
@@ -167,6 +167,9 @@ function showGuide() {
             photo.width = 1200;
             photo.height = 900;
             card.firstElementChild.after(photo);
+          }
+          if (shop) {
+            card.append(node('p', t(shop.text)), link(t(shop.label), route('market'), 'button'));
           }
           list.append(card);
         }

@@ -4,6 +4,44 @@ import * as roomGuide from './room.js?v=booking-note';
 import {languages,copy,sections,restaurants,places,tours,stay,checkout,arrival,locations,healthServices,nearbyShops} from './content.js?v=tarifas';
 import {renderTransport} from './transport.js?v=toyota-aeropuerto';
 
+const placePhotos = {
+  "Salto de Jimenoa I": [
+    "place-photos/jimenoa-1.webp",
+    "https://visitdominicanrepublic.com/things-to-do/hike-salto-de-jimenoa-uno-waterfall/"
+  ],
+  "Salto de Jimenoa II": [
+    "place-photos/jimenoa-2.webp",
+    "https://traphil.com/2020/07/03/salto-jimenoa-dos-en-jarabacoa/"
+  ],
+  "La Confluencia": [
+    "place-photos/confluencia.webp",
+    "https://www.tripadvisor.nl/Attraction_Review-g675009-d4978569-Reviews-La_Confluencia-Jarabacoa_La_Vega_Province_Dominican_Republic.html"
+  ],
+  "Balneario La Cortina": [
+    "place-photos/cortina.webp",
+    "https://www.dominicanaexcursiones.com/en/vacaciones-en-jarabacoa"
+  ],
+  "Calle de las Sombrillas": [
+    "place-photos/sombrillas.webp",
+    "https://x.com/TurismoRD/status/1667912044174098433"
+  ],
+  "Parque Duarte": [
+    "place-photos/duarte.webp",
+    "https://www.conectate.com.do/articulo/la-vega/"
+  ],
+  "Letrero Municipal de Jarabacoa": [
+    "place-photos/letrero.webp",
+    "https://travelsbymike.com/travel-blog/f/jarabacoa-dominican-republic"
+  ],
+  "Salto de Aguas Blancas · Constanza": [
+    "place-photos/aguas-blancas.webp",
+    "https://www.explore-share.com/trip/salto-de-aguas-blancas-half-day-hike-in-the-valle-nuevo-national-park-near-constanza/"
+  ],
+  "Salto de Baiguate": [
+    "salto-baiguate.webp"
+  ]
+};
+
 const params = new URLSearchParams(location.search);
 const language = params.get('lang');
 const index = languages.indexOf(language);
@@ -50,8 +88,26 @@ function showGuide() {
     const mapLabel = searchOnly
       ? t(['Buscar en Google Maps', 'Search Google Maps', 'Rechercher sur Google Maps', 'Auf Google Maps suchen'])
       : t(copy.map);
-    return row(name, [t(description)], minutes,
+    const card = row(name, [t(description)], minutes,
       locationUrl ? link(mapLabel, locationUrl, 'button') : null);
+    const photo = placePhotos[name];
+    if (photo) {
+      const [file, source] = photo;
+      const figure = node('figure', '', 'place-photo');
+      const image = node('img');
+      image.src = './guide/' + file;
+      image.alt = name;
+      image.loading = 'lazy';
+      figure.append(image);
+      if (source) {
+        const caption = node('figcaption');
+        caption.append(link(t(['Fuente de la foto', 'Photo source', 'Source de la photo', 'Bildquelle']), source));
+        figure.append(caption);
+      }
+      card.classList.add('place-with-photo');
+      card.firstElementChild.after(figure);
+    }
+    return card;
   }
 
   const content = get('content');
@@ -277,7 +333,45 @@ function showGuide() {
           const unit = walk ? t(['min aprox. a pie', 'min approx. on foot', 'min env. à pied', 'Min. ca. zu Fuß']) : t(copy.drive);
           card.append(node('p', minutes + ' ' + unit, 'time'));
           if (query) {
-            const params = new URLSearchParams({api: '1', query: query + ', Jarabacoa, República Dominicana'});
+            const placePhotos = {
+  "Salto de Jimenoa I": [
+    "place-photos/jimenoa-1.webp",
+    "https://visitdominicanrepublic.com/things-to-do/hike-salto-de-jimenoa-uno-waterfall/"
+  ],
+  "Salto de Jimenoa II": [
+    "place-photos/jimenoa-2.webp",
+    "https://traphil.com/2020/07/03/salto-jimenoa-dos-en-jarabacoa/"
+  ],
+  "La Confluencia": [
+    "place-photos/confluencia.webp",
+    "https://www.tripadvisor.nl/Attraction_Review-g675009-d4978569-Reviews-La_Confluencia-Jarabacoa_La_Vega_Province_Dominican_Republic.html"
+  ],
+  "Balneario La Cortina": [
+    "place-photos/cortina.webp",
+    "https://www.dominicanaexcursiones.com/en/vacaciones-en-jarabacoa"
+  ],
+  "Calle de las Sombrillas": [
+    "place-photos/sombrillas.webp",
+    "https://x.com/TurismoRD/status/1667912044174098433"
+  ],
+  "Parque Duarte": [
+    "place-photos/duarte.webp",
+    "https://www.conectate.com.do/articulo/la-vega/"
+  ],
+  "Letrero Municipal de Jarabacoa": [
+    "place-photos/letrero.webp",
+    "https://travelsbymike.com/travel-blog/f/jarabacoa-dominican-republic"
+  ],
+  "Salto de Aguas Blancas · Constanza": [
+    "place-photos/aguas-blancas.webp",
+    "https://www.explore-share.com/trip/salto-de-aguas-blancas-half-day-hike-in-the-valle-nuevo-national-park-near-constanza/"
+  ],
+  "Salto de Baiguate": [
+    "salto-baiguate.webp"
+  ]
+};
+
+const params = new URLSearchParams({api: '1', query: query + ', Jarabacoa, República Dominicana'});
             card.append(link(t(copy.map), 'https://www.google.com/maps/search/?' + params, 'button'));
           }
           list.append(card);

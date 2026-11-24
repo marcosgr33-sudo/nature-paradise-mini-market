@@ -153,3 +153,12 @@ h3{font-size:1.18rem}
 .transport-figure figcaption{font-size:.85rem;margin-top:.3rem}
 .rental-question{flex-basis:100%;margin:0}
 .card img.transport-cover{object-position:center 46%}
+
+.place-photo{margin:.75rem 0 0;min-width:0}
+.place-photo img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:.65rem}
+.place-photo figcaption{font-size:.8rem;margin-top:.3rem}
+@media(min-width:700px){
+  .place-with-photo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,40%);column-gap:1.5rem;align-items:start}
+  .place-with-photo > :not(.place-photo){grid-column:1;justify-self:start}
+  .place-with-photo .place-photo{grid-column:2;grid-row:1 / span 4;margin:0}
+}

@@ -260,9 +260,61 @@ export const stay = [
     ]
   ]
 ],
-  [['Tienda y lavandería','Shop and laundry','Boutique et lessive','Laden und Wäsche'],[
-    ['Consulta con el anfitrión por la lavandería. El catálogo de la tienda está en Mini Market.','Ask your host about parking and laundry. Find our shop catalogue in Mini Market.','Demandez à votre hôte pour la lessive. Le catalogue de la boutique est dans Mini Market.','Fragen Sie Ihren Gastgeber nach der Wäsche. Den Ladenkatalog finden Sie unter Mini Market.'],
-  ]],
+[
+  [
+    "Servicio de lavandería",
+    "Laundry service",
+    "Service de blanchisserie",
+    "Wäscheservice"
+  ],
+  [],
+  "lavadora.webp",
+  null,
+  [
+    [
+      [
+        "Solo nuestro equipo opera la lavadora",
+        "Only our team operates the washing machine",
+        "Seule notre équipe utilise le lave-linge",
+        "Nur unser Team bedient die Waschmaschine"
+      ],
+      [
+        "Para solicitar una lavada, habla con nosotros en persona o escríbenos por WhatsApp o Airbnb. Nosotros coordinamos el servicio y nos encargamos del lavado.",
+        "To arrange a wash, speak to us in person or message us on WhatsApp or Airbnb. We coordinate the service and wash your clothes.",
+        "Pour organiser une lessive, adressez-vous à nous sur place ou écrivez-nous sur WhatsApp ou Airbnb. Nous nous occupons du lavage.",
+        "Sprich uns vor Ort an oder schreib uns über WhatsApp oder Airbnb. Wir vereinbaren alles mit dir und waschen deine Wäsche."
+      ]
+    ],
+    [
+      [
+        "Según la duración de tu estadía",
+        "What your stay includes",
+        "Selon la durée du séjour",
+        "Je nach Aufenthaltsdauer"
+      ],
+      [
+        "Si reservas tres noches o más, tienes una lavada incluida sin costo adicional. Para estadías de una o dos noches, el servicio tiene un costo que varía según la cantidad de ropa y el ciclo de lavado. Consúltanos al coordinarlo.",
+        "Stays of three nights or more include one wash at no extra charge. For one- or two-night stays, the service fee depends on the amount of laundry and the wash cycle. Ask us when arranging your wash.",
+        "À partir de trois nuits, une lessive est incluse sans supplément. Pour une ou deux nuits, le tarif dépend de la quantité de linge et du cycle de lavage. Demandez-nous le tarif en réservant le service.",
+        "Ab drei Nächten ist eine Wäsche ohne Aufpreis inbegriffen. Bei einer oder zwei Nächten richtet sich der Preis nach der Wäschemenge und dem Waschprogramm. Frag uns bei der Vereinbarung nach dem Preis."
+      ]
+    ],
+    [
+      [
+        "Detergente y productos",
+        "Detergent and supplies",
+        "Lessive et produits",
+        "Waschmittel und Pflegeprodukte"
+      ],
+      [
+        "Puedes traer tu propio detergente de alta eficiencia (HE). Es el único tipo que admite la lavadora. Si necesitas los productos, nuestro equipo los proporciona por US$3 por lavada. Incluyen detergente HE, suavizante y, según el tipo de ropa, cloro o vinagre.",
+        "You can bring your own high-efficiency (HE) detergent. This is the only kind the washer accepts. If you need supplies, our team provides them for US$3 per load, including HE detergent, fabric softener and either bleach or vinegar depending on the fabric.",
+        "Vous pouvez apporter votre lessive haute efficacité (HE), la seule adaptée à la machine. Si vous avez besoin des produits, notre équipe les fournit pour 3 dollars US par lessive : lessive HE, assouplissant et, selon les textiles, eau de Javel ou vinaigre.",
+        "Du kannst dein eigenes High-Efficiency-Waschmittel (HE) mitbringen. Nur dieses ist für die Maschine geeignet. Bei Bedarf stellt unser Team die Produkte für 3 US-Dollar pro Waschgang bereit: HE-Waschmittel, Weichspüler und je nach Textil Bleichmittel oder Essig."
+      ]
+    ]
+  ]
+],
   [['Llegada y salida','Arrival and checkout','Arrivée et départ','Ankunft und Abreise'],[
     ['Encontrarás los horarios y las instrucciones de tu estadía en el chat de tu reserva.','Your stay times and instructions are in your booking chat.','Les horaires et consignes de votre séjour sont dans la messagerie de votre réservation.','Zeiten und Hinweise zu Ihrem Aufenthalt finden Sie im Buchungschat.'],
   ]],

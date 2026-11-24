@@ -28,7 +28,7 @@ export const sections = [
 export const restaurants = {
   budget: [
     ['Nelda Bistro',2,'Comida al aire libre en un ambiente rústico y campestre.','Open-air dining in a rustic countryside setting.','Cuisine en plein air dans un cadre rustique et champêtre.','Essen im Freien in ländlich-rustikaler Umgebung.'],
-    ['Búho',10,'Local bohemio con murales, música y ambiente para compartir.','Bohemian spot with murals, music and a lively atmosphere.','Adresse bohème avec fresques, musique et ambiance conviviale.','Bohème-Lokal mit Wandmalereien, Musik und geselliger Atmosphäre.'],
+    ['Búho Escondido',10,'Local bohemio con murales, música y ambiente para compartir.','Bohemian spot with murals, music and a lively atmosphere.','Adresse bohème avec fresques, musique et ambiance conviviale.','Bohème-Lokal mit Wandmalereien, Musik und geselliger Atmosphäre.'],
     ['La Melaza',10,'Sándwiches, comidas ligeras, jugos naturales y batidos.','Sandwiches, light meals, fresh juices and smoothies.','Sandwichs, repas légers, jus frais et smoothies.','Sandwiches, leichte Gerichte, frische Säfte und Smoothies.'],
     ['King Mofongo',12,'Mofongos variados y porciones generosas en el centro de Jarabacoa.','A variety of mofongos and generous portions in downtown Jarabacoa.','Mofongos variés et portions généreuses au centre de Jarabacoa.','Viele Mofongo-Varianten und großzügige Portionen im Zentrum.'],
     ['Pizzería Pepperoni',12,'Una de nuestras pizzerías favoritas, con una amplia variedad de pizzas.','One of our favorite pizzerias, with a wide range of pizzas.','L’une de nos pizzerias préférées, avec un grand choix de pizzas.','Eine unserer Lieblingspizzerien mit großer Pizza-Auswahl.'],
@@ -305,8 +305,8 @@ export const stay = [
 
 // Add direct place URLs here when the host confirms each location.
 export const locations = {
-  "Nelda Bistro": "https://www.google.com/maps/search/?api=1&query=Nelda+Bistro%2C+Buena+Vista%2C+Jarabacoa%2C+Rep%C3%BAblica+Dominicana",
-  "Búho": "https://www.google.com/maps/search/?api=1&query=B%C3%BAho%2C+Jarabacoa%2C+Rep%C3%BAblica+Dominicana",
+  "Nelda Bistro": "https://maps.app.goo.gl/CcWiqEypr5kiqwuUA?g_st=ic",
+  "Búho Escondido": "https://maps.app.goo.gl/3CHuW4voWk5AkNSu9?g_st=ic",
   "La Melaza": "https://www.google.com/maps/search/?api=1&query=La+Verdadera+Melaza%2C+Calle+Mella%2C+Jarabacoa%2C+Rep%C3%BAblica+Dominicana&query_place_id=ChIJ2SuZqDcwsI4RUb_v4TXubcU",
   "King Mofongo": "https://www.google.com/maps/search/?api=1&query=The+King+Mofongo%2C+4995%2B438%2C+Calle+Hermanas+Mirabal%2C+Jarabacoa%2C+Rep%C3%BAblica+Dominicana",
   "Pizzería Pepperoni": "https://www.google.com/maps/search/?api=1&query=Pizza+%26+Pepperoni%2C+Jarabacoa%2C+Rep%C3%BAblica+Dominicana",

@@ -1,4 +1,4 @@
-import {languages,copy,sections,restaurants,places,tours,transport,stay,arrival,locations} from './content.js?v=room-access';
+import {languages,copy,sections,restaurants,places,tours,transport,stay,arrival,locations} from './content.js?v=parking-photo';
 
 const params = new URLSearchParams(location.search);
 const language = params.get('lang');
@@ -105,7 +105,14 @@ function showGuide() {
         roomAccess.append(node('strong', t(arrival.roomAccess)));
         checkIn.append(gate, roomAccess);
         list.append(checkIn);
-        list.append(row(t(arrival.parkingTitle), [t(arrival.parkingText)]));
+        const parking = row(t(arrival.parkingTitle), [t(arrival.parkingText)]);
+        const photo = node('img', '', 'arrival-gate');
+        photo.src = './guide/parqueos.webp';
+        photo.alt = t(arrival.parkingAlt);
+        photo.width = 1100;
+        photo.height = 825;
+        parking.append(photo);
+        list.append(parking);
         list.append(...stay.map(([name,paragraphs]) => row(t(name),paragraphs.map(t))));
         break;
       }

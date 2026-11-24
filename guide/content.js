@@ -128,12 +128,13 @@ export const arrival = {
     "Stationnement",
     "Parken"
   ],
+  "parkingAlt": ["Espacios de parqueo, de izquierda a derecha: 4, 2, 3 y 1.", "Parking spaces from left to right: 4, 2, 3, 1.", "Places de gauche à droite : 4, 2, 3 et 1.", "Parkplätze von links nach rechts: 4, 2, 3 und 1."],
   "parkingText": [
-    "Al entrar, puedes parquear a la derecha o a la izquierda. Deja siempre el centro libre para que otros vehículos puedan entrar.",
-    "Once inside, you can park on the right or left. Always keep the middle clear so other vehicles can enter.",
-    "Une fois à l’intérieur, tu peux te garer à droite ou à gauche. Laisse toujours le passage central libre pour les autres véhicules.",
-    "Nach der Einfahrt kannst du rechts oder links parken. Halte die Mitte stets frei, damit andere Fahrzeuge einfahren können."
-  ]
+    "Tenemos cuatro espacios de parqueo. Usa el número 1 si está disponible. Si está ocupado, puedes elegir cualquiera de los otros espacios libres. Deja siempre el centro despejado para que los demás vehículos puedan entrar y salir.",
+    "There are four parking spaces. Please use space 1 if it is available. If it is taken, choose any other free space. Always keep the center clear so other vehicles can enter and leave.",
+    "Nous disposons de quatre places de stationnement. Utilisez la place nº 1 si elle est libre. Si elle est occupée, choisissez une autre place libre. Laissez toujours le passage central dégagé pour permettre aux autres véhicules d’entrer et de sortir.",
+    "Es gibt vier Parkplätze. Nutze bitte Platz 1, wenn er frei ist. Ist er belegt, kannst du jeden anderen freien Platz wählen. Halte die Mitte immer frei, damit die anderen Fahrzeuge ein- und ausfahren können."
+]
 };
 
 export const stay = [

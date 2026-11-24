@@ -48,6 +48,7 @@ export function renderTransport(list, {node, link, row, t, language}) {
   }
   const shortcut = node('nav', '', 'stay-shortcuts');
   shortcut.append(link(t(['Ir a renta de carros y motos', 'Go to car and motorcycle rentals', 'Voir les locations de voitures et motos', 'Zur Auto- und Motorradvermietung']), '#renta'));
+  shortcut.append(link(t(['Traslados al aeropuerto', 'Airport transfers', 'Transferts aéroport', 'Flughafentransfers']), '#traslados-aeropuerto'));
   list.append(shortcut);
   list.append(node('h2', t(['Transporte público', 'Public transportation', 'Transports en commun', 'Öffentliche Verkehrsmittel'])));
   list.append(node('p', t(['Las paradas quedan a unos 10 min en carro desde Nature Paradise. Consulta el horario y el precio del pasaje antes de salir.', 'Stops are about 10 minutes by car from Nature Paradise. Check departure times and fares before leaving.', 'Les arrêts sont à environ 10 min en voiture de Nature Paradise. Vérifiez les horaires et les tarifs avant de partir.', 'Die Haltestellen liegen etwa 10 Autominuten von Nature Paradise entfernt. Prüfe Abfahrtszeiten und Preise vor der Fahrt.']), 'host-note'));
@@ -95,6 +96,7 @@ export function renderTransport(list, {node, link, row, t, language}) {
   }
   const airport = node('aside', '', 'item host-note');
   airport.id = 'traslados-aeropuerto';
+  airport.classList.add('stay-stop');
   airport.append(node('h2', t(['Traslados al aeropuerto', 'Airport transfers', 'Transferts aéroport', 'Flughafentransfers'])));
   airport.append(node('p', t([
     'Podemos recogerte en cualquiera de los aeropuertos de la República Dominicana y llevarte a Nature Paradise. También coordinamos el traslado de regreso. Trabajamos con choferes de confianza que han recibido muy buenos comentarios de nuestros huéspedes.',

@@ -22,7 +22,7 @@ export const sections = [
   ['tours', ['Excursiones y actividades','Tours and activities','Excursions et activités','Ausflüge und Aktivitäten'], ['Rafting, parapente, senderismo y más.','Rafting, paragliding, hiking and more.','Rafting, parapente, randonnée et plus encore.','Rafting, Gleitschirmfliegen, Wandern und mehr.'],'rafting'],
   ['transport', ['Facilidades de transporte','Transport options','Options de transport','Verkehrsmöglichkeiten'], ['Alquiler de vehículos y traslados locales.','Vehicle rentals and local rides.','Location de véhicules et déplacements locaux.','Fahrzeugvermietung und Fahrten vor Ort.'],'transport'],
   ['shops', ['Supermercados y tiendas','Supermarkets and shops','Supermarchés et commerces','Supermärkte und Geschäfte'], ['Consulta al anfitrión por tiendas y supermercados cercanos.','Ask your host about nearby shops and supermarkets.','Demandez à votre hôte quels commerces sont à proximité.','Fragen Sie Ihren Gastgeber nach Geschäften in der Nähe.']],
-  ['health', ['Salud y emergencias','Health and emergencies','Santé et urgences','Gesundheit und Notfälle'], ['Las fichas de centros de salud se añadirán con sus ubicaciones confirmadas.','Healthcare listings will be added once their locations are confirmed.','Les centres de santé seront ajoutés après confirmation de leur emplacement.','Gesundheitseinrichtungen werden nach Bestätigung ihrer Standorte ergänzt.']],
+  ['health', ['Salud y emergencias','Health and emergencies','Santé et urgences','Gesundheit und Notfälle'], ["Servicios de salud, seguridad y asistencia en carretera en Jarabacoa.","Healthcare, police and roadside assistance in Jarabacoa.","Santé, sécurité et assistance routière à Jarabacoa.","Gesundheit, Sicherheit und Pannenhilfe in Jarabacoa."]],
 ];
 
 export const restaurants = {
@@ -334,3 +334,72 @@ export const checkout = {
     ]
   ]
 };
+
+export const healthServices = [
+  [
+    "Hospital Octavia Gautier de Vidal",
+    [
+      "Hospital público",
+      "Public hospital",
+      "Hôpital public",
+      "Öffentliches Krankenhaus"
+    ],
+    10,
+    ""
+  ],
+  [
+    "Centro Médico Los Ríos",
+    [
+      "Clínica privada · Av. Estela Geraldino",
+      "Private clinic · Av. Estela Geraldino",
+      "Clinique privée · Av. Estela Geraldino",
+      "Privatklinik · Av. Estela Geraldino"
+    ],
+    10,
+    ""
+  ],
+  [
+    "POLITUR Jarabacoa",
+    [
+      "Policía Turística",
+      "Tourist police",
+      "Police touristique",
+      "Touristenpolizei"
+    ],
+    10,
+    "ChIJU7Z2qDYwsI4R4az6vigFzOU"
+  ],
+  [
+    "Policía Nacional de Jarabacoa",
+    [
+      "Destacamento · Calle Mario Nelson Galán",
+      "Police station · Calle Mario Nelson Galán",
+      "Commissariat · Calle Mario Nelson Galán",
+      "Polizeiwache · Calle Mario Nelson Galán"
+    ],
+    10,
+    ""
+  ],
+  [
+    "Departamento de Bomberos de Jarabacoa",
+    [
+      "Bomberos",
+      "Fire department",
+      "Pompiers",
+      "Feuerwehr"
+    ],
+    5,
+    "ChIJjeFukzYwsI4R7njfPXtJRSg"
+  ],
+  [
+    "Farmacia San Miguel II",
+    [
+      "Farmacia 24 horas · Av. Estela Geraldino 17",
+      "24-hour pharmacy · Av. Estela Geraldino 17",
+      "Pharmacie 24 h/24 · Av. Estela Geraldino 17",
+      "24-Stunden-Apotheke · Av. Estela Geraldino 17"
+    ],
+    10,
+    ""
+  ]
+];

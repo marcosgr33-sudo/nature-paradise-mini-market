@@ -114,3 +114,18 @@ h3{font-size:1.18rem}
 .shop-badge{float:right;display:grid;place-items:center;width:clamp(4.4rem,18vw,6rem);height:3.5rem;margin:0 0 .4rem .75rem;background:#f5f4ec;border-radius:.7rem;font-size:1.65rem;white-space:nowrap}
 .shop-badge:has(img){background:white}
 .shop-badge img{width:100%;height:100%;max-height:3.5rem;object-fit:contain}
+.tour-item{display:grid;grid-template-columns:minmax(180px,30%) minmax(0,1fr);padding:0;overflow:hidden}
+.tour-photo{display:block;width:100%;height:100%;min-height:175px;max-height:310px;object-fit:cover}
+.tour-body{padding:1.15rem}
+.tour-inquiry{display:flex;flex-wrap:wrap;gap:.7rem 1rem;align-items:flex-end;margin-top:1rem}
+.tour-inquiry label,.tour-inquiry legend{font-size:.86rem;font-weight:650}
+.tour-inquiry fieldset{border:0;padding:0;margin:0;min-width:0}
+.tour-inquiry legend{padding:0}
+.tour-inquiry input,.tour-stepper{display:flex;align-items:center;height:44px;margin-top:.25rem;background:white;border:1px solid var(--line);border-radius:8px;color:inherit;font:inherit}
+.tour-inquiry input{padding:0 .5rem;max-width:100%;font-size:1rem}
+.tour-stepper button{background:transparent;border:0;color:var(--green);font:inherit;font-size:1.3rem;width:44px;height:44px;cursor:pointer}
+.tour-stepper button:disabled{opacity:.35}
+.tour-stepper output{min-width:2ch;text-align:center}
+.tour-inquiry .tour-price{border:0;margin:0;font:inherit;font-weight:650;gap:.5rem;cursor:pointer}
+.tour-price img{width:20px;height:20px}
+@media(max-width:680px){.tour-item{grid-template-columns:minmax(0,1fr)}.tour-photo{height:clamp(170px,54vw,265px)}}

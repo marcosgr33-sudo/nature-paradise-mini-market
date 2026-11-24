@@ -59,9 +59,10 @@ export function tourCard([titles, descriptions, photo, notice, price, rates], {n
   stepper.append(minus, count, plus);
   group.append(legend, stepper);
 
+  const perPerson = t(['por persona', 'per person', 'par personne', 'pro Person']);
   if (rates) {
     const choices = node('fieldset', '', 'vehicle-rates');
-    choices.append(node('legend', t(rates[0].dop ? ['Elige tu ruta', 'Choose your route', 'Choisissez votre parcours', 'Route wählen'] : ['Elige tu opción · Precio por vehículo', 'Choose an option · Price per vehicle', 'Choisissez une formule · Prix par véhicule', 'Option wählen · Preis pro Fahrzeug'])));
+    choices.append(node('legend', t(rates[0].dop ? ['Elige tu ruta · Precio por persona', 'Choose your route · Price per person', 'Choisissez votre parcours · Prix par personne', 'Route wählen · Preis pro Person'] : ['Elige tu opción · Precio por vehículo', 'Choose an option · Price per vehicle', 'Choisissez une formule · Prix par véhicule', 'Option wählen · Preis pro Fahrzeug'])));
     rates.forEach(({label, usd, dop}, index) => {
       const fare = fixedFare(usd, language, dop);
       const option = node('label');
@@ -106,7 +107,13 @@ export function tourCard([titles, descriptions, photo, notice, price, rates], {n
   });
   body.append(node('h3', title), node('p', t(descriptions)));
   if (notice) body.append(node('p', t(timing[notice]), 'time'));
-  if (price) body.append(node('p', fixedFare(price, language), 'time'));
+  if (price) body.append(node('p', fixedFare(price, language) + ' ' + perPerson, 'time'));
+  if (notice === 'duarte') body.append(node('p', t([
+    'Según el tamaño de tu grupo, podemos conseguir un descuento para esta expedición.',
+    'Depending on your group size, we may be able to arrange a discount for this expedition.',
+    'Selon la taille de votre groupe, nous pouvons obtenir une réduction pour cette expédition.',
+    'Je nach Gruppengröße können wir für diese Tour möglicherweise einen Rabatt arrangieren.'
+  ]), 'time'));
   body.append(form);
   article.append(img, body);
   return article;

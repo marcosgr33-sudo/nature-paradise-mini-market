@@ -7,7 +7,7 @@ const publicRoutes = [
     phone: '+18095744796',
     site: 'https://caribetours.com.do/'
   },
-  {name: 'Jarabacoa → La Vega', photo: 'expreso-montana', illustrative: true, stop: 'La Vega / Expreso (SICHOUJA)', map: '19.12426,-70.64203'},
+  {name: 'Jarabacoa → La Vega', photo: 'toyota-expreso', illustrative: true, stop: 'La Vega / Expreso (SICHOUJA)', map: '19.12426,-70.64203'},
   {name: 'Jarabacoa → Constanza', photo: 'constanza-valle', illustrative: true, stop: 'Parada de Constanza', map: 'Parada de Constanza (Bus stop to Constanza), Jarabacoa', searchOnly: true},
   {name: 'Jarabacoa → Manabao', photo: 'manabao-ruta', illustrative: true, stop: 'Parada Manabao / La Ciénaga', map: '19.12077,-70.64402'}
 ];

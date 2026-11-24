@@ -1,4 +1,4 @@
-import {languages,copy,sections,restaurants,places,tours,transport,stay,locations} from './content.js?v=estadia';
+import {languages,copy,sections,restaurants,places,tours,transport,stay,locations} from './content.js?v=vitrina';
 
 const params = new URLSearchParams(location.search);
 const language = params.get('lang');
@@ -76,6 +76,7 @@ function showGuide() {
         image.src = './guide/' + photo + '.webp';
         image.alt = '';
         image.loading = 'lazy';
+        if (id === 'market') image.className = 'market-display';
         card.append(image);
       }
       const body = node('div', '', 'card-body');

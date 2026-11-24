@@ -81,3 +81,5 @@ h3{font-size:1.18rem}
 @media(max-width:600px){
   .hero{background-image:linear-gradient(90deg,#132f25ef,#132f25b3 50%,#132f2538),url('./jarabacoa-cascade.webp');background-position:67% center}
 }
+
+.card img.market-display{height:clamp(225px,35vw,275px);object-fit:contain;background:#ebece4}

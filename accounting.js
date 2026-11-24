@@ -1,4 +1,7 @@
 const pesos = new Intl.NumberFormat('es-DO', {style:'currency', currency:'DOP'});
+const saleCollator = new Intl.Collator('es', {sensitivity:'base', numeric:true});
+const saleSearchKey = value => value.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
+const saleCategory = product => product.category?.trim() || 'Otros';
 const today = () => new Intl.DateTimeFormat('en-CA', {
   timeZone:'America/Santo_Domingo', year:'numeric', month:'2-digit', day:'2-digit'
 }).format(new Date());
@@ -6,6 +9,17 @@ const today = () => new Intl.DateTimeFormat('en-CA', {
 export function setupAccounting(db, getProducts, refreshInventory) {
   const $ = id => document.getElementById(id);
   const soldOn = $('saleDate');
+  const productSelect = $('saleProduct');
+  productSelect.parentElement.insertAdjacentHTML('beforebegin', `
+    <div><label for="saleCategory">Categoría</label>
+      <select id="saleCategory"></select>
+    </div>
+    <div><label for="saleSearch">Buscar producto</label>
+      <input id="saleSearch" type="search" placeholder="Ej. cepillo o chicharrón" autocomplete="off">
+    </div>
+  `);
+  const categorySelect = $('saleCategory');
+  const productSearch = $('saleSearch');
   const from = $('salesFrom');
   const to = $('salesTo');
   const date = today();
@@ -27,7 +41,40 @@ export function setupAccounting(db, getProducts, refreshInventory) {
     $('recordSale').disabled = cost == null || quantity <= 0;
   }
 
-  $('saleProduct').onchange = updateSalePrices;
+  function renderSaleProducts() {
+    const selected = productSelect.value;
+    const category = categorySelect.value;
+    const terms = saleSearchKey(productSearch.value.trim()).split(/\s+/);
+    const groups = new Map();
+
+    for (const product of getProducts()) {
+      const label = saleCategory(product);
+      const name = saleSearchKey(product.name);
+      if ((category && label !== category) || !terms.every(term => name.includes(term))) continue;
+      if (!groups.has(label)) groups.set(label, []);
+      groups.get(label).push(product);
+    }
+
+    productSelect.replaceChildren(new Option(groups.size ? 'Selecciona un producto' : 'No hay productos que coincidan', ''));
+    for (const [label, products] of [...groups].sort(([first], [second]) => saleCollator.compare(first, second))) {
+      const group = document.createElement('optgroup');
+      group.label = label;
+      products.sort((first, second) => saleCollator.compare(first.name, second.name));
+      group.append(...products.map(product => new Option(product.name, String(product.id))));
+      productSelect.append(group);
+    }
+    if (selected && [...productSelect.options].some(option => option.value === selected)) {
+      productSelect.value = selected;
+    }
+    updateSalePrices();
+  }
+
+  productSelect.onchange = updateSalePrices;
+  categorySelect.onchange = renderSaleProducts;
+  productSearch.oninput = renderSaleProducts;
+  productSearch.onkeydown = event => {
+    if (event.key === 'Enter') event.preventDefault();
+  };
 
   function status(text) {
     $('accountingStatus').textContent = text;
@@ -134,13 +181,12 @@ export function setupAccounting(db, getProducts, refreshInventory) {
   return {
     async open() {
       const request = ++entryRequest;
-      const select = $('saleProduct');
-      const selected = select.value;
-      const products = getProducts();
-      select.replaceChildren(new Option('Selecciona un producto', ''), ...products.map(product =>
-        new Option(product.name, String(product.id))));
-      if (products.some(product => String(product.id) === selected)) select.value = selected;
-      updateSalePrices();
+      const selectedCategory = categorySelect.value;
+      const categories = [...new Set(getProducts().map(saleCategory))].sort(saleCollator.compare);
+      categorySelect.replaceChildren(new Option('Todas las categorías', ''), ...categories.map(category =>
+        new Option(category, category)));
+      if (categories.includes(selectedCategory)) categorySelect.value = selectedCategory;
+      renderSaleProducts();
       const reportResult = report();
       const {data, error} = await db.from('market_stock_entries')
         .select('entered_at,product_name,units,unit_cost')
@@ -165,7 +211,9 @@ export function setupAccounting(db, getProducts, refreshInventory) {
       pendingSale = null;
       fillTable('salesSummary', []);
       fillTable('salesHistory', []);
-      $('saleProduct').replaceChildren();
+      productSelect.replaceChildren();
+      categorySelect.replaceChildren();
+      productSearch.value = '';
       $('saleUnits').value = '';
       $('saleStatus').textContent = '';
       updateSalePrices();

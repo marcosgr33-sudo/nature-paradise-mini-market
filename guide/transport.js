@@ -93,6 +93,30 @@ export function renderTransport(list, {node, link, row, t, language}) {
     addPhoto(card, rental.photo);
     list.append(card);
   }
+  const airport = node('aside', '', 'item host-note');
+  airport.id = 'traslados-aeropuerto';
+  airport.append(node('h2', t(['Traslados al aeropuerto', 'Airport transfers', 'Transferts aéroport', 'Flughafentransfers'])));
+  airport.append(node('p', t([
+    'Podemos recogerte en cualquiera de los aeropuertos de la República Dominicana y llevarte a Nature Paradise. También coordinamos el traslado de regreso. Trabajamos con choferes de confianza que han recibido muy buenos comentarios de nuestros huéspedes.',
+    'We can arrange pickup at any airport in the Dominican Republic and take you to Nature Paradise. We can also arrange your return trip. Our guests have shared very positive feedback about the drivers we work with.',
+    'Nous pouvons organiser votre transfert depuis n’importe quel aéroport de la République dominicaine jusqu’à Nature Paradise, ainsi que le trajet retour. Nos hôtes nous ont fait de très bons retours sur nos chauffeurs de confiance.',
+    'Wir organisieren deine Abholung an jedem Flughafen der Dominikanischen Republik und die Fahrt zu Nature Paradise. Auch die Rückfahrt zum Flughafen übernehmen unsere zuverlässigen Fahrer, von denen unsere Gäste sehr positiv berichten.'
+  ])));
+  airport.append(node('p', t([
+    'Indícanos el aeropuerto, la fecha y cuántas personas viajan. Te cotizaremos el traslado con antelación para que puedas comparar nuestra tarifa con las opciones del aeropuerto.',
+    'Tell us the airport, your travel date and the number of passengers. We’ll quote you a fare in advance so you can compare it with the options at the airport.',
+    'Indiquez-nous l’aéroport, la date et le nombre de passagers. Nous vous communiquerons le tarif à l’avance pour que vous puissiez le comparer aux options proposées à l’aéroport.',
+    'Nenne uns den Flughafen, das Reisedatum und die Anzahl der Reisenden. Du erhältst vorab ein Angebot und kannst es mit den Preisen am Flughafen vergleichen.'
+  ])));
+  const contact = link(t(['Chatear con el anfitrión', 'Chat with your host', 'Discuter avec votre hôte', 'Mit dem Gastgeber chatten']), whatsapp(t([
+    'Hola, quisiera consultar la disponibilidad y el precio de un traslado al aeropuerto o desde el aeropuerto.',
+    'Hello, could you tell me the availability and fare for an airport transfer?',
+    'Bonjour, je souhaiterais connaître les disponibilités et le tarif d’un transfert aéroport.',
+    'Hallo, ich möchte nach der Verfügbarkeit und dem Preis für einen Flughafentransfer fragen.'
+  ])), 'button transport-wa');
+  addWhatsAppIcon(contact, node);
+  airport.append(contact);
+  list.append(airport);
 }
 
 function formatRange(min, max, language) {

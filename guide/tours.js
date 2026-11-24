@@ -14,7 +14,7 @@ const timing = {
   today: ['Puedes coordinar el recorrido el mismo día.', 'You can arrange this ride on the same day.', 'Vous pouvez organiser cette balade le jour même.', 'Diese Rundfahrt kannst du am selben Tag vereinbaren.']
 };
 
-export function tourCard([titles, descriptions, photo, notice, price], {node, t, language}) {
+export function tourCard([titles, descriptions, photo, notice, price, rates], {node, t, language}) {
   const title = t(titles);
   const article = node('article', '', 'item tour-item');
   const img = node('img', '', 'tour-photo');
@@ -50,7 +50,22 @@ export function tourCard([titles, descriptions, photo, notice, price], {node, t,
   stepper.append(minus, count, plus);
   group.append(legend, stepper);
 
-  const submit = node('button', t(price ? ['Agendar', 'Book', 'Réserver', 'Termin anfragen'] : ['Conocer precio', 'Check price', 'Demander le tarif', 'Preis anfragen']), 'button tour-price');
+  if (rates) {
+    const choices = node('fieldset', '', 'vehicle-rates');
+    choices.append(node('legend', t(['Elige tu opción · Precio por vehículo', 'Choose an option · Price per vehicle', 'Choisissez une formule · Prix par véhicule', 'Option wählen · Preis pro Fahrzeug'])));
+    rates.forEach(({label, usd}, index) => {
+      const option = node('label');
+      const radio = node('input');
+      radio.type = 'radio';
+      radio.name = 'vehicleRate';
+      radio.value = t(label) + ' · US$' + usd.toFixed(2);
+      radio.checked = index === 0;
+      option.append(radio, node('span', t(label)), node('strong', 'US$' + usd.toFixed(2)));
+      choices.append(option);
+    });
+    form.append(choices);
+  }
+  const submit = node('button', t(price || rates ? ['Agendar', 'Book', 'Réserver', 'Termin anfragen'] : ['Conocer precio', 'Check price', 'Demander le tarif', 'Preis anfragen']), 'button tour-price');
   submit.type = 'submit';
   const icon = node('img');
   icon.src = './guide/whatsapp.svg';
@@ -64,7 +79,7 @@ export function tourCard([titles, descriptions, photo, notice, price], {node, t,
     const day = new Intl.DateTimeFormat(language, {dateStyle: 'long', timeZone: 'UTC'}).format(new Date(date.value + 'T12:00:00Z'));
     const n = Number(count.value);
     const guests = n + ' ' + (n === 1 ? t(['persona','person','personne','Person']) : t(['personas','people','personnes','Personen']));
-    const message = t(price ? [
+    const message = t(price || rates ? [
       `Hola, me gustaría agendar «${title}» para ${guests} el ${day}. ¿Me confirmas la disponibilidad?`,
       `Hello! I’d like to book “${title}” for ${guests} on ${day}. Could you confirm availability?`,
       `Bonjour, je souhaite réserver « ${title} » pour ${guests} le ${day}. Pouvez-vous confirmer la disponibilité ?`,
@@ -76,7 +91,7 @@ export function tourCard([titles, descriptions, photo, notice, price], {node, t,
       `Hallo! Wie viel kostet „${title}“ für ${guests} am ${day}? Gibt es noch freie Plätze?`
     ]);
     const url = new URL('https://wa.me/18497503039');
-    url.searchParams.set('text', message);
+    url.searchParams.set('text', rates ? message + '\n' + form.elements.vehicleRate.value : message);
     window.open(url.href, '_blank', 'noopener,noreferrer');
   });
   body.append(node('h3', title), node('p', t(descriptions)));

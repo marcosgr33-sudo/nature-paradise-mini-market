@@ -129,3 +129,8 @@ h3{font-size:1.18rem}
 .tour-inquiry .tour-price{border:0;margin:0;font:inherit;font-weight:650;gap:.5rem;cursor:pointer}
 .tour-price img{width:20px;height:20px}
 @media(max-width:680px){.tour-item{grid-template-columns:minmax(0,1fr)}.tour-photo{height:clamp(170px,54vw,265px)}}
+
+.tour-inquiry .vehicle-rates{flex-basis:100%}
+.vehicle-rates label{display:flex;align-items:center;gap:.55rem;padding:.6rem 0;border-bottom:1px solid var(--line);cursor:pointer}
+.vehicle-rates input[type=radio]{width:18px;height:18px;margin:0;flex:none;accent-color:var(--green)}
+.vehicle-rates strong{margin-left:auto;white-space:nowrap}

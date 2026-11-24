@@ -14,6 +14,190 @@ const timing = {
   today: ['Puedes coordinar el recorrido el mismo día.', 'You can arrange this ride on the same day.', 'Vous pouvez organiser cette balade le jour même.', 'Diese Rundfahrt kannst du am selben Tag vereinbaren.']
 };
 
+// Fixed excursion tariff basis, matching the published vehicle prices.
+const pesosPerDollar = 60.225;
+
+function fixedFare(usd, language) {
+  if (usd === '58–63') return 'US$58–63 · RD$3,500–3,800';
+  const pesos = Math.round(usd * pesosPerDollar);
+  const locale = language === 'es' ? 'es-DO' : language;
+  return 'US([titles, descriptions, photo, notice, price, rates], {node, t, language}) {
+  const title = t(titles);
+  const article = node('article', '', 'item tour-item');
+  const img = node('img', '', 'tour-photo');
+  img.src = './guide/' + photo + '.webp';
+  img.alt = '';
+  img.loading = 'lazy';
+  const body = node('div', '', 'tour-body');
+  const form = node('form', '', 'tour-inquiry');
+  const dateLabel = node('label', t(['Fecha', 'Date', 'Date', 'Datum']));
+  const date = node('input');
+  date.type = 'date';
+  date.required = true;
+  const today = () => new Intl.DateTimeFormat('sv-SE', {timeZone: 'America/Santo_Domingo'}).format(new Date());
+  date.min = today();
+  dateLabel.append(date);
+
+  const group = node('fieldset');
+  const legend = node('legend', t(['¿Para cuántas personas?', 'How many people?', 'Combien de personnes ?', 'Wie viele Personen?']));
+  const stepper = node('div', '', 'tour-stepper');
+  const minus = node('button', '−');
+  const plus = node('button', '+');
+  minus.type = plus.type = 'button';
+  minus.setAttribute('aria-label', t(['Quitar una persona', 'Remove one person', 'Retirer une personne', 'Eine Person weniger']));
+  plus.setAttribute('aria-label', t(['Añadir una persona', 'Add one person', 'Ajouter une personne', 'Eine Person mehr']));
+  const count = node('output', '1');
+  minus.disabled = true;
+  function change(delta) {
+    count.value = String(Math.max(1, Number(count.value) + delta));
+    minus.disabled = count.value === '1';
+  }
+  minus.onclick = () => change(-1);
+  plus.onclick = () => change(1);
+  stepper.append(minus, count, plus);
+  group.append(legend, stepper);
+
+  if (rates) {
+    const choices = node('fieldset', '', 'vehicle-rates');
+    choices.append(node('legend', t(['Elige tu opción · Precio por vehículo', 'Choose an option · Price per vehicle', 'Choisissez une formule · Prix par véhicule', 'Option wählen · Preis pro Fahrzeug'])));
+    rates.forEach(({label, usd}, index) => {
+      const option = node('label');
+      const radio = node('input');
+      radio.type = 'radio';
+      radio.name = 'vehicleRate';
+      radio.value = t(label) + ' · ' + fixedFare(usd, language);
+      radio.checked = index === 0;
+      option.append(radio, node('span', t(label)), node('strong', fixedFare(usd, language)));
+      choices.append(option);
+    });
+    form.append(choices);
+  }
+  const submit = node('button', t(price || rates ? ['Agendar', 'Book', 'Réserver', 'Termin anfragen'] : ['Conocer precio', 'Check price', 'Demander le tarif', 'Preis anfragen']), 'button tour-price');
+  submit.type = 'submit';
+  const icon = node('img');
+  icon.src = './guide/whatsapp.svg';
+  icon.alt = '';
+  submit.prepend(icon);
+  form.append(dateLabel, group, submit);
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    date.min = today();
+    if (!form.reportValidity()) return;
+    const day = new Intl.DateTimeFormat(language, {dateStyle: 'long', timeZone: 'UTC'}).format(new Date(date.value + 'T12:00:00Z'));
+    const n = Number(count.value);
+    const guests = n + ' ' + (n === 1 ? t(['persona','person','personne','Person']) : t(['personas','people','personnes','Personen']));
+    const message = t(price || rates ? [
+      `Hola, me gustaría agendar «${title}» para ${guests} el ${day}. ¿Me confirmas la disponibilidad?`,
+      `Hello! I’d like to book “${title}” for ${guests} on ${day}. Could you confirm availability?`,
+      `Bonjour, je souhaite réserver « ${title} » pour ${guests} le ${day}. Pouvez-vous confirmer la disponibilité ?`,
+      `Hallo! Ich möchte „${title}“ für ${guests} am ${day} buchen. Ist der Termin verfügbar?`
+    ] : [
+      `Hola, me gustaría saber el precio de «${title}» para ${guests} el ${day}. ¿Hay disponibilidad?`,
+      `Hello! Could you tell me the price and availability of “${title}” for ${guests} on ${day}?`,
+      `Bonjour, quel serait le tarif de « ${title} » pour ${guests} le ${day} ? Y a-t-il de la disponibilité ?`,
+      `Hallo! Wie viel kostet „${title}“ für ${guests} am ${day}? Gibt es noch freie Plätze?`
+    ]);
+    const url = new URL('https://wa.me/18497503039');
+    url.searchParams.set('text', rates ? message + '\n' + form.elements.vehicleRate.value : message);
+    window.open(url.href, '_blank', 'noopener,noreferrer');
+  });
+  body.append(node('h3', title), node('p', t(descriptions)));
+  if (notice) body.append(node('p', t(timing[notice]), 'time'));
+  if (price) body.append(node('p', fixedFare(price, language), 'time'));
+  body.append(form);
+  article.append(img, body);
+  return article;
+}
+ + usd.toLocaleString(locale) + ' · RD([titles, descriptions, photo, notice, price, rates], {node, t, language}) {
+  const title = t(titles);
+  const article = node('article', '', 'item tour-item');
+  const img = node('img', '', 'tour-photo');
+  img.src = './guide/' + photo + '.webp';
+  img.alt = '';
+  img.loading = 'lazy';
+  const body = node('div', '', 'tour-body');
+  const form = node('form', '', 'tour-inquiry');
+  const dateLabel = node('label', t(['Fecha', 'Date', 'Date', 'Datum']));
+  const date = node('input');
+  date.type = 'date';
+  date.required = true;
+  const today = () => new Intl.DateTimeFormat('sv-SE', {timeZone: 'America/Santo_Domingo'}).format(new Date());
+  date.min = today();
+  dateLabel.append(date);
+
+  const group = node('fieldset');
+  const legend = node('legend', t(['¿Para cuántas personas?', 'How many people?', 'Combien de personnes ?', 'Wie viele Personen?']));
+  const stepper = node('div', '', 'tour-stepper');
+  const minus = node('button', '−');
+  const plus = node('button', '+');
+  minus.type = plus.type = 'button';
+  minus.setAttribute('aria-label', t(['Quitar una persona', 'Remove one person', 'Retirer une personne', 'Eine Person weniger']));
+  plus.setAttribute('aria-label', t(['Añadir una persona', 'Add one person', 'Ajouter une personne', 'Eine Person mehr']));
+  const count = node('output', '1');
+  minus.disabled = true;
+  function change(delta) {
+    count.value = String(Math.max(1, Number(count.value) + delta));
+    minus.disabled = count.value === '1';
+  }
+  minus.onclick = () => change(-1);
+  plus.onclick = () => change(1);
+  stepper.append(minus, count, plus);
+  group.append(legend, stepper);
+
+  if (rates) {
+    const choices = node('fieldset', '', 'vehicle-rates');
+    choices.append(node('legend', t(['Elige tu opción · Precio por vehículo', 'Choose an option · Price per vehicle', 'Choisissez une formule · Prix par véhicule', 'Option wählen · Preis pro Fahrzeug'])));
+    rates.forEach(({label, usd}, index) => {
+      const option = node('label');
+      const radio = node('input');
+      radio.type = 'radio';
+      radio.name = 'vehicleRate';
+      radio.value = t(label) + ' · US$' + usd.toFixed(2);
+      radio.checked = index === 0;
+      option.append(radio, node('span', t(label)), node('strong', 'US$' + usd.toFixed(2)));
+      choices.append(option);
+    });
+    form.append(choices);
+  }
+  const submit = node('button', t(price || rates ? ['Agendar', 'Book', 'Réserver', 'Termin anfragen'] : ['Conocer precio', 'Check price', 'Demander le tarif', 'Preis anfragen']), 'button tour-price');
+  submit.type = 'submit';
+  const icon = node('img');
+  icon.src = './guide/whatsapp.svg';
+  icon.alt = '';
+  submit.prepend(icon);
+  form.append(dateLabel, group, submit);
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    date.min = today();
+    if (!form.reportValidity()) return;
+    const day = new Intl.DateTimeFormat(language, {dateStyle: 'long', timeZone: 'UTC'}).format(new Date(date.value + 'T12:00:00Z'));
+    const n = Number(count.value);
+    const guests = n + ' ' + (n === 1 ? t(['persona','person','personne','Person']) : t(['personas','people','personnes','Personen']));
+    const message = t(price || rates ? [
+      `Hola, me gustaría agendar «${title}» para ${guests} el ${day}. ¿Me confirmas la disponibilidad?`,
+      `Hello! I’d like to book “${title}” for ${guests} on ${day}. Could you confirm availability?`,
+      `Bonjour, je souhaite réserver « ${title} » pour ${guests} le ${day}. Pouvez-vous confirmer la disponibilité ?`,
+      `Hallo! Ich möchte „${title}“ für ${guests} am ${day} buchen. Ist der Termin verfügbar?`
+    ] : [
+      `Hola, me gustaría saber el precio de «${title}» para ${guests} el ${day}. ¿Hay disponibilidad?`,
+      `Hello! Could you tell me the price and availability of “${title}” for ${guests} on ${day}?`,
+      `Bonjour, quel serait le tarif de « ${title} » pour ${guests} le ${day} ? Y a-t-il de la disponibilité ?`,
+      `Hallo! Wie viel kostet „${title}“ für ${guests} am ${day}? Gibt es noch freie Plätze?`
+    ]);
+    const url = new URL('https://wa.me/18497503039');
+    url.searchParams.set('text', rates ? message + '\n' + form.elements.vehicleRate.value : message);
+    window.open(url.href, '_blank', 'noopener,noreferrer');
+  });
+  body.append(node('h3', title), node('p', t(descriptions)));
+  if (notice) body.append(node('p', t(timing[notice]), 'time'));
+  if (price) body.append(node('p', 'US$' + price, 'time'));
+  body.append(form);
+  article.append(img, body);
+  return article;
+}
+ + pesos.toLocaleString(locale);
+}
+
 export function tourCard([titles, descriptions, photo, notice, price, rates], {node, t, language}) {
   const title = t(titles);
   const article = node('article', '', 'item tour-item');

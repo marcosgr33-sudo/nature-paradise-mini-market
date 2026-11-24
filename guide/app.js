@@ -1,3 +1,4 @@
+import {reviewLink} from './review.js';
 import * as roomGuide from './room.js?v=booking-note';
 import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations,healthServices,nearbyShops} from './content.js?v=shops';
 
@@ -5,6 +6,11 @@ const params = new URLSearchParams(location.search);
 const language = params.get('lang');
 const index = languages.indexOf(language);
 if (index >= 0) showGuide();
+else {
+  const footer = document.createElement('p');
+  footer.append(reviewLink('es'));
+  document.querySelector('.entry-panel').append(footer);
+}
 
 function showGuide() {
   const get = id => document.getElementById(id);
@@ -259,12 +265,14 @@ function showGuide() {
     content.append(heading,list);
   }
   const invitation = node('div');
+  const review = reviewLink(language);
+  review.className = 'button';
   invitation.append(node('p', t([
     '¿Cómo fue tu estadía en Nature Paradise? Califícanos y cuéntanos tu experiencia.',
     'How was your stay at Nature Paradise? Leave a rating and tell us about your experience.',
     'Comment s’est passé votre séjour à Nature Paradise ? Donnez-nous une note et partagez votre expérience.',
     'Wie war dein Aufenthalt im Nature Paradise? Gib uns eine Bewertung und erzähl von deinen Erfahrungen.'
-  ])), link(t(['Dejar una reseña en Google Maps', 'Leave a review on Google Maps', 'Laisser un avis sur Google Maps', 'Auf Google Maps bewerten']), 'https://maps.app.goo.gl/4FZGzpACQENSAini8', 'button'));
+  ])), review);
   document.querySelector('#guide footer').prepend(invitation);
   get('entry').hidden = true;
   get('guide').hidden = false;

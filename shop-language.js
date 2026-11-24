@@ -1,3 +1,4 @@
+import {reviewLink} from './guide/review.js';
 const languages = {
   es: {
     subtitle: 'Tu tienda dentro de Nature Paradise Jarabacoa', shop: 'Ver tienda', admin: 'Administración privada',
@@ -61,6 +62,12 @@ if (typeof document !== 'undefined' && document.getElementById('storefront')) {
     location.replace(new URL('./guia.html' + (Object.hasOwn(languages, language) ? '?lang=' + language : ''), location.href));
   } else {
     const entry = document.getElementById('languageEntry');
+    const review = document.createElement('p');
+    const reviewButton = reviewLink(language);
+    reviewButton.className = 'buy';
+    review.append(reviewButton);
+    document.getElementById('catalog').append(review);
+    entry.append(reviewLink('es'));
     if (Object.hasOwn(languages, language)) entry.hidden = true;
     document.addEventListener('DOMContentLoaded', () => {
       const selector = document.getElementById('language');
@@ -71,6 +78,7 @@ if (typeof document !== 'undefined' && document.getElementById('storefront')) {
 
       function updateGuideLink() {
         const current = selector.value;
+        reviewButton.textContent = reviewLink(current).textContent;
         home.href = './guia.html?lang=' + current;
         home.textContent = title[current];
         document.title = title[current] + ' / Mini Market';

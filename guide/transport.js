@@ -7,14 +7,14 @@ const publicRoutes = [
     phone: '+18095744796',
     site: 'https://caribetours.com.do/'
   },
-  {name: 'Jarabacoa → La Vega', photo: 'guagua', illustrative: true, stop: 'La Vega / Expreso (SICHOUJA)', map: '19.12426,-70.64203'},
-  {name: 'Jarabacoa → Constanza', stop: 'Parada de Constanza', map: 'Parada de Constanza (Bus stop to Constanza), Jarabacoa', searchOnly: true},
+  {name: 'Jarabacoa → La Vega', photo: 'expreso-montana', illustrative: true, stop: 'La Vega / Expreso (SICHOUJA)', map: '19.12426,-70.64203'},
+  {name: 'Jarabacoa → Constanza', photo: 'constanza-valle', illustrative: true, stop: 'Parada de Constanza', map: 'Parada de Constanza (Bus stop to Constanza), Jarabacoa', searchOnly: true},
   {name: 'Jarabacoa → Manabao', photo: 'manabao-ruta', illustrative: true, stop: 'Parada Manabao / La Ciénaga', map: '19.12077,-70.64402'}
 ];
 
 const rides = [
   {name: ['Taxi de confianza', 'Trusted taxi', 'Taxi de confiance', 'Vertrauenswürdiges Taxi'], button: ['Solicitar un taxi', 'Request a taxi', 'Demander un taxi', 'Taxi anfragen'], photo: true},
-  {name: ['Motoconcho de confianza', 'Trusted motorcycle taxi', 'Moto-taxi de confiance', 'Vertrauenswürdiges Motorradtaxi'], button: ['Solicitar un motoconcho', 'Request a motorcycle taxi', 'Demander un moto-taxi', 'Motorradtaxi anfragen']}
+  {name: ['Mototaxi de confianza', 'Trusted motorcycle taxi', 'Moto-taxi de confiance', 'Vertrauenswürdiges Motorradtaxi'], button: ['Solicitar un mototaxi', 'Request a motorcycle taxi', 'Demander un moto-taxi', 'Motorradtaxi anfragen']}
 ];
 
 const rentals = [
@@ -71,7 +71,7 @@ export function renderTransport(list, {node, link, row, t, language}) {
   list.append(node('h2', t(['Traslados locales', 'Local rides', 'Trajets locaux', 'Fahrten vor Ort'])));
   for (const ride of rides) {
     const message = t([
-      'Hola, me gustaría solicitar ' + (ride.photo ? 'un taxi' : 'un motoconcho') + ' en Jarabacoa. ¿Me ayudan a coordinarlo?',
+      'Hola, me gustaría solicitar ' + (ride.photo ? 'un taxi' : 'un mototaxi') + ' en Jarabacoa. ¿Me ayudan a coordinarlo?',
       'Hello, I’d like to request a ' + (ride.photo ? 'taxi' : 'motorcycle taxi') + ' in Jarabacoa. Could you help arrange it?',
       'Bonjour, je voudrais demander un ' + (ride.photo ? 'taxi' : 'moto-taxi') + ' à Jarabacoa. Pouvez-vous m’aider à organiser le trajet ?',
       'Hallo, ich möchte in Jarabacoa ein ' + (ride.photo ? 'Taxi' : 'Motorradtaxi') + ' anfragen. Könnt ihr mir bei der Organisation helfen?'
@@ -79,7 +79,7 @@ export function renderTransport(list, {node, link, row, t, language}) {
     const button = link(t(ride.button), whatsapp(message), 'button transport-wa');
     addWhatsAppIcon(button, node);
     const card = row(t(ride.name), [t(['Te ayudamos a coordinar tu traslado.', 'We can help arrange your ride.', 'Nous vous aidons à organiser votre trajet.', 'Wir helfen dir, die Fahrt zu organisieren.'])], null, button);
-    addPhoto(card, ride.photo ? 'taxi-real' : 'motoconcho');
+    addPhoto(card, ride.photo ? 'taxi-montana' : 'mototaxi');
     list.append(card);
   }
 

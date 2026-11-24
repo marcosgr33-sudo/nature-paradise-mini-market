@@ -258,6 +258,14 @@ function showGuide() {
     }
     content.append(heading,list);
   }
+  const invitation = node('div');
+  invitation.append(node('p', t([
+    '¿Cómo fue tu estadía en Nature Paradise? Califícanos y cuéntanos tu experiencia.',
+    'How was your stay at Nature Paradise? Leave a rating and tell us about your experience.',
+    'Comment s’est passé votre séjour à Nature Paradise ? Donnez-nous une note et partagez votre expérience.',
+    'Wie war dein Aufenthalt im Nature Paradise? Gib uns eine Bewertung und erzähl von deinen Erfahrungen.'
+  ])), link(t(['Dejar una reseña en Google Maps', 'Leave a review on Google Maps', 'Laisser un avis sur Google Maps', 'Auf Google Maps bewerten']), 'https://maps.app.goo.gl/4FZGzpACQENSAini8', 'button'));
+  document.querySelector('#guide footer').prepend(invitation);
   get('entry').hidden = true;
   get('guide').hidden = false;
 }

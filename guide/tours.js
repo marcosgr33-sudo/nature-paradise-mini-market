@@ -14,7 +14,7 @@ const timing = {
   today: ['Puedes coordinar el recorrido el mismo día.', 'You can arrange this ride on the same day.', 'Vous pouvez organiser cette balade le jour même.', 'Diese Rundfahrt kannst du am selben Tag vereinbaren.']
 };
 
-export function tourCard([titles, descriptions, photo, notice], {node, t, language}) {
+export function tourCard([titles, descriptions, photo, notice, price], {node, t, language}) {
   const title = t(titles);
   const article = node('article', '', 'item tour-item');
   const img = node('img', '', 'tour-photo');
@@ -50,7 +50,7 @@ export function tourCard([titles, descriptions, photo, notice], {node, t, langua
   stepper.append(minus, count, plus);
   group.append(legend, stepper);
 
-  const submit = node('button', t(['Conocer precio', 'Check price', 'Demander le tarif', 'Preis anfragen']), 'button tour-price');
+  const submit = node('button', t(price ? ['Agendar', 'Book', 'Réserver', 'Termin anfragen'] : ['Conocer precio', 'Check price', 'Demander le tarif', 'Preis anfragen']), 'button tour-price');
   submit.type = 'submit';
   const icon = node('img');
   icon.src = './guide/whatsapp.svg';
@@ -64,7 +64,12 @@ export function tourCard([titles, descriptions, photo, notice], {node, t, langua
     const day = new Intl.DateTimeFormat(language, {dateStyle: 'long', timeZone: 'UTC'}).format(new Date(date.value + 'T12:00:00Z'));
     const n = Number(count.value);
     const guests = n + ' ' + (n === 1 ? t(['persona','person','personne','Person']) : t(['personas','people','personnes','Personen']));
-    const message = t([
+    const message = t(price ? [
+      `Hola, me gustaría agendar «${title}» para ${guests} el ${day}. ¿Me confirmas la disponibilidad?`,
+      `Hello! I’d like to book “${title}” for ${guests} on ${day}. Could you confirm availability?`,
+      `Bonjour, je souhaite réserver « ${title} » pour ${guests} le ${day}. Pouvez-vous confirmer la disponibilité ?`,
+      `Hallo! Ich möchte „${title}“ für ${guests} am ${day} buchen. Ist der Termin verfügbar?`
+    ] : [
       `Hola, me gustaría saber el precio de «${title}» para ${guests} el ${day}. ¿Hay disponibilidad?`,
       `Hello! Could you tell me the price and availability of “${title}” for ${guests} on ${day}?`,
       `Bonjour, quel serait le tarif de « ${title} » pour ${guests} le ${day} ? Y a-t-il de la disponibilité ?`,
@@ -74,7 +79,10 @@ export function tourCard([titles, descriptions, photo, notice], {node, t, langua
     url.searchParams.set('text', message);
     window.open(url.href, '_blank', 'noopener,noreferrer');
   });
-  body.append(node('h3', title), node('p', t(descriptions)), node('p', t(timing[notice]), 'time'), form);
+  body.append(node('h3', title), node('p', t(descriptions)));
+  if (notice) body.append(node('p', t(timing[notice]), 'time'));
+  if (price) body.append(node('p', 'US$' + price, 'time'));
+  body.append(form);
   article.append(img, body);
   return article;
 }

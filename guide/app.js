@@ -1,7 +1,7 @@
-import {tourCard, tourIntro} from './tours.js?v=tour-coordination';
+import {tourCard, tourIntro} from './tours.js?v=published-rates';
 import {reviewLink} from './review.js';
 import * as roomGuide from './room.js?v=booking-note';
-import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations,healthServices,nearbyShops} from './content.js?v=tour-images';
+import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations,healthServices,nearbyShops} from './content.js?v=published-rates';
 
 const params = new URLSearchParams(location.search);
 const language = params.get('lang');

@@ -51,3 +51,39 @@ export function saveLanguage(language) {
 }
 
 export const translate = (language, key) => languages[language][key];
+
+
+// The storefront is also the legacy entry URL shared with guests.
+if (typeof document !== 'undefined' && document.getElementById('storefront')) {
+  const params = new URLSearchParams(location.search);
+  const language = params.get('lang');
+  if (params.get('view') !== 'mini-market') {
+    location.replace(new URL('./guia.html' + (Object.hasOwn(languages, language) ? '?lang=' + language : ''), location.href));
+  } else {
+    const entry = document.getElementById('languageEntry');
+    if (Object.hasOwn(languages, language)) entry.hidden = true;
+    document.addEventListener('DOMContentLoaded', () => {
+      const selector = document.getElementById('language');
+      const title = {es:'Guía Nature Paradise',en:'Nature Paradise Guide',fr:'Guide Nature Paradise',de:'Nature Paradise Reiseführer'};
+      const home = document.createElement('a');
+      home.className = 'buy';
+      selector.after(home);
+
+      function updateGuideLink() {
+        const current = selector.value;
+        home.href = './guia.html?lang=' + current;
+        home.textContent = title[current];
+        document.title = title[current] + ' / Mini Market';
+      }
+
+      selector.addEventListener('change', updateGuideLink);
+      if (Object.hasOwn(languages, language)) {
+        const option = entry.querySelector('button[data-language="' + language + '"]');
+        if (option?.closest('#languageOptions')?.onclick) option.click();
+        else entry.hidden = false;
+      }
+      document.getElementById('languageOptions').addEventListener('click', updateGuideLink);
+      updateGuideLink();
+    }, {once:true});
+  }
+}

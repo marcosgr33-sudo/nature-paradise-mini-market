@@ -10,7 +10,7 @@ function showGuide() {
   const t = values => values[index];
   const section = sections.find(([id]) => id === params.get('section') && id !== 'market');
   const route = id => id === 'market'
-    ? './'
+    ? './?view=mini-market&lang=' + language
     : './guia.html?lang=' + language + (id ? '&section=' + id : '');
 
   function node(tag, text, className) {

@@ -4,7 +4,7 @@ export const copy = {
   welcome: ['Tu guía para disfrutar Jarabacoa','Your guide to enjoying Jarabacoa','Votre guide pour profiter de Jarabacoa','Ihr Reiseführer für Jarabacoa'],
   intro: ['Lo que necesitas para tu estadía y los lugares que te recomendamos explorar.','Find what you need for your stay and discover our favorite places.','Tous les renseignements pour votre séjour et nos bonnes adresses.','Alles für Ihren Aufenthalt und unsere Empfehlungen vor Ort.'],
   home: ['Inicio','Home','Accueil','Start'],
-  sections: ['Secciones','Sections','Rubriques','Rubriken'],
+  sections: ['Menú','Menu','Menu','Menü'],
   language: ['Idioma','Language','Langue','Sprache'],
   explore: ['Explorar la guía','Explore the guide','Explorer le guide','Reiseführer entdecken'],
   hostChat: ['Coordina con el anfitrión por el chat de tu reserva.','Arrange with your host through your booking chat.','Organisez votre demande avec votre hôte dans la messagerie de votre réservation.','Klären Sie Ihre Anfrage im Buchungschat mit Ihrem Gastgeber.'],
@@ -16,14 +16,14 @@ export const copy = {
   premium: ['Experiencias gastronómicas premium','Premium dining','Expériences gastronomiques haut de gamme','Gehobene Gastronomie'],
 };
 export const sections = [
-  ['stay', ['Casa de huéspedes','Guesthouse','Maison d’hôtes','Gästehaus'], ['Habitación, cocina, áreas comunes y salida.','Room, kitchen, common areas and checkout.','Chambre, cuisine, espaces communs et départ.','Zimmer, Küche, Gemeinschaftsbereiche und Abreise.']],
+  ['stay', ['Alojamiento','Accommodation','Hébergement','Unterkunft'], ['Habitación, cocina, áreas comunes y salida.','Room, kitchen, common areas and checkout.','Chambre, cuisine, espaces communs et départ.','Zimmer, Küche, Gemeinschaftsbereiche und Abreise.']],
+  ['market', ['Mini Market','Mini Market','Mini Market','Mini Market'], ['Compra productos esenciales sin salir de Nature Paradise.','Shop for essentials without leaving Nature Paradise.','Achetez vos essentiels sans quitter Nature Paradise.','Kaufen Sie das Nötigste direkt im Nature Paradise.']],
   ['restaurants', ['Restaurantes','Restaurants','Restaurants','Restaurants'], ['Desde una comida casual hasta una cena con vistas.','From a casual meal to dinner with a view.','Du repas décontracté au dîner avec vue.','Vom schnellen Essen bis zum Abendessen mit Aussicht.'],'dining'],
   ['places', ['Lugares turísticos','Places to visit','Lieux à visiter','Sehenswürdigkeiten'], ['Cascadas, montañas y rincones del pueblo.','Waterfalls, mountains and spots around town.','Cascades, montagnes et coins à découvrir en ville.','Wasserfälle, Berge und schöne Ecken im Ort.'],'waterfall'],
   ['tours', ['Excursiones y actividades','Tours and activities','Excursions et activités','Ausflüge und Aktivitäten'], ['Rafting, parapente, senderismo y más.','Rafting, paragliding, hiking and more.','Rafting, parapente, randonnée et plus encore.','Rafting, Gleitschirmfliegen, Wandern und mehr.'],'rafting'],
-  ['transport', ['Transporte','Transportation','Transport','Transport'], ['Alquiler de vehículos y traslados locales.','Vehicle rentals and local rides.','Location de véhicules et déplacements locaux.','Fahrzeugvermietung und Fahrten vor Ort.'],'transport'],
+  ['transport', ['Facilidades de transporte','Transport options','Options de transport','Verkehrsmöglichkeiten'], ['Alquiler de vehículos y traslados locales.','Vehicle rentals and local rides.','Location de véhicules et déplacements locaux.','Fahrzeugvermietung und Fahrten vor Ort.'],'transport'],
   ['shops', ['Supermercados y tiendas','Supermarkets and shops','Supermarchés et commerces','Supermärkte und Geschäfte'], ['Consulta al anfitrión por tiendas y supermercados cercanos.','Ask your host about nearby shops and supermarkets.','Demandez à votre hôte quels commerces sont à proximité.','Fragen Sie Ihren Gastgeber nach Geschäften in der Nähe.']],
   ['health', ['Salud y emergencias','Health and emergencies','Santé et urgences','Gesundheit und Notfälle'], ['Las fichas de centros de salud se añadirán con sus ubicaciones confirmadas.','Healthcare listings will be added once their locations are confirmed.','Les centres de santé seront ajoutés après confirmation de leur emplacement.','Gesundheitseinrichtungen werden nach Bestätigung ihrer Standorte ergänzt.']],
-  ['market', ['Mini Market','Mini Market','Mini Market','Mini Market'], ['Compra productos esenciales sin salir de Nature Paradise.','Shop for essentials without leaving Nature Paradise.','Achetez vos essentiels sans quitter Nature Paradise.','Kaufen Sie das Nötigste direkt im Nature Paradise.']],
 ];
 
 export const restaurants = {

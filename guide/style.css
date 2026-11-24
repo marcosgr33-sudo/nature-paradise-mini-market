@@ -27,7 +27,7 @@ h3{font-size:1.18rem}
 .top-row,.footer{justify-content:space-between;gap:.6rem}
 .top-row{min-height:70px}
 .brand{gap:.55rem;font-weight:700;text-decoration:none;line-height:1.1}
-.brand img{border-radius:50%}
+.brand img{width:clamp(48px,12vw,56px);height:auto;flex:none;border-radius:50%}
 .brand small{display:block;margin-top:.22rem;color:#526759;font-weight:500}
 .navigation{gap:.65rem;font-size:.9rem}
 .navigation a,.navigation summary{min-height:44px;display:flex;align-items:center}
@@ -36,7 +36,7 @@ h3{font-size:1.18rem}
 .dropdown{position:absolute;right:max(1rem,calc((100% - 1060px)/2));width:min(19rem,calc(100% - 2rem));max-height:70svh;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 35px #15352930;padding:.45rem}
 .dropdown a{padding:.4rem .75rem;text-decoration:none;border-radius:6px}
 .dropdown a:hover,.dropdown a[aria-current]{background:#e8eee5}
-.hero{background:linear-gradient(90deg,#132f25eb,#132f2580),url('./mountains.webp') center 60%/cover;color:#fff;padding:clamp(3rem,10vw,7rem) 0}
+.hero{background:linear-gradient(90deg,#132f25eb,#132f2580),url('./jarabacoa-cascade.webp') center 58%/cover;color:#fff;padding:clamp(3rem,10vw,7rem) 0}
 .hero h1{max-width:12ch}
 .hero p{max-width:38ch;margin:1rem 0 1.4rem;color:#f1eee0;font-size:1.12rem}
 .hero .button{background:var(--gold);color:#162e23}
@@ -61,7 +61,7 @@ h3{font-size:1.18rem}
 .item .button{margin-top:.8rem}
 .footer{border-top:1px solid var(--line);padding-block:1.15rem;color:#425b4d;font-size:.9rem;flex-wrap:wrap}
 .footer a{min-height:44px;display:inline-flex;align-items:center;font-weight:650}
-@media(max-width:380px){.brand img{width:35px;height:35px}.navigation{gap:.45rem;font-size:.82rem}.brand{font-size:.85rem}}
+@media(max-width:380px){.brand img{width:46px}.navigation{gap:.45rem;font-size:.82rem}.brand{font-size:.85rem}}
 
 .host-note{margin:0 0 1rem;color:#425b4d}
 
@@ -76,4 +76,8 @@ h3{font-size:1.18rem}
 @media (orientation:landscape) and (max-height:640px){
   .entry-logo{width:112px}
   .entry-panel{padding:1.1rem}
+}
+
+@media(max-width:600px){
+  .hero{background-image:linear-gradient(90deg,#132f25ef,#132f25b3 50%,#132f2538),url('./jarabacoa-cascade.webp');background-position:67% center}
 }

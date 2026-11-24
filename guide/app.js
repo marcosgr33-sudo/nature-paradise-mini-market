@@ -1,4 +1,4 @@
-import {languages,copy,sections,restaurants,places,tours,transport,stay,locations} from './content.js';
+import {languages,copy,sections,restaurants,places,tours,transport,stay,locations} from './content.js?v=cascada';
 
 const params = new URLSearchParams(location.search);
 const language = params.get('lang');

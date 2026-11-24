@@ -1,5 +1,5 @@
 import * as roomGuide from './room.js?v=booking-note';
-import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations} from './content.js?v=stay-market';
+import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations,healthServices} from './content.js?v=health';
 
 const params = new URLSearchParams(location.search);
 const language = params.get('lang');
@@ -205,6 +205,17 @@ function showGuide() {
       case 'transport':
         list.append(node('p', t(copy.hostChat), 'host-note'), ...transport.map(serviceCard));
         break;
+      case 'health': {
+        const call = t(['Llamar al 911', 'Call 911', 'Appeler le 911', '911 anrufen']);
+        list.append(row(t(['Emergencias', 'Emergency services', 'Urgences', 'Notruf']), [], null, link(call, 'tel:911', 'button')));
+        for (const [name, details, minutes, placeId] of healthServices) {
+          const address = details[0].split(' · ')[1] || '';
+          const query = new URLSearchParams({api: '1', query: [name, address, 'Jarabacoa, República Dominicana'].filter(Boolean).join(', ')});
+          if (placeId) query.set('query_place_id', placeId);
+          list.append(row(name, [t(details)], minutes, link(t(copy.map), 'https://www.google.com/maps/search/?' + query, 'button')));
+        }
+        break;
+      }
       case 'shops':
         list.append(link(t(copy.open), route('market'), 'button'));
         break;

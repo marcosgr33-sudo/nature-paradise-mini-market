@@ -218,7 +218,19 @@ function showGuide() {
           ['Edison Cruz', ['Mecánico automotriz', 'Automotive mechanic', 'Mécanicien automobile', 'Kfz-Mechaniker'], '809-849-8185'],
           ['Grúa Elciades', ['Servicio de grúas', 'Towing service', 'Service de remorquage', 'Abschleppdienst'], '829-573-3832']
         ]) {
-          list.append(row(name, [t(service)], null, link(phone, 'tel:+1' + phone.replaceAll('-', ''), 'button')));
+          const digits = '1' + phone.replaceAll('-', '');
+          const actions = node('div', '', 'contact-actions');
+          const chat = link('', 'https://wa.me/' + digits, 'whatsapp-link');
+          const label = 'WhatsApp · ' + name;
+          chat.setAttribute('aria-label', label);
+          chat.title = label;
+          const icon = node('img');
+          icon.src = './guide/whatsapp.svg';
+          icon.alt = '';
+          icon.width = icon.height = 26;
+          chat.append(icon);
+          actions.append(link(phone, 'tel:+' + digits, 'button'), chat);
+          list.append(row(name, [t(service)], null, actions));
         }
         break;
       }

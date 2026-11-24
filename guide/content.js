@@ -157,3 +157,32 @@ export const stay = [
 
 // Add direct place URLs here when the host confirms each location.
 export const locations = {};
+
+export const checkout = {
+  "title": [
+    "Cómo hacer el check-out",
+    "How to check out",
+    "Comment préparer ton départ",
+    "So funktioniert der Check-out"
+  ],
+  "steps": [
+    [
+      "La hora de salida es a las 11:00 a. m.",
+      "Check-out is at 11:00 a.m.",
+      "Le départ est à 11 h.",
+      "Check-out ist um 11 Uhr."
+    ],
+    [
+      "Abre el portón con el control remoto. Antes de salir, deja el control en la caja de la cocina.",
+      "Open the gate with the remote. Before you leave, return the remote to the box in the kitchen.",
+      "Ouvre le portail avec la télécommande. Avant de partir, dépose-la dans la boîte prévue à cet effet dans la cuisine.",
+      "Öffne das Tor mit der Fernbedienung. Lege sie vor der Abfahrt in die Box in der Küche."
+    ],
+    [
+      "El portón permanece abierto mientras los sensores detectan tu vehículo en el paso.",
+      "The gate stays open while the sensors detect your vehicle in the gateway.",
+      "Le portail reste ouvert tant que les capteurs détectent ton véhicule dans le passage.",
+      "Das Tor bleibt offen, solange die Sensoren dein Fahrzeug in der Durchfahrt erkennen."
+    ]
+  ]
+};

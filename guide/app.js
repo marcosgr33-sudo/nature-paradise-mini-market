@@ -1,4 +1,4 @@
-import {languages,copy,sections,restaurants,places,tours,transport,stay,arrival,locations} from './content.js?v=parking-moto';
+import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations} from './content.js?v=checkout';
 
 const params = new URLSearchParams(location.search);
 const language = params.get('lang');
@@ -113,6 +113,15 @@ function showGuide() {
         photo.height = 825;
         parking.append(photo);
         list.append(parking);
+        const departure = row(t(checkout.title), checkout.steps.map(t));
+        const sign = node('img', '', 'arrival-gate');
+        sign.src = './guide/check-out.webp';
+        sign.alt = '';
+        sign.loading = 'lazy';
+        sign.width = 1216;
+        sign.height = 1293;
+        departure.append(sign);
+        list.append(departure);
         list.append(...stay.map(([name,paragraphs]) => row(t(name),paragraphs.map(t))));
         break;
       }

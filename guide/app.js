@@ -1,4 +1,5 @@
-import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations} from './content.js?v=checkout';
+import * as roomGuide from './room.js?v=room-guide';
+import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations} from './content.js?v=room-guide';
 
 const params = new URLSearchParams(location.search);
 const language = params.get('lang');
@@ -122,6 +123,21 @@ function showGuide() {
         sign.height = 1293;
         departure.append(sign);
         list.append(departure);
+        const room = row(t(roomGuide.title), [t(roomGuide.intro)]);
+        room.append(node('h4', t(roomGuide.privateBath.title)), node('p', t(roomGuide.privateBath.detail)));
+        for (const group of roomGuide.groups) {
+          const section = node('section');
+          section.append(node('h4', t(group.heading)));
+          for (const [icon, label, detail] of group.items) {
+            const marker = node('span', icon + ' ');
+            marker.setAttribute('aria-hidden', 'true');
+            const paragraph = node('p');
+            paragraph.append(marker, node('strong', t(label)), node('br'), t(detail));
+            section.append(paragraph);
+          }
+          room.append(section);
+        }
+        list.append(room);
         list.append(...stay.map(([name,paragraphs]) => row(t(name),paragraphs.map(t))));
         break;
       }

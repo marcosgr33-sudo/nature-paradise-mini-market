@@ -138,9 +138,6 @@ export const arrival = {
 };
 
 export const stay = [
-  [['Habitación y baño','Room and bathroom','Chambre et salle de bain','Zimmer und Bad'],[
-    ['Si necesitas algo en tu habitación, avísanos por el chat de tu reserva.','If you need anything in your room, let us know through your booking chat.','Pour tout besoin dans votre chambre, contactez-nous dans la messagerie de votre réservation.','Bei Fragen zu Ihrem Zimmer schreiben Sie uns im Buchungschat.'],
-  ]],
   [['Cocina y comedor','Kitchen and dining area','Cuisine et salle à manger','Küche und Essbereich'],[
     ['La cocina compartida está equipada. Hay agua potable y café de cortesía. Lava lo que uses y deja el espacio limpio.','The shared kitchen is equipped. Drinking water and coffee are complimentary. Wash what you use and leave the area clean.','La cuisine commune est équipée. Eau potable et café sont offerts. Lavez ce que vous utilisez et laissez les lieux propres.','Die Gemeinschaftsküche ist ausgestattet. Trinkwasser und Kaffee sind inklusive. Spülen Sie benutzte Utensilien und hinterlassen Sie alles sauber.'],
   ]],

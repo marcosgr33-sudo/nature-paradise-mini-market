@@ -381,15 +381,16 @@ export const healthServices = [
     ""
   ],
   [
-    "Departamento de Bomberos de Jarabacoa",
+    "Cuerpo de Bomberos de Buena Vista",
     [
-      "Bomberos",
-      "Fire department",
-      "Pompiers",
-      "Feuerwehr"
+      "Bomberos del distrito",
+      "District fire station",
+      "Caserne du district",
+      "Örtliche Feuerwehr"
     ],
     5,
-    "ChIJjeFukzYwsI4R7njfPXtJRSg"
+    "",
+    "https://www.google.com/maps/dir/?api=1&destination=19.1561695%2C-70.6014088"
   ],
   [
     "Farmacia San Miguel II",

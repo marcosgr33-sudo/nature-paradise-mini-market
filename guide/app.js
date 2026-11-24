@@ -1,4 +1,4 @@
-import {languages,copy,sections,restaurants,places,tours,transport,stay,arrival,locations} from './content.js?v=checkin';
+import {languages,copy,sections,restaurants,places,tours,transport,stay,arrival,locations} from './content.js?v=ubicacion';
 
 const params = new URLSearchParams(location.search);
 const language = params.get('lang');

@@ -109,7 +109,7 @@ export const arrival = {
     "Voir l’emplacement sur Google Maps",
     "Standort auf Google Maps ansehen"
   ],
-  "location": "https://maps.app.goo.gl/6n7tBUbQ9iVrXNu68?g_st=ic",
+  "location": "https://maps.app.goo.gl/2qcLoJYxQ11QYH4HA",
   "photoAlt": [
     "Portón de entrada de Nature Paradise",
     "Nature Paradise entrance gate",

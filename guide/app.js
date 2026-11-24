@@ -1,4 +1,4 @@
-import {tourCard, tourIntro} from './tours.js?v=tour-images';
+import {tourCard, tourIntro} from './tours.js?v=guest-tours';
 import {reviewLink} from './review.js';
 import * as roomGuide from './room.js?v=booking-note';
 import {languages,copy,sections,restaurants,places,tours,transport,stay,checkout,arrival,locations,healthServices,nearbyShops} from './content.js?v=tour-images';

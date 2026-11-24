@@ -1,8 +1,8 @@
 export const tourIntro = [
-  'Te recomendamos consultar con dos días de anticipación. Como cada semana referimos huéspedes a los operadores locales, nos ofrecen un pequeño descuento.',
-  'We recommend getting in touch two days ahead. Local operators offer us a small discount because we refer guests every week.',
-  'Nous vous conseillons de nous contacter deux jours à l’avance. Les prestataires locaux nous accordent une petite remise, car nous leur adressons des voyageurs chaque semaine.',
-  'Wir empfehlen, zwei Tage vorher anzufragen. Da wir jede Woche Gäste vermitteln, gewähren uns die örtlichen Anbieter einen kleinen Rabatt.'
+  'En Nature Paradise recomendamos operadores locales que conocemos de primera mano y con quienes nuestros huéspedes han tenido buenas experiencias. Si te interesa una excursión, escríbenos por WhatsApp. Te confirmamos el precio y la disponibilidad y, si te animas, coordinamos tu salida sin cargo adicional. Te recomendamos consultarnos con dos días de anticipación.',
+  'At Nature Paradise, we recommend local operators we know firsthand and our guests have had good experiences with. If a tour catches your eye, message us on WhatsApp. We’ll confirm the price and availability and, if you’d like to go, arrange it for you at no extra charge. We recommend getting in touch two days ahead.',
+  'Chez Nature Paradise, nous recommandons des guides et des prestataires locaux que nous connaissons personnellement et que nos hôtes ont appréciés. Une excursion vous tente ? Écrivez-nous sur WhatsApp. Nous vous confirmerons le tarif et les disponibilités et, si vous le souhaitez, organiserons votre sortie sans frais supplémentaires. Nous vous conseillons de nous contacter deux jours à l’avance.',
+  'Bei Nature Paradise empfehlen wir lokale Anbieter, die wir persönlich kennen und mit denen unsere Gäste gute Erfahrungen gemacht haben. Interessiert dich ein Ausflug? Schreib uns auf WhatsApp. Wir klären Preis und Verfügbarkeit und organisieren auf Wunsch deinen Ausflug ohne Aufpreis. Frag am besten zwei Tage im Voraus an.'
 ];
 
 const timing = {

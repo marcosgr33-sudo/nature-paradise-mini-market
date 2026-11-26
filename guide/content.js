@@ -2,7 +2,7 @@ export const languages = ['es','en','fr','de'];
 export const copy = {
   title: ['Guía de Nature Paradise','Nature Paradise Guest Guide','Guide de Nature Paradise','Gästeführer von Nature Paradise'],
   welcome: ["Vive Jarabacoa con Nature Paradise","Experience Jarabacoa with Nature Paradise","Vivez Jarabacoa avec Nature Paradise","Erlebe Jarabacoa mit Nature Paradise"],
-  intro: ["De los rápidos a la mesa, descubre el Jarabacoa que recomendamos a nuestros huéspedes.","From river rapids to local tables, discover the Jarabacoa we share with our guests.","Des rapides aux tables locales, découvrez le Jarabacoa que nous recommandons à nos hôtes.","Von Stromschnellen bis zu lokalen Restaurants: Entdecke unsere Tipps für Jarabacoa."],
+  intro: ["Descubre nuestras recomendaciones de excursiones, restaurantes y lugares para visitar en Jarabacoa.","Discover our recommendations for tours, restaurants and places to visit in Jarabacoa.","Découvrez nos recommandations d’excursions, de restaurants et de lieux à visiter à Jarabacoa.","Entdecke unsere Empfehlungen für Ausflüge, Restaurants und Sehenswürdigkeiten in Jarabacoa."],
   home: ['Inicio','Home','Accueil','Start'],
   sections: ['Menú','Menu','Menu','Menü'],
   language: ['Idioma','Language','Langue','Sprache'],

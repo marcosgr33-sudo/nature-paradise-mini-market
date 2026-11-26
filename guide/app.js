@@ -1,7 +1,7 @@
 import {tourCard, tourIntro} from './tours.js?v=tarifas';
 import {reviewLink} from './review.js';
 import * as roomGuide from './room.js?v=xuper-tv';
-import {languages,copy,sections,restaurants,places,tours,stay,checkout,arrival,locations,healthServices,nearbyShops} from './content.js?v=ras-del-agua';
+import {languages,copy,sections,restaurants,places,tours,stay,checkout,arrival,locations,healthServices,nearbyShops} from './content.js?v=portada-clara';
 import {renderTransport} from './transport.js?v=toyota-aeropuerto';
 
 const placePhotos = {

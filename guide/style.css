@@ -164,3 +164,24 @@ h3{font-size:1.18rem}
 }
 
 .place-photo img[src$="cortina-cascada.webp"]{aspect-ratio:auto;height:auto}
+
+.hero{
+  background:linear-gradient(90deg,#102c21 20%,#102c2199 45%,transparent 68%),
+    url('./ras-del-agua.webp') right center / auto 100% no-repeat #102c21;
+  min-height:clamp(30rem,55vw,48rem);
+  display:flex;
+  align-items:center;
+}
+.hero h1{max-width:12ch}
+.hero p{max-width:27ch;margin-bottom:0}
+@media(max-width:680px){
+  .hero{
+    background:linear-gradient(90deg,#102c2159,transparent 70%),url('./ras-del-agua.webp') center / cover no-repeat #102c21;
+    min-height:0;
+    aspect-ratio:1 / 1;
+    padding:clamp(1.3rem,6vw,2.8rem) 0;
+    align-items:flex-start;
+  }
+  .hero h1{font-size:clamp(1.65rem,7vw,3rem);max-width:11ch}
+  .hero p{font-size:clamp(.8rem,3.3vw,1.07rem);max-width:23ch;margin-top:.65rem}
+}

@@ -15,6 +15,9 @@ create table if not exists public.market_sales (
   unit_price numeric(12,2) not null
 );
 
+alter table public.market_sales add column if not exists recorded_at timestamptz;
+alter table public.market_sales alter column recorded_at set default clock_timestamp();
+
 create index if not exists market_sales_sold_on_idx on public.market_sales (sold_on, id);
 
 alter table public.market_product_costs enable row level security;

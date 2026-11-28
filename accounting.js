@@ -15,7 +15,7 @@ export function setupAccounting(db, getProducts, refreshInventory) {
       <select id="saleCategory"></select>
     </div>
     <div><label for="saleSearch">Buscar por nombre o categoría</label>
-      <input id="saleSearch" type="search" placeholder="Ej. cepillo, chicharrón o higiene" autocomplete="off">
+      <input id="saleSearch" type="search" placeholder="Ej. Corona, cepillo o higiene" autocomplete="off">
     </div>
   `);
   const categorySelect = $('saleCategory');
@@ -26,6 +26,7 @@ export function setupAccounting(db, getProducts, refreshInventory) {
   soldOn.value = soldOn.max = to.value = date;
   from.value = date.slice(0, 7) + '-01';
   let pendingSale;
+  let saving = false;
   let generation = 0;
   let entryRequest = 0;
 
@@ -34,11 +35,11 @@ export function setupAccounting(db, getProducts, refreshInventory) {
     const cost = product?.purchaseCost;
     const quantity = Number(product?.quantity || 0);
     $('salePrices').textContent = product
-      ? 'Existencias: ' + quantity + ' · Venta por unidad: ' + pesos.format(Number(product.price)) +
+      ? 'Quedan ' + quantity + (quantity === 1 ? ' unidad' : ' unidades') + ' · Venta por unidad: ' + pesos.format(Number(product.price)) +
         (cost == null ? ' · Guarda el costo en Inventario.' : ' · Costo por unidad: ' + pesos.format(Number(cost)))
       : '';
     $('saleUnits').max = quantity;
-    $('recordSale').disabled = cost == null || quantity <= 0;
+    $('recordSale').disabled = saving || cost == null || quantity <= 0;
   }
 
   function renderSaleProducts() {
@@ -65,6 +66,9 @@ export function setupAccounting(db, getProducts, refreshInventory) {
     }
     if (selected && [...productSelect.options].some(option => option.value === selected)) {
       productSelect.value = selected;
+    }
+    if (!productSelect.value && productSearch.value.trim() && productSelect.options.length === 2) {
+      productSelect.selectedIndex = 1;
     }
     updateSalePrices();
   }
@@ -105,7 +109,8 @@ export function setupAccounting(db, getProducts, refreshInventory) {
       const {data, error} = await db.from('market_sales')
         .select('id,product_id,product_name,sold_on,units,unit_cost,unit_price')
         .gte('sold_on', start).lte('sold_on', end)
-        .order('sold_on', {ascending:false}).order('id')
+        .order('sold_on', {ascending:false})
+        .order('recorded_at', {ascending:false, nullsFirst:false}).order('id')
         .range(offset, offset + pageSize - 1);
       if (request !== generation) return;
       if (error) {
@@ -129,7 +134,7 @@ export function setupAccounting(db, getProducts, refreshInventory) {
         row.income += income;
         row.cost += cost;
       }
-      return [sale.sold_on, sale.product_name, sale.units, ...amounts(income, cost)];
+      return [sale.sold_on, sale.product_name, sale.units + (sale.units === 1 ? ' unidad' : ' unidades'), ...amounts(income, cost)];
     });
     fillTable('salesSummary', [
       ['Total', total.units, ...amounts(total.income, total.cost)],
@@ -149,6 +154,8 @@ export function setupAccounting(db, getProducts, refreshInventory) {
   };
   $('saleForm').onsubmit = async event => {
     event.preventDefault();
+    if (saving) return;
+    saving = true;
     const button = $('recordSale');
     button.disabled = true;
     const sale = {
@@ -156,6 +163,7 @@ export function setupAccounting(db, getProducts, refreshInventory) {
       sale_day: soldOn.value,
       unit_count: Number($('saleUnits').value)
     };
+    const productName = productSelect.selectedOptions[0]?.textContent;
     const fingerprint = JSON.stringify(sale);
     if (pendingSale?.fingerprint !== fingerprint) {
       pendingSale = {fingerprint, id:crypto.randomUUID()};
@@ -164,8 +172,9 @@ export function setupAccounting(db, getProducts, refreshInventory) {
       const {error} = await db.rpc('market_record_sale', {...sale, sale_id:pendingSale.id});
       if (error) throw error;
       pendingSale = null;
-      $('saleUnits').value = '';
-      $('saleStatus').textContent = 'Venta registrada.';
+      $('saleUnits').value = '1';
+      $('saleStatus').textContent = 'Venta registrada. ' + productName + ' · ' + sale.unit_count +
+        (sale.unit_count === 1 ? ' unidad vendida.' : ' unidades vendidas.');
       if (sale.sale_day < from.value || sale.sale_day > to.value) {
         from.value = sale.sale_day.slice(0, 7) + '-01';
         to.value = today();
@@ -174,6 +183,7 @@ export function setupAccounting(db, getProducts, refreshInventory) {
     } catch (error) {
       $('saleStatus').textContent = error.message || 'No se pudo registrar la venta.';
     } finally {
+      saving = false;
       updateSalePrices();
     }
   };
@@ -181,6 +191,7 @@ export function setupAccounting(db, getProducts, refreshInventory) {
   return {
     async open() {
       const request = ++entryRequest;
+      soldOn.value = soldOn.max = today();
       const selectedCategory = categorySelect.value;
       const categories = [...new Set(getProducts().map(saleCategory))].sort(saleCollator.compare);
       categorySelect.replaceChildren(new Option('Todas las categorías', ''), ...categories.map(category =>
@@ -214,7 +225,7 @@ export function setupAccounting(db, getProducts, refreshInventory) {
       productSelect.replaceChildren();
       categorySelect.replaceChildren();
       productSearch.value = '';
-      $('saleUnits').value = '';
+      $('saleUnits').value = '1';
       $('saleStatus').textContent = '';
       updateSalePrices();
       status('');
